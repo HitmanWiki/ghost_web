@@ -253,7 +253,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
 
   const rightContentStyle: React.CSSProperties = {
     position: 'relative',
-    display: isMobile ? 'none' : 'flex',
+    display: 'flex',
     justifyContent: 'center',
     flex: 1,
     width: '100%',
@@ -268,7 +268,8 @@ export default function Hero({ onScrollTo }: HeroProps) {
     zIndex: -1,
   };
 
-  const mockWidgetStyle: React.CSSProperties = {
+  // Desktop widget style
+  const desktopWidgetStyle: React.CSSProperties = {
     width: '100%',
     maxWidth: isTablet ? '340px' : '390px',
     height: 'auto',
@@ -280,6 +281,20 @@ export default function Hero({ onScrollTo }: HeroProps) {
     position: 'relative',
     overflow: 'hidden',
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+  };
+
+  // Mobile widget style (simplified)
+  const mobileWidgetStyle: React.CSSProperties = {
+    width: '100%',
+    maxWidth: '100%',
+    height: 'auto',
+    background: 'linear-gradient(135deg, #180C36, #0A041B)',
+    border: '1px solid rgba(139, 92, 246, 0.3)',
+    borderRadius: '20px',
+    padding: '20px',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2),
   };
 
   const statsBannerStyle: React.CSSProperties = {
@@ -300,6 +315,131 @@ export default function Hero({ onScrollTo }: HeroProps) {
     gap: isMobile ? 'clamp(12px, 3vw, 24px)' : '24px',
     minWidth: isMobile ? '560px' : 'auto',
   };
+
+  // Desktop Widget Component
+  const DesktopWidget = () => (
+    <div style={desktopWidgetStyle}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '12px' }}>👻</span></div>
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '14px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4' }} />
+          <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#06b6d4' }}>SYSTEM: LIVE</span>
+        </div>
+      </div>
+
+      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+          <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🚨 Automated Feed</span>
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#a78bfa', background: 'rgba(139,92,246,0.1)', borderRadius: '4px', padding: '2px 6px' }}>Alpha Group</span>
+        </div>
+        <p style={{ fontSize: '12px', color: '#e5e7eb', fontWeight: 600, marginBottom: '4px' }}>Contract Detected: GNL7M...</p>
+        <p style={{ fontSize: '11px', color: '#9ca3af' }}>Processed through Jupiter aggregator route in 0.12s</p>
+      </div>
+
+      <div style={{ background: '#0F0824', border: '1px solid rgba(139,92,246,0.2)', borderRadius: '16px', padding: '16px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+          <div>
+            <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>UNISOL / SOL</span>
+            <h4 style={{ fontSize: '18px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>$0.0418</h4>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <span style={{ fontSize: '9px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Live Profit</span>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: '#10b981' }}>+50.7%</span>
+          </div>
+        </div>
+        <svg style={{ width: '100%', height: '64px' }} viewBox="0 0 100 30">
+          <path d="M 0 25 Q 15 28 30 18 T 60 10 T 90 2 T 100 0" stroke="#8b5cf6" strokeWidth="2" fill="none" />
+          <circle cx="90" cy="2" r="2.5" fill="#06b6d4" />
+        </svg>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '16px' }}>
+          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>BUY</span>
+            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '10px' }}>0.10 SOL</span>
+          </div>
+          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>SELL Target</span>
+            <span style={{ color: '#8b5cf6', fontWeight: 'bold', fontSize: '10px' }}>0.15 SOL (+50%)</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+          <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Self Custody Wallet</span>
+          <span style={{ fontSize: '10px', fontFamily: 'monospace', fontWeight: 'bold', color: '#a78bfa' }}>Wallet #1</span>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#d1d5db' }}>GnL9mQz...3kS4p</span>
+          <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>1.55 SOL</span>
+        </div>
+      </div>
+
+      <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', padding: '12px', fontFamily: 'monospace', fontSize: '9px', color: '#a78bfa' }}>
+        <p>&gt; scanning telegram signals...</p>
+        <p style={{ color: '#06b6d4' }}>&gt; match: CA `GNL7MQSzzkYQ75mXU4mNz...`</p>
+        <p style={{ color: '#10b981' }}>&gt; Jupiter Swap executed (+50% TP Set)</p>
+      </div>
+    </div>
+  );
+
+  // Mobile Widget Component (simplified)
+  const MobileWidget = () => (
+    <div style={mobileWidgetStyle}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '14px' }}>👻</span></div>
+          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '16px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }} />
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#10b981' }}>ACTIVE</span>
+        </div>
+      </div>
+
+      <div style={{ background: '#0F0824', border: '1px solid rgba(139,92,246,0.2)', borderRadius: '14px', padding: '14px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <div>
+            <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>LUCY / SOL</span>
+            <h4 style={{ fontSize: '16px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>$0.0418</h4>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <span style={{ fontSize: '8px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>P&L</span>
+            <span style={{ fontSize: '11px', fontFamily: 'monospace', fontWeight: 'bold', color: '#10b981' }}>+50.7%</span>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '9px' }}>BUY</span>
+            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '10px' }}>0.01 SOL</span>
+          </div>
+          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '9px' }}>TARGET</span>
+            <span style={{ color: '#8b5cf6', fontWeight: 'bold', fontSize: '10px' }}>0.015 SOL</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '12px', marginBottom: '12px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
+          <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Wallet</span>
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', fontWeight: 'bold', color: '#a78bfa' }}>W1</span>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#d1d5db' }}>74BoTq...MFSL</span>
+          <span style={{ fontSize: '10px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>1.55 SOL</span>
+        </div>
+      </div>
+
+      <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', padding: '10px', fontFamily: 'monospace', fontSize: '8px', color: '#a78bfa' }}>
+        <p>&gt; scanning signals...</p>
+        <p style={{ color: '#06b6d4' }}>&gt; contract detected</p>
+        <p style={{ color: '#10b981' }}>&gt; auto-buy executed</p>
+      </div>
+    </div>
+  );
 
   return (
     <section style={sectionStyle} id="hero">
@@ -398,87 +538,21 @@ export default function Hero({ onScrollTo }: HeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Widget (hidden on mobile) */}
-          {!isMobile && (
+          {/* Right Content - Widget (shows on both mobile and desktop) */}
+          <motion.div
+            initial={{ opacity: 0, x: 200, rotate: 5, scale: 0.8 }}
+            animate={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100, damping: 15 }}
+            style={rightContentStyle}
+          >
             <motion.div
-              initial={{ opacity: 0, x: 200, rotate: 5, scale: 0.8 }}
-              animate={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100, damping: 15 }}
-              style={rightContentStyle}
-            >
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.5 }}
-                style={glowBehindStyle}
-              />
-              <div style={mockWidgetStyle}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '16px', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '12px' }}>👻</span></div>
-                    <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '14px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4' }} />
-                    <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#06b6d4' }}>SYSTEM: LIVE</span>
-                  </div>
-                </div>
-
-                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🚨 Automated Feed</span>
-                    <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#a78bfa', background: 'rgba(139,92,246,0.1)', borderRadius: '4px', padding: '2px 6px' }}>Alpha Group</span>
-                  </div>
-                  <p style={{ fontSize: '12px', color: '#e5e7eb', fontWeight: 600, marginBottom: '4px' }}>Contract Detected: GNL7M...</p>
-                  <p style={{ fontSize: '11px', color: '#9ca3af' }}>Processed through Jupiter aggregator route in 0.12s</p>
-                </div>
-
-                <div style={{ background: '#0F0824', border: '1px solid rgba(139,92,246,0.2)', borderRadius: '16px', padding: '16px', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-                    <div>
-                      <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>UNISOL / SOL</span>
-                      <h4 style={{ fontSize: '18px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>$0.0418</h4>
-                    </div>
-                    <div style={{ textAlign: 'right' }}>
-                      <span style={{ fontSize: '9px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Live Profit</span>
-                      <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: '#10b981' }}>+50.7%</span>
-                    </div>
-                  </div>
-                  <svg style={{ width: '100%', height: '64px' }} viewBox="0 0 100 30">
-                    <path d="M 0 25 Q 15 28 30 18 T 60 10 T 90 2 T 100 0" stroke="#8b5cf6" strokeWidth="2" fill="none" />
-                    <circle cx="90" cy="2" r="2.5" fill="#06b6d4" />
-                  </svg>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '16px' }}>
-                    <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
-                      <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>BUY</span>
-                      <span style={{ color: 'white', fontWeight: 'bold', fontSize: '10px' }}>0.10 SOL</span>
-                    </div>
-                    <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
-                      <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>SELL Target</span>
-                      <span style={{ color: '#8b5cf6', fontWeight: 'bold', fontSize: '10px' }}>0.15 SOL (+50%)</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Self Custody Wallet</span>
-                    <span style={{ fontSize: '10px', fontFamily: 'monospace', fontWeight: 'bold', color: '#a78bfa' }}>Wallet #1</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#d1d5db' }}>GnL9mQz...3kS4p</span>
-                    <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>1.55 SOL</span>
-                  </div>
-                </div>
-
-                <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', padding: '12px', fontFamily: 'monospace', fontSize: '9px', color: '#a78bfa' }}>
-                  <p>&gt; scanning telegram signals...</p>
-                  <p style={{ color: '#06b6d4' }}>&gt; match: CA `GNL7MQSzzkYQ75mXU4mNz...`</p>
-                  <p style={{ color: '#10b981' }}>&gt; Jupiter Swap executed (+50% TP Set)</p>
-                </div>
-              </div>
-            </motion.div>
-          )}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              style={!isMobile ? glowBehindStyle : undefined}
+            />
+            {isMobile ? <MobileWidget /> : <DesktopWidget />}
+          </motion.div>
         </div>
 
         {/* Stats Banner */}

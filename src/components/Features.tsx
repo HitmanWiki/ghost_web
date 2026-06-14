@@ -22,8 +22,10 @@ export default function Features() {
       description: 'GHOSTwire provisions on-chain Solana wallets derived cryptographically from your Telegram ID instantly. No private keys stored on any servers — absolute security meets supreme execution.',
       badge: 'Self-Custodial Always',
       isLarge: true,
-      gradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(79, 70, 229, 0.05))',
-      iconColor: '#450cca'
+      gradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(79, 70, 229, 0.08))',
+      hoverGradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(79, 70, 229, 0.12))',
+      iconColor: '#8b5cf6',
+      borderColor: 'rgba(139, 92, 246, 0.3)'
     },
     {
       id: 'channel_monitoring',
@@ -31,7 +33,11 @@ export default function Features() {
       title: 'Channel Monitoring',
       description: 'Continuous 24/7 active scanning of designated public or private Telegram channels for Solana contract addresses.',
       badge: '24/7 Autopilot',
-      iconColor: '#0891b2'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(8, 145, 178, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(8, 145, 178, 0.08))',
+      iconColor: '#06b6d4',
+      borderColor: 'rgba(6, 182, 212, 0.3)'
     },
     {
       id: 'instant_swaps',
@@ -39,7 +45,11 @@ export default function Features() {
       title: 'Instant Buy/Sell',
       description: 'Harness the power of Jupiter Aggregators to discover and execute the most capital-efficient swap routes automatically. Execution finishes within milliseconds.',
       badge: 'Best Rates',
-      iconColor: '#d97706'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.08))',
+      iconColor: '#f59e0b',
+      borderColor: 'rgba(245, 158, 11, 0.3)'
     },
     {
       id: 'portfolio_tracking',
@@ -48,8 +58,10 @@ export default function Features() {
       description: 'Real-time calculation of your performance metrics (P&L, cost basis, current valuations) aggregate by active wallet, contract address, or specific source channels.',
       badge: 'Dynamic Analytics',
       isLarge: true,
-      gradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(20, 184, 166, 0.05))',
-      iconColor: '#0d9488'
+      gradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.1), rgba(13, 148, 136, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(20, 184, 166, 0.15), rgba(13, 148, 136, 0.08))',
+      iconColor: '#14b8a6',
+      borderColor: 'rgba(20, 184, 166, 0.3)'
     },
     {
       id: 'auto_sell',
@@ -57,7 +69,11 @@ export default function Features() {
       title: 'Auto-Sell Target Profit',
       description: 'Lock in your profit. Put your take profit goals on autopilot. The sniper executes immediate out-clicks the moment your target return is locked.',
       badge: 'Auto Take-Profit',
-      iconColor: '#059669'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.08))',
+      iconColor: '#10b981',
+      borderColor: 'rgba(16, 185, 129, 0.3)'
     },
     {
       id: 'transfers',
@@ -65,7 +81,11 @@ export default function Features() {
       title: 'Smart Transfers',
       description: 'Sweep or transfer native SOL and SPL tokens between your derived wallets or securely bridge them to physical ledger addresses with ease.',
       badge: 'Zero Slippage',
-      iconColor: '#db2777'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(219, 39, 119, 0.1), rgba(190, 24, 93, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(219, 39, 119, 0.15), rgba(190, 24, 93, 0.08))',
+      iconColor: '#db2777',
+      borderColor: 'rgba(219, 39, 119, 0.3)'
     },
     {
       id: 'referral_program',
@@ -73,7 +93,11 @@ export default function Features() {
       title: 'Referral Rewards',
       description: 'Earn 20% lifetime shares of all transaction commissions paid by your recruits. Direct payouts land on your derived balance instant and peer-to-peer.',
       badge: 'Earn 20%',
-      iconColor: '#9333ea'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(126, 34, 206, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(147, 51, 234, 0.15), rgba(126, 34, 206, 0.08))',
+      iconColor: '#9333ea',
+      borderColor: 'rgba(147, 51, 234, 0.3)'
     },
     {
       id: 'private_channels',
@@ -81,7 +105,11 @@ export default function Features() {
       title: 'Private Channels Support',
       description: 'Snipes private alpha groups too. Direct QR code authorization/OTP logins empower your bot instance to read and trigger from private alpha signals safely.',
       badge: 'Alpha Priority',
-      iconColor: '#e11d48'
+      isLarge: false,
+      gradient: 'linear-gradient(135deg, rgba(225, 29, 72, 0.1), rgba(190, 18, 60, 0.05))',
+      hoverGradient: 'linear-gradient(135deg, rgba(225, 29, 72, 0.15), rgba(190, 18, 60, 0.08))',
+      iconColor: '#e11d48',
+      borderColor: 'rgba(225, 29, 72, 0.3)'
     }
   ];
 
@@ -191,7 +219,7 @@ export default function Features() {
           </div>
         </div>
 
-        {/* Features Grid - Responsive */}
+        {/* Features Grid - Responsive with gradients on all cards */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -199,6 +227,8 @@ export default function Features() {
         }}>
           {features.map((item, idx) => {
             const IconComponent = item.icon;
+            
+            // For large cards on desktop (span 2 columns)
             if (item.isLarge && !isMobile) {
               return (
                 <motion.div
@@ -211,15 +241,30 @@ export default function Features() {
                     gridColumn: 'span 2',
                     padding: 'clamp(20px, 4vw, 24px)',
                     borderRadius: '24px',
-                    background: item.gradient || 'linear-gradient(135deg, rgba(139,92,246,0.05), rgba(79,70,229,0.02))',
-                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    background: item.gradient,
+                    border: `1px solid ${item.borderColor}`,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'space-between',
                     minHeight: '290px',
                     position: 'relative',
                     overflow: 'hidden',
-                    transition: 'all 0.3s'
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.background = item.hoverGradient;
+                      e.currentTarget.style.transform = 'translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isMobile) {
+                      e.currentTarget.style.background = item.gradient;
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = 'none';
+                    }
                   }}
                 >
                   <div style={{ position: 'absolute', top: '-48px', right: '-48px', width: '192px', height: '192px', background: 'rgba(255,255,255,0.5)', borderRadius: '50%', filter: 'blur(64px)' }} />
@@ -227,9 +272,9 @@ export default function Features() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', position: 'relative', zIndex: 10 }}>
                     <div style={{
                       padding: '12px',
-                      background: 'rgba(255, 255, 255, 0.5)',
+                      background: 'rgba(255, 255, 255, 0.9)',
                       borderRadius: '16px',
-                      border: '1px solid #e2e8f0',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
                       display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center'
@@ -238,9 +283,9 @@ export default function Features() {
                     </div>
                     {item.badge && (
                       <span style={{
-                        background: 'rgba(255,255,255,0.6)',
+                        background: 'rgba(255,255,255,0.9)',
                         backdropFilter: 'blur(4px)',
-                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
                         padding: '4px 10px',
                         borderRadius: '9999px',
                         fontSize: '10px',
@@ -248,7 +293,7 @@ export default function Features() {
                         fontWeight: 'bold',
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
-                        color: '#1e293b'
+                        color: item.iconColor
                       }}>{item.badge}</span>
                     )}
                   </div>
@@ -263,7 +308,7 @@ export default function Features() {
                     }}>{item.title}</h3>
                     <p style={{
                       fontSize: 'clamp(12px, 3vw, 14px)',
-                      color: '#475569',
+                      color: '#334155',
                       lineHeight: 1.625
                     }}>{item.description}</p>
                     <div style={{
@@ -272,14 +317,15 @@ export default function Features() {
                       gap: '8px',
                       marginTop: '16px'
                     }}>
-                      <CheckCircle2 size={18} style={{ color: '#64748b' }} />
-                      <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#64748b' }}>Fully compatible with SPL standards</span>
+                      <CheckCircle2 size={18} style={{ color: item.iconColor }} />
+                      <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#475569' }}>Fully compatible with SPL standards</span>
                     </div>
                   </div>
                 </motion.div>
               );
             }
 
+            // Regular cards (and all cards on mobile)
             return (
               <motion.div
                 key={item.id}
@@ -290,23 +336,38 @@ export default function Features() {
                 style={{
                   padding: 'clamp(20px, 4vw, 24px)',
                   borderRadius: '24px',
-                  background: 'rgba(255, 255, 255, 0.4)',
-                  border: '1px solid #e2e8f0',
+                  background: item.gradient,
+                  border: `1px solid ${item.borderColor}`,
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
                   minHeight: 'clamp(250px, 40vh, 290px)',
                   position: 'relative',
                   overflow: 'hidden',
-                  transition: 'all 0.3s'
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.background = item.hoverGradient;
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.background = item.gradient;
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
                   <div style={{
                     padding: '12px',
-                    background: 'rgba(255, 255, 255, 0.5)',
+                    background: 'rgba(255, 255, 255, 0.9)',
                     borderRadius: '16px',
-                    border: '1px solid #e2e8f0',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     justifyContent: 'center'
@@ -315,9 +376,9 @@ export default function Features() {
                   </div>
                   {item.badge && (
                     <span style={{
-                      background: 'rgba(255,255,255,0.8)',
+                      background: 'rgba(255,255,255,0.9)',
                       backdropFilter: 'blur(4px)',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
                       padding: '4px 10px',
                       borderRadius: '9999px',
                       fontSize: '10px',
@@ -325,7 +386,7 @@ export default function Features() {
                       fontWeight: 'bold',
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
-                      color: '#1e293b'
+                      color: item.iconColor
                     }}>{item.badge}</span>
                   )}
                 </div>
@@ -340,12 +401,22 @@ export default function Features() {
                   }}>{item.title}</h3>
                   <p style={{
                     fontSize: 'clamp(11px, 3vw, 12px)',
-                    color: '#475569',
+                    color: '#334155',
                     lineHeight: 1.5
                   }}>{item.description}</p>
                 </div>
                 
-                <div style={{ position: 'absolute', bottom: '-64px', right: '-64px', width: '128px', height: '128px', background: 'rgba(139,92,246,0.05)', borderRadius: '50%', filter: 'blur(64px)' }} />
+                <div style={{ 
+                  position: 'absolute', 
+                  bottom: '-64px', 
+                  right: '-64px', 
+                  width: '128px', 
+                  height: '128px', 
+                  background: `radial-gradient(circle, ${item.iconColor}15, transparent)`,
+                  borderRadius: '50%', 
+                  filter: 'blur(64px)',
+                  pointerEvents: 'none'
+                }} />
               </motion.div>
             );
           })}
@@ -400,7 +471,19 @@ export default function Features() {
                   borderRadius: '16px',
                   border: '1px solid #e2e8f0',
                   overflow: 'hidden',
-                  transition: 'all 0.3s'
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }
                 }}
               >
                 <div style={{
@@ -415,11 +498,21 @@ export default function Features() {
                       width: '100%',
                       height: 'auto',
                       objectFit: 'cover',
-                      transition: 'transform 0.5s'
+                      transition: 'transform 0.5s ease'
                     }}
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isMobile) {
+                        e.currentTarget.style.transform = 'scale(1.05)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isMobile) {
+                        e.currentTarget.style.transform = 'scale(1)';
+                      }
                     }}
                   />
                 </div>
