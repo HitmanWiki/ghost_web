@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-ghost-purple: #8b5cf6;
+  --color-ghost-cyan: #06b6d4;
+  --color-ghost-pink: #ec4899;
+  --color-ghost-neon: #a78bfa;
+  --color-ghost-green: #10b981;
+  --color-ghost-yellow: #fbbf24;
+}
+
+/* Light mode - Default (Text is dark for visibility) */
+body {
+  background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #e0e7ff 100%);
+  color: #1e1b4b;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
+    color: #f1f5f9;
+  }
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Ensure all text is visible */
+.text-gray-400, .text-gray-500, .text-gray-600 {
+  color: #475569;
+}
+
+.dark .text-gray-400, 
+.dark .text-gray-500, 
+.dark .text-gray-600 {
+  color: #94a3b8;
+}
+
+/* Card backgrounds - light mode friendly */
+.bg-ghost-card {
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+.dark .bg-ghost-card {
+  background-color: rgba(18, 9, 36, 0.6);
+}
+
+/* Custom utilities */
+@layer utilities {
+  .neon-glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15), 0 0 40px rgba(139, 92, 246, 0.05);
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for chat */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 4px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.8);
+}

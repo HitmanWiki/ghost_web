@@ -1,0 +1,6 @@
+{
+  "name": "GHOSTwire Solana Sniper Bot",
+  "description": "Auto-snipe Solana tokens from Telegram channels. Track your portfolio. Take profits automatically.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
