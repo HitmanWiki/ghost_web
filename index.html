@@ -2,17 +2,114 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GHOSTwire — Solana Sniper Bot</title>
-    <meta name="description" content="The fastest Telegram bot for sniping Solana tokens. Auto-detect signals, execute trades instantly, and track your portfolio with real-time P&L." />
-    <meta property="og:title" content="GHOSTwire — Solana Sniper Bot" />
-    <meta property="og:description" content="Auto-snipe Solana tokens from Telegram channels. Track your portfolio. Take profits automatically." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    
+    <!-- Title & Description -->
+    <title>GHOSTwire — Solana Sniper Bot | Auto-Snipe Tokens from Telegram</title>
+    <meta name="description" content="The fastest Telegram bot for sniping Solana tokens. Auto-detect signals from public & private channels, execute instant trades via Jupiter API, track portfolio with real-time P&L, and auto-sell at take profit." />
+    <meta name="keywords" content="Solana sniper bot, Telegram sniper, Solana trading bot, crypto sniper, meme coin sniper, Jupiter aggregator, Solana bot, GHOSTwire, pump fun sniper" />
+    <meta name="author" content="GHOSTwire" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%238B5CF6'%3E%3Cpath d='M12 2C6.47715 2 2 6.47715 2 12C2 14.3642 2.82236 16.5366 4.19812 18.2541C4.30193 18.3837 4.31682 18.562 4.23737 18.7061L3.08053 20.8033C2.86311 21.1974 3.242 21.6521 3.66874 21.5036L5.99268 20.6946C6.143 20.6423 6.30948 20.6756 6.42967 20.7821C8.0195 22.1895 10.108 23 12 23C17.5228 23 22 18.5228 22 12C22 6.47715 17.5228 2 12 2z'/%3E%3C/svg%3E" />
+    <meta property="og:url" content="https://ghostwire.win/" />
+    <meta property="og:title" content="GHOSTwire — Solana Sniper Bot" />
+    <meta property="og:description" content="Auto-snipe Solana tokens from Telegram channels. Track your portfolio. Take profits automatically. The fastest Telegram bot for sniping Solana tokens." />
+    <meta property="og:image" content="https://ghostwire.win/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="GHOSTwire" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://ghostwire.win/" />
+    <meta name="twitter:title" content="GHOSTwire — Solana Sniper Bot" />
+    <meta name="twitter:description" content="Auto-snipe Solana tokens from Telegram channels. Track your portfolio. Take profits automatically." />
+    <meta name="twitter:image" content="https://ghostwire.win/og-image.jpg" />
+    <meta name="twitter:site" content="@ghostwire_sol" />
+    <meta name="twitter:creator" content="@ghostwire_sol" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ghostwire.win/" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#6719ff" />
+    <meta name="msapplication-TileColor" content="#6719ff" />
+    <meta name="color-scheme" content="dark light" />
+    
+    <!-- Additional SEO -->
+    <meta name="application-name" content="GHOSTwire" />
+    <meta name="apple-mobile-web-app-title" content="GHOSTwire" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Structured Data / JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GHOSTwire",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web, Telegram",
+      "description": "The fastest Telegram bot for sniping Solana tokens. Auto-detect signals from public & private channels, execute instant trades via Jupiter API, track portfolio with real-time P&L, and auto-sell at take profit.",
+      "url": "https://ghostwire.win/",
+      "image": "https://ghostwire.win/og-image.jpg",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "1250"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "GHOSTwire"
+      }
+    }
+    </script>
+    
+    <!-- Organization Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GHOSTwire",
+      "url": "https://ghostwire.win/",
+      "logo": "https://ghostwire.win/logo.png",
+      "sameAs": [
+        "https://t.me/ghostwire_bot",
+        "https://t.me/ghostwire_community",
+        "https://x.com/ghostwire_sol"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "url": "https://t.me/ghostwire_bot"
+      }
+    }
+    </script>
+    
+    <!-- WebApp Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
   </head>
   <body class="bg-[#07030e] text-gray-100 selection:bg-purple-500/30 selection:text-white">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

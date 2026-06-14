@@ -1,0 +1,21 @@
+{
+  "name": "GHOSTwire",
+  "short_name": "GHOSTwire",
+  "description": "The fastest Telegram bot for sniping Solana tokens",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07030e",
+  "theme_color": "#6719ff",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
