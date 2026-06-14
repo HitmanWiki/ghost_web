@@ -378,7 +378,7 @@ export default function Token() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
               <a 
-                href="https://t.me/ghostwire_community" 
+                href="https://t.me/ghost_wirebot" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{
@@ -403,7 +403,7 @@ export default function Token() {
                 Telegram
               </a>
               <a 
-                href="https://x.com/ghostwire_sol" 
+                href="https://x.com/GhostWire_bot" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{

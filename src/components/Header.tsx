@@ -460,7 +460,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
                   💬 Support
                 </a>
                 <a
-                  href="https://x.com/ghostwire_sol"
+                  href="https://x.com/GhostWire_bot"
                   target="_blank"
                   rel="noreferrer"
                   style={mobileSupportBtnStyle}
