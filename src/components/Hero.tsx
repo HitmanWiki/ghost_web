@@ -11,6 +11,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
   const [displayText, setDisplayText] = useState('');
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   const stats = [
     { label: 'Uptime', value: '24/7 Monitor', desc: 'Continuous active crawling', icon: Zap, color: '#06b6d4' },
@@ -22,12 +23,13 @@ export default function Hero({ onScrollTo }: HeroProps) {
   const fullText = "Tokens instantly.";
 
   useEffect(() => {
-    const checkMobile = () => {
+    const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
   useEffect(() => {
@@ -50,115 +52,311 @@ export default function Hero({ onScrollTo }: HeroProps) {
     setTimeout(() => setCopiedText(false), 2000);
   };
 
-  return (
-    <section style={{
-      position: 'relative',
-      paddingTop: 'clamp(80px, 15vw, 128px)',
-      paddingBottom: 'clamp(40px, 8vw, 64px)',
-      minHeight: 'auto',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
-      overflow: 'hidden'
-    }} id="hero">
-      
-      {/* Background glows - hidden on mobile */}
-      <div style={{ position: 'absolute', top: '-10%', left: '10%', width: '500px', height: '500px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(140px)', pointerEvents: 'none', display: isMobile ? 'none' : 'block' }} />
-      <div style={{ position: 'absolute', top: '40%', right: '-10%', width: '600px', height: '600px', background: 'rgba(139, 92, 246, 0.03)', borderRadius: '50%', filter: 'blur(160px)', pointerEvents: 'none', display: isMobile ? 'none' : 'block' }} />
-      <div style={{ position: 'absolute', bottom: '0%', left: '20%', width: '450px', height: '450px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(120px)', pointerEvents: 'none', display: isMobile ? 'none' : 'block' }} />
+  const sectionStyle: React.CSSProperties = {
+    position: 'relative',
+    paddingTop: isMobile ? 'clamp(80px, 15vw, 128px)' : 'clamp(96px, 10vw, 128px)',
+    paddingBottom: isMobile ? 'clamp(40px, 8vw, 64px)' : 'clamp(48px, 6vw, 64px)',
+    minHeight: isMobile ? 'auto' : '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+    overflow: 'hidden'
+  };
 
-      <div style={{
-        maxWidth: '1280px',
-        margin: '0 auto',
-        padding: '0 clamp(16px, 5vw, 24px)',
-        position: 'relative',
-        zIndex: 10,
-        width: '100%'
-      }}>
-        {/* Main Grid - Column on mobile, row on desktop */}
-        <div style={{
-          display: 'flex',
-          flexDirection: isMobile ? 'column' : 'row',
-          gap: 'clamp(32px, 8vw, 48px)',
-          alignItems: 'center',
-          marginBottom: 'clamp(40px, 8vw, 64px)'
-        }}>
+  const containerStyle: React.CSSProperties = {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: isMobile ? '0 16px' : '0 24px',
+    position: 'relative',
+    zIndex: 10,
+    width: '100%',
+  };
+
+  const gridStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    gap: isMobile ? 'clamp(32px, 8vw, 48px)' : '48px',
+    alignItems: 'center',
+    marginBottom: isMobile ? 'clamp(40px, 10vw, 64px)' : '64px',
+  };
+
+  const leftContentStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: isMobile ? 'clamp(16px, 5vw, 24px)' : '24px',
+    flex: 1,
+    width: '100%',
+  };
+
+  const tagStyle: React.CSSProperties = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    background: 'rgba(139, 92, 246, 0.1)',
+    backdropFilter: 'blur(4px)',
+    border: '1px solid rgba(139, 92, 246, 0.3)',
+    borderRadius: '9999px',
+    padding: isMobile ? '4px 12px 4px 10px' : '6px 16px 6px 14px',
+    cursor: 'pointer',
+    alignSelf: 'flex-start',
+  };
+
+  const tagTextStyle: React.CSSProperties = {
+    fontSize: isMobile ? '9px' : '11px',
+    fontFamily: 'monospace',
+    color: '#334155',
+  };
+
+  const headingContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  };
+
+  const headingStyle: React.CSSProperties = {
+    fontSize: isMobile ? 'clamp(32px, 8vw, 44px)' : 'clamp(44px, 5vw, 56px)',
+    fontWeight: 800,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    lineHeight: 1.1,
+    color: '#0f172a',
+    letterSpacing: '-0.02em',
+  };
+
+  const gradientTextStyle: React.CSSProperties = {
+    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    fontWeight: 900,
+  };
+
+  const cursorStyle: React.CSSProperties = {
+    display: 'inline-block',
+    width: '3px',
+    height: isMobile ? 'clamp(32px, 6vw, 44px)' : '48px',
+    background: '#8b5cf6',
+    marginLeft: '4px',
+    animation: 'pulse 1s step-end infinite',
+  };
+
+  const descriptionStyle: React.CSSProperties = {
+    fontSize: isMobile ? 'clamp(14px, 4vw, 16px)' : '18px',
+    color: '#475569',
+    lineHeight: 1.625,
+    maxWidth: '550px',
+  };
+
+  const ctaContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: isMobile ? 'column' : 'row',
+    gap: isMobile ? '12px' : '16px',
+    marginTop: '8px',
+    width: '100%',
+  };
+
+  const primaryBtnStyle: React.CSSProperties = {
+    padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    color: 'white',
+    fontWeight: 600,
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+    textAlign: 'center',
+    flex: isMobile ? 1 : 'auto',
+  };
+
+  const secondaryBtnStyle: React.CSSProperties = {
+    padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+    borderRadius: '12px',
+    background: '#f1f5f9',
+    border: '1px solid #e2e8f0',
+    color: '#334155',
+    fontWeight: 600,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    cursor: 'pointer',
+    flex: isMobile ? 1 : 'auto',
+  };
+
+  const quickStartStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: '12px',
+    background: 'white',
+    borderRadius: '16px',
+    padding: isMobile ? '12px 16px' : '16px',
+    width: '100%',
+    maxWidth: isMobile ? '100%' : '400px',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    border: '1px solid #e2e8f0',
+    flexWrap: isMobile ? 'wrap' : 'nowrap',
+  };
+
+  const quickStartLeftStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+    flex: 1,
+  };
+
+  const quickStartSymbolStyle: React.CSSProperties = {
+    width: '28px',
+    height: '28px',
+    background: '#f1f5f9',
+    borderRadius: '8px',
+    border: '1px solid #e2e8f0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontFamily: 'monospace',
+    fontSize: '10px',
+    color: '#64748b',
+  };
+
+  const quickStartLabelStyle: React.CSSProperties = {
+    fontSize: '10px',
+    textTransform: 'uppercase',
+    fontFamily: 'monospace',
+    color: '#64748b',
+  };
+
+  const quickStartBotStyle: React.CSSProperties = {
+    fontSize: isMobile ? '11px' : '12px',
+    fontFamily: 'monospace',
+    color: '#8b5cf6',
+    wordBreak: 'break-all',
+  };
+
+  const copyBtnStyle: React.CSSProperties = {
+    padding: '8px 12px',
+    background: 'rgba(139, 92, 246, 0.1)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    borderRadius: '12px',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    color: '#8b5cf6',
+    whiteSpace: 'nowrap',
+  };
+
+  const rightContentStyle: React.CSSProperties = {
+    position: 'relative',
+    display: isMobile ? 'none' : 'flex',
+    justifyContent: 'center',
+    flex: 1,
+    width: '100%',
+  };
+
+  const glowBehindStyle: React.CSSProperties = {
+    position: 'absolute',
+    inset: '-16px',
+    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))',
+    borderRadius: '24px',
+    filter: 'blur(32px)',
+    zIndex: -1,
+  };
+
+  const mockWidgetStyle: React.CSSProperties = {
+    width: '100%',
+    maxWidth: isTablet ? '340px' : '390px',
+    height: 'auto',
+    minHeight: '580px',
+    background: 'linear-gradient(135deg, #180C36, #0A041B)',
+    border: '1px solid rgba(139, 92, 246, 0.3)',
+    borderRadius: '24px',
+    padding: isTablet ? '20px' : '24px',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+  };
+
+  const statsBannerStyle: React.CSSProperties = {
+    border: '1px solid #e2e8f0',
+    background: 'white',
+    backdropFilter: 'blur(4px)',
+    borderRadius: '24px',
+    padding: isMobile ? 'clamp(20px, 5vw, 32px)' : '32px',
+    maxWidth: '1152px',
+    margin: isMobile ? 'clamp(32px, 8vw, 64px) auto 0' : '64px auto 0',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    overflowX: 'auto',
+  };
+
+  const statsGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: isMobile ? `repeat(4, minmax(180px, 1fr))` : 'repeat(4, 1fr)',
+    gap: isMobile ? 'clamp(12px, 3vw, 24px)' : '24px',
+    minWidth: isMobile ? '560px' : 'auto',
+  };
+
+  return (
+    <section style={sectionStyle} id="hero">
+      {/* Background glows - hidden on mobile for performance */}
+      {!isMobile && (
+        <>
+          <div style={{ position: 'absolute', top: '-10%', left: '10%', width: '500px', height: '500px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(140px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '40%', right: '-10%', width: '600px', height: '600px', background: 'rgba(139, 92, 246, 0.03)', borderRadius: '50%', filter: 'blur(160px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', bottom: '0%', left: '20%', width: '450px', height: '450px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(120px)', pointerEvents: 'none' }} />
+        </>
+      )}
+      <div style={{ 
+        position: 'absolute', 
+        inset: 0, 
+        backgroundImage: 'radial-gradient(#c4b5fd 1px, transparent 1px)', 
+        backgroundSize: isMobile ? '12px 12px' : '16px 16px', 
+        opacity: 0.15, 
+        pointerEvents: 'none' 
+      }} />
+
+      <div style={containerStyle}>
+        {/* Main Grid */}
+        <div style={gridStyle}>
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 'clamp(16px, 4vw, 24px)',
-              flex: 1,
-              width: '100%'
-            }}
+            style={leftContentStyle}
           >
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                background: 'rgba(139, 92, 246, 0.1)',
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
-                borderRadius: '9999px',
-                padding: '6px 16px 6px 14px',
-                cursor: 'pointer',
-                alignSelf: 'flex-start'
-              }}
+              style={tagStyle}
               onClick={() => onScrollTo('demo')}
             >
-              <Zap size={14} style={{ color: '#8b5cf6' }} />
-              <span style={{ fontSize: '11px', fontFamily: 'monospace', color: '#334155' }}>
-                GHOSTwire auto-sniper live on Solana mainnet
+              <Zap size={isMobile ? 12 : 14} style={{ color: '#8b5cf6' }} />
+              <span style={tagTextStyle}>
+                {isMobile ? 'GHOSTwire auto-sniper live' : 'GHOSTwire auto-sniper live on Solana mainnet'}
               </span>
-              <ChevronRight size={12} style={{ color: '#8b5cf6' }} />
+              <ChevronRight size={isMobile ? 10 : 12} style={{ color: '#8b5cf6' }} />
             </motion.div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div style={{
-                fontSize: 'clamp(32px, 8vw, 56px)',
-                fontWeight: 800,
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                lineHeight: 1.1,
-                color: '#0f172a',
-                letterSpacing: '-0.02em'
-              }}>
+            <div style={headingContainerStyle}>
+              <div style={headingStyle}>
                 Auto-Snipe Solana{' '}
                 <span style={{ display: 'inline-block' }}>
-                  <span style={{
-                    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    fontWeight: 900
-                  }}>{displayText}</span>
-                  {!isTypingComplete && <span style={{
-                    display: 'inline-block',
-                    width: '3px',
-                    height: 'clamp(32px, 6vw, 48px)',
-                    background: '#8b5cf6',
-                    marginLeft: '4px',
-                    animation: 'pulse 1s step-end infinite'
-                  }} />}
+                  <span style={gradientTextStyle}>{displayText}</span>
+                  {!isTypingComplete && <span style={cursorStyle} />}
                 </span>
               </div>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                style={{
-                  fontSize: 'clamp(14px, 4vw, 18px)',
-                  color: '#475569',
-                  lineHeight: 1.625,
-                  maxWidth: '550px'
-                }}
+                style={descriptionStyle}
               >
                 The fastest Telegram sniper bot for Solana. Auto-detect signals from private & public channels, execute instant trades via Jupiter API, and track your portfolio P&L dynamically.
               </motion.p>
@@ -168,44 +366,14 @@ export default function Hero({ onScrollTo }: HeroProps) {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              style={{
-                display: 'flex',
-                flexDirection: isMobile ? 'column' : 'row',
-                gap: '12px',
-                marginTop: '8px'
-              }}
+              style={ctaContainerStyle}
             >
-              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={{
-                padding: 'clamp(10px, 3vw, 12px) clamp(16px, 4vw, 24px)',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                color: 'white',
-                fontWeight: 600,
-                textDecoration: 'none',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-                textAlign: 'center'
-              }}>
-                <span>Start Trading on Telegram</span>
+              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={primaryBtnStyle}>
+                <span>{isMobile ? 'Start Trading' : 'Start Trading on Telegram'}</span>
                 <ArrowUpRight size={16} />
               </a>
-              <button onClick={() => onScrollTo('demo')} style={{
-                padding: 'clamp(10px, 3vw, 12px) clamp(16px, 4vw, 24px)',
-                borderRadius: '12px',
-                background: '#f1f5f9',
-                border: '1px solid #e2e8f0',
-                color: '#334155',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                cursor: 'pointer'
-              }}>
-                <span>Watch Demo Run</span>
+              <button onClick={() => onScrollTo('demo')} style={secondaryBtnStyle}>
+                <span>{isMobile ? 'Watch Demo' : 'Watch Demo Run'}</span>
                 <Terminal size={16} style={{ color: '#06b6d4' }} />
               </button>
             </motion.div>
@@ -214,85 +382,37 @@ export default function Hero({ onScrollTo }: HeroProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '12px',
-                background: 'white',
-                borderRadius: '16px',
-                padding: '12px 16px',
-                maxWidth: '100%',
-                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                border: '1px solid #e2e8f0',
-                flexWrap: isMobile ? 'wrap' : 'nowrap'
-              }}
+              style={quickStartStyle}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flex: 1 }}>
-                <div style={{
-                  width: '28px',
-                  height: '28px',
-                  background: '#f1f5f9',
-                  borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'monospace',
-                  fontSize: '10px',
-                  color: '#64748b'
-                }}>$</div>
-                <div>
-                  <p style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#64748b' }}>Quick Summon</p>
-                  <p style={{ fontSize: 'clamp(11px, 3vw, 12px)', fontFamily: 'monospace', color: '#8b5cf6' }}>t.me/ghostwire_bot</p>
+              <div style={quickStartLeftStyle}>
+                <div style={quickStartSymbolStyle}>$</div>
+                <div style={{ flex: 1 }}>
+                  <p style={quickStartLabelStyle}>Quick Summon</p>
+                  <p style={quickStartBotStyle}>t.me/ghostwire_bot</p>
                 </div>
               </div>
-              <button onClick={handleCopyCode} style={{
-                padding: '8px',
-                background: 'rgba(139, 92, 246, 0.1)',
-                border: '1px solid rgba(139, 92, 246, 0.2)',
-                borderRadius: '12px',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                fontSize: '12px',
-                fontFamily: 'monospace',
-                color: '#8b5cf6'
-              }}>
+              <button onClick={handleCopyCode} style={copyBtnStyle}>
                 {copiedText ? <Check size={14} style={{ color: '#10b981' }} /> : <Copy size={14} />}
                 {copiedText ? 'Copied' : 'Copy'}
               </button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Widget - Hidden on mobile */}
+          {/* Right Content - Widget (hidden on mobile) */}
           {!isMobile && (
             <motion.div
               initial={{ opacity: 0, x: 200, rotate: 5, scale: 0.8 }}
               animate={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100, damping: 15 }}
-              style={{
-                position: 'relative',
-                display: 'flex',
-                justifyContent: 'center',
-                flex: 1
-              }}
+              style={rightContentStyle}
             >
-              <div style={{
-                width: '100%',
-                maxWidth: '390px',
-                height: 'auto',
-                minHeight: '580px',
-                background: 'linear-gradient(135deg, #180C36, #0A041B)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
-                borderRadius: '24px',
-                padding: '24px',
-                position: 'relative',
-                overflow: 'hidden',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-              }}>
-                {/* Widget content remains the same */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                style={glowBehindStyle}
+              />
+              <div style={mockWidgetStyle}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '16px', marginBottom: '16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '12px' }}>👻</span></div>
@@ -361,29 +481,14 @@ export default function Hero({ onScrollTo }: HeroProps) {
           )}
         </div>
 
-        {/* Stats Banner - Scrollable on mobile */}
+        {/* Stats Banner */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          style={{
-            border: '1px solid #e2e8f0',
-            background: 'white',
-            backdropFilter: 'blur(4px)',
-            borderRadius: '24px',
-            padding: 'clamp(20px, 5vw, 32px)',
-            maxWidth: '1152px',
-            margin: 'clamp(32px, 8vw, 64px) auto 0',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-            overflowX: 'auto'
-          }}
+          style={statsBannerStyle}
         >
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(4, minmax(200px, 1fr))`,
-            gap: 'clamp(12px, 3vw, 24px)',
-            minWidth: isMobile ? '600px' : 'auto'
-          }}>
+          <div style={statsGridStyle}>
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
@@ -398,11 +503,29 @@ export default function Hero({ onScrollTo }: HeroProps) {
                     <div style={{ position: 'absolute', left: '-12px', top: '50%', transform: 'translateY(-50%)', width: '1px', height: '40px', background: '#e2e8f0' }} />
                   )}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Icon size={16} style={{ color: stat.color }} />
-                    <span style={{ fontSize: 'clamp(10px, 3vw, 12px)', fontFamily: 'monospace', fontWeight: 500, color: '#64748b', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{stat.label}</span>
+                    <Icon size={isMobile ? 14 : 16} style={{ color: stat.color }} />
+                    <span style={{ 
+                      fontSize: isMobile ? '10px' : '12px', 
+                      fontFamily: 'monospace', 
+                      fontWeight: 500, 
+                      color: '#64748b', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '0.05em' 
+                    }}>{stat.label}</span>
                   </div>
-                  <span style={{ fontSize: 'clamp(18px, 5vw, 24px)', fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 'bold', color: '#0f172a', display: 'block', marginTop: '4px' }}>{stat.value}</span>
-                  <span style={{ fontSize: 'clamp(9px, 2.5vw, 10px)', fontFamily: 'monospace', color: '#94a3b8' }}>{stat.desc}</span>
+                  <span style={{ 
+                    fontSize: isMobile ? 'clamp(18px, 5vw, 20px)' : '24px', 
+                    fontFamily: "'Plus Jakarta Sans', sans-serif", 
+                    fontWeight: 'bold', 
+                    color: '#0f172a', 
+                    display: 'block', 
+                    marginTop: '4px' 
+                  }}>{stat.value}</span>
+                  <span style={{ 
+                    fontSize: isMobile ? 'clamp(8px, 3vw, 9px)' : '10px', 
+                    fontFamily: 'monospace', 
+                    color: '#94a3b8' 
+                  }}>{stat.desc}</span>
                 </motion.div>
               );
             })}
@@ -414,6 +537,13 @@ export default function Hero({ onScrollTo }: HeroProps) {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
+        }
+        
+        /* Additional responsive styles */
+        @media (max-width: 768px) {
+          .hide-on-mobile {
+            display: none;
+          }
         }
       `}</style>
     </section>
