@@ -284,18 +284,18 @@ export default function Hero({ onScrollTo }: HeroProps) {
   };
 
   // Mobile widget style (simplified)
-  const mobileWidgetStyle: React.CSSProperties = {
-    width: '100%',
-    maxWidth: '100%',
-    height: 'auto',
-    background: 'linear-gradient(135deg, #180C36, #0A041B)',
-    border: '1px solid rgba(139, 92, 246, 0.3)',
-    borderRadius: '20px',
-    padding: '20px',
-    position: 'relative',
-    overflow: 'hidden',
-    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2),
-  };
+const mobileWidgetStyle: React.CSSProperties = {
+  width: '100%',
+  maxWidth: '100%',
+  height: 'auto',
+  background: 'linear-gradient(135deg, #180C36, #0A041B)',
+  border: '1px solid rgba(139, 92, 246, 0.3)',
+  borderRadius: '20px',
+  padding: '20px',
+  position: 'relative',
+  overflow: 'hidden',
+  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
+};
 
   const statsBannerStyle: React.CSSProperties = {
     border: '1px solid #e2e8f0',
