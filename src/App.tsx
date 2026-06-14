@@ -44,11 +44,7 @@ export default function App() {
       }}
     >
       
-      {/* ============================================ */}
-      {/* CLEAN GEOMETRIC BACKGROUND PATTERNS */}
-      {/* ============================================ */}
-      
-      {/* Floating gradient orbs - subtle and elegant */}
+      {/* Floating gradient orbs - hidden on mobile for performance */}
       <div 
         style={{
           position: 'fixed',
@@ -60,8 +56,10 @@ export default function App() {
           borderRadius: '50%',
           filter: 'blur(80px)',
           pointerEvents: 'none',
-          animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-        }} 
+          animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          display: 'none'
+        }}
+        className="desktop-only"
       />
       <div 
         style={{
@@ -74,8 +72,10 @@ export default function App() {
           borderRadius: '50%',
           filter: 'blur(80px)',
           pointerEvents: 'none',
-          animation: 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-        }} 
+          animation: 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          display: 'none'
+        }}
+        className="desktop-only"
       />
       <div 
         style={{
@@ -88,18 +88,20 @@ export default function App() {
           borderRadius: '50%',
           filter: 'blur(70px)',
           pointerEvents: 'none',
-          animation: 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-        }} 
+          animation: 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          display: 'none'
+        }}
+        className="desktop-only"
       />
       
-      {/* Subtle grid pattern overlay */}
+      {/* Subtle grid pattern overlay - reduced opacity on mobile */}
       <div 
         style={{
           position: 'fixed',
           inset: 0,
           backgroundImage: 'radial-gradient(rgba(196, 181, 253, 1) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-          opacity: 0.3,
+          backgroundSize: 'clamp(16px, 5vw, 32px) clamp(16px, 5vw, 32px)',
+          opacity: 0.15,
           pointerEvents: 'none'
         }} 
       />
@@ -113,7 +115,9 @@ export default function App() {
           flexGrow: 1,
           position: 'relative',
           zIndex: 10,
-          opacity: typeof opacity === 'number' ? opacity : 1
+          opacity: typeof opacity === 'number' ? opacity : 1,
+          width: '100%',
+          overflowX: 'hidden'
         }}
       >
         <Hero onScrollTo={handleScrollTo} />
@@ -134,6 +138,13 @@ export default function App() {
             }
             50% {
               opacity: 0.5;
+            }
+          }
+          
+          /* Mobile responsive breakpoints */
+          @media (max-width: 768px) {
+            .desktop-only {
+              display: none !important;
             }
           }
         `}

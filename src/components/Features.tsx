@@ -1,7 +1,19 @@
 import { motion } from 'motion/react';
 import { Wallet, Radar, Zap, LineChart, TrendingUp, Send, Share2, Lock, ShieldCheck, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function Features() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   const features = [
     {
       id: 'derived_wallets',
@@ -11,7 +23,7 @@ export default function Features() {
       badge: 'Self-Custodial Always',
       isLarge: true,
       gradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(79, 70, 229, 0.05))',
-      iconColor: '#8b5cf6'
+      iconColor: '#450cca'
     },
     {
       id: 'channel_monitoring',
@@ -104,230 +116,90 @@ export default function Features() {
     }
   ];
 
-  const sectionStyle: React.CSSProperties = {
-    padding: '6rem 0',
-    position: 'relative',
-    background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
-  };
-
-  const containerStyle: React.CSSProperties = {
-    maxWidth: '1280px',
-    margin: '0 auto',
-    padding: '0 24px',
-  };
-
-  const headerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    alignItems: 'flex-end',
-    marginBottom: '64px',
-    gap: '24px',
-  };
-
-  const headerLeftStyle: React.CSSProperties = {
-    maxWidth: '576px',
-    textAlign: 'left',
-  };
-
-  const badgeStyle: React.CSSProperties = {
-    display: 'inline-block',
-    padding: '4px 12px',
-    fontSize: '12px',
-    fontFamily: 'monospace',
-    fontWeight: 500,
-    borderRadius: '9999px',
-    background: 'rgba(139, 92, 246, 0.1)',
-    color: '#8b5cf6',
-    border: '1px solid rgba(139, 92, 246, 0.2)',
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-    marginBottom: '12px',
-  };
-
-  const titleStyle: React.CSSProperties = {
-    fontSize: 'clamp(1.875rem, 5vw, 2.25rem)',
-    fontWeight: 900,
-    color: '#0f172a',
-    letterSpacing: '-0.02em',
-    marginBottom: '8px',
-  };
-
-  const subtitleStyle: React.CSSProperties = {
-    color: '#475569',
-    marginTop: '8px',
-  };
-
-  const securityBadgeStyle: React.CSSProperties = {
-    padding: '12px',
-    background: 'rgba(255, 255, 255, 0.6)',
-    border: '1px solid #e2e8f0',
-    borderRadius: '16px',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    fontFamily: 'monospace',
-    fontSize: '12px',
-  };
-
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '24px',
-  };
-
-  const largeCardStyle: (gradient: string) => React.CSSProperties = (gradient) => ({
-    gridColumn: 'span 2',
-    padding: '24px',
-    borderRadius: '24px',
-    background: gradient,
-    border: '1px solid rgba(139, 92, 246, 0.2)',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    minHeight: '290px',
-    position: 'relative',
-    overflow: 'hidden',
-    transition: 'all 0.3s',
-  });
-
-  const cardStyle: React.CSSProperties = {
-    padding: '24px',
-    borderRadius: '24px',
-    background: 'rgba(255, 255, 255, 0.4)',
-    border: '1px solid #e2e8f0',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    minHeight: '290px',
-    position: 'relative',
-    overflow: 'hidden',
-    transition: 'all 0.3s',
-  };
-
-  const iconContainerStyle: React.CSSProperties = {
-    padding: '12px',
-    background: 'rgba(255, 255, 255, 0.5)',
-    borderRadius: '16px',
-    border: '1px solid #e2e8f0',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  };
-
-  const badgePillStyle: (bgColor: string) => React.CSSProperties = (bgColor) => ({
-    background: bgColor,
-    backdropFilter: 'blur(4px)',
-    border: '1px solid rgba(255, 255, 255, 0.15)',
-    padding: '4px 10px',
-    borderRadius: '9999px',
-    fontSize: '10px',
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-    color: '#1e293b',
-  });
-
-  const cardTitleStyle: React.CSSProperties = {
-    fontSize: '1.5rem',
-    fontWeight: 'bold',
-    color: '#0f172a',
-    marginBottom: '8px',
-    marginTop: '16px',
-  };
-
-  const cardDescStyle: React.CSSProperties = {
-    fontSize: '0.875rem',
-    color: '#475569',
-    lineHeight: 1.625,
-  };
-
-  const checkStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '8px',
-    marginTop: '16px',
-  };
-
-  const smallCardTitleStyle: React.CSSProperties = {
-    fontSize: '1rem',
-    fontWeight: 'bold',
-    color: '#0f172a',
-    marginBottom: '6px',
-    marginTop: '16px',
-  };
-
-  const showcaseGridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-    gap: '24px',
-    marginTop: '48px',
-  };
-
-  const showcaseCardStyle: React.CSSProperties = {
-    background: 'rgba(255, 255, 255, 0.5)',
-    borderRadius: '16px',
-    border: '1px solid #e2e8f0',
-    overflow: 'hidden',
-    transition: 'all 0.3s',
-  };
-
-  const imageContainerStyle: React.CSSProperties = {
-    position: 'relative',
-    overflow: 'hidden',
-    background: '#f1f5f9',
-  };
-
-  const imageStyle: React.CSSProperties = {
-    width: '100%',
-    height: 'auto',
-    objectFit: 'cover',
-    transition: 'transform 0.5s',
-  };
-
-  const showcaseContentStyle: React.CSSProperties = {
-    padding: '16px',
-  };
-
-  const showcaseTitleStyle: React.CSSProperties = {
-    fontSize: '0.875rem',
-    fontWeight: 600,
-    color: '#0f172a',
-    marginBottom: '4px',
-  };
-
-  const showcaseDescStyle: React.CSSProperties = {
-    fontSize: '0.75rem',
-    color: '#475569',
-    lineHeight: 1.5,
-  };
-
   return (
-    <section style={sectionStyle} id="features">
+    <section style={{
+      padding: 'clamp(48px, 10vw, 96px) 0',
+      position: 'relative',
+      background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+      overflow: 'hidden'
+    }} id="features">
       {/* Background glows */}
-      <div style={{ position: 'absolute', top: '20%', right: '40px', width: '384px', height: '384px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', bottom: '20%', left: '40px', width: '384px', height: '384px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '20%', right: '40px', width: '384px', height: '384px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none', display: isMobile ? 'none' : 'block' }} />
+      <div style={{ position: 'absolute', bottom: '20%', left: '40px', width: '384px', height: '384px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none', display: isMobile ? 'none' : 'block' }} />
 
-      <div style={containerStyle}>
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '0 clamp(16px, 5vw, 24px)',
+        width: '100%'
+      }}>
         {/* Header */}
-        <div style={headerStyle}>
-          <div style={headerLeftStyle}>
-            <span style={badgeStyle}>Edge Engine</span>
-            <h2 style={titleStyle}>The ultimate trading edge for Solana on-chain</h2>
-            <p style={subtitleStyle}>Discover why experienced on-chain traders deploy GHOSTwire bot clusters to scale token trading, signal actions, and portfolio monitoring.</p>
+        <div style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'flex-end',
+          marginBottom: 'clamp(40px, 8vw, 64px)',
+          gap: '24px',
+          flexDirection: isMobile ? 'column' : 'row'
+        }}>
+          <div style={{
+            maxWidth: '576px',
+            textAlign: 'left',
+            width: '100%'
+          }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontFamily: 'monospace',
+              fontWeight: 500,
+              borderRadius: '9999px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              color: '#8b5cf6',
+              border: '1px solid rgba(139, 92, 246, 0.2)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em',
+              marginBottom: '12px'
+            }}>Edge Engine</span>
+            <h2 style={{
+              fontSize: 'clamp(28px, 6vw, 36px)',
+              fontWeight: 900,
+              color: '#0f172a',
+              letterSpacing: '-0.02em',
+              marginBottom: '8px'
+            }}>The ultimate trading edge for Solana on-chain</h2>
+            <p style={{
+              color: '#475569',
+              marginTop: '8px',
+              fontSize: 'clamp(14px, 4vw, 16px)'
+            }}>Discover why experienced on-chain traders deploy GHOSTwire bot clusters to scale token trading, signal actions, and portfolio monitoring.</p>
           </div>
-          <div style={securityBadgeStyle}>
+          <div style={{
+            padding: '12px',
+            background: 'rgba(255, 255, 255, 0.6)',
+            border: '1px solid #e2e8f0',
+            borderRadius: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontFamily: 'monospace',
+            fontSize: '12px'
+          }}>
             <ShieldCheck size={16} style={{ color: '#059669' }} />
             <span>Audited Derived Wallets Security</span>
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div style={gridStyle}>
+        {/* Features Grid - Responsive */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(320px, 1fr))',
+          gap: '24px'
+        }}>
           {features.map((item, idx) => {
             const IconComponent = item.icon;
-            if (item.isLarge) {
+            if (item.isLarge && !isMobile) {
               return (
                 <motion.div
                   key={item.id}
@@ -335,23 +207,71 @@ export default function Features() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
-                  style={largeCardStyle(item.gradient || 'linear-gradient(135deg, rgba(139,92,246,0.05), rgba(79,70,229,0.02))')}
+                  style={{
+                    gridColumn: 'span 2',
+                    padding: 'clamp(20px, 4vw, 24px)',
+                    borderRadius: '24px',
+                    background: item.gradient || 'linear-gradient(135deg, rgba(139,92,246,0.05), rgba(79,70,229,0.02))',
+                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    minHeight: '290px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s'
+                  }}
                 >
                   <div style={{ position: 'absolute', top: '-48px', right: '-48px', width: '192px', height: '192px', background: 'rgba(255,255,255,0.5)', borderRadius: '50%', filter: 'blur(64px)' }} />
                   
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', position: 'relative', zIndex: 10 }}>
-                    <div style={iconContainerStyle}>
+                    <div style={{
+                      padding: '12px',
+                      background: 'rgba(255, 255, 255, 0.5)',
+                      borderRadius: '16px',
+                      border: '1px solid #e2e8f0',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
                       <IconComponent size={24} style={{ color: item.iconColor }} />
                     </div>
                     {item.badge && (
-                      <span style={badgePillStyle('rgba(255,255,255,0.6)')}>{item.badge}</span>
+                      <span style={{
+                        background: 'rgba(255,255,255,0.6)',
+                        backdropFilter: 'blur(4px)',
+                        border: '1px solid rgba(255, 255, 255, 0.15)',
+                        padding: '4px 10px',
+                        borderRadius: '9999px',
+                        fontSize: '10px',
+                        fontFamily: 'monospace',
+                        fontWeight: 'bold',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        color: '#1e293b'
+                      }}>{item.badge}</span>
                     )}
                   </div>
 
                   <div style={{ position: 'relative', zIndex: 10 }}>
-                    <h3 style={cardTitleStyle}>{item.title}</h3>
-                    <p style={cardDescStyle}>{item.description}</p>
-                    <div style={checkStyle}>
+                    <h3 style={{
+                      fontSize: 'clamp(20px, 4vw, 24px)',
+                      fontWeight: 'bold',
+                      color: '#0f172a',
+                      marginBottom: '8px',
+                      marginTop: '16px'
+                    }}>{item.title}</h3>
+                    <p style={{
+                      fontSize: 'clamp(12px, 3vw, 14px)',
+                      color: '#475569',
+                      lineHeight: 1.625
+                    }}>{item.description}</p>
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      marginTop: '16px'
+                    }}>
                       <CheckCircle2 size={18} style={{ color: '#64748b' }} />
                       <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#64748b' }}>Fully compatible with SPL standards</span>
                     </div>
@@ -367,20 +287,62 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                style={cardStyle}
+                style={{
+                  padding: 'clamp(20px, 4vw, 24px)',
+                  borderRadius: '24px',
+                  background: 'rgba(255, 255, 255, 0.4)',
+                  border: '1px solid #e2e8f0',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  minHeight: 'clamp(250px, 40vh, 290px)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s'
+                }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
-                  <div style={iconContainerStyle}>
+                  <div style={{
+                    padding: '12px',
+                    background: 'rgba(255, 255, 255, 0.5)',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
                     <IconComponent size={22} style={{ color: item.iconColor }} />
                   </div>
                   {item.badge && (
-                    <span style={badgePillStyle('rgba(255,255,255,0.8)')}>{item.badge}</span>
+                    <span style={{
+                      background: 'rgba(255,255,255,0.8)',
+                      backdropFilter: 'blur(4px)',
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      padding: '4px 10px',
+                      borderRadius: '9999px',
+                      fontSize: '10px',
+                      fontFamily: 'monospace',
+                      fontWeight: 'bold',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      color: '#1e293b'
+                    }}>{item.badge}</span>
                   )}
                 </div>
 
                 <div>
-                  <h3 style={smallCardTitleStyle}>{item.title}</h3>
-                  <p style={{ fontSize: '12px', color: '#475569', lineHeight: 1.5 }}>{item.description}</p>
+                  <h3 style={{
+                    fontSize: 'clamp(16px, 4vw, 18px)',
+                    fontWeight: 'bold',
+                    color: '#0f172a',
+                    marginBottom: '6px',
+                    marginTop: '16px'
+                  }}>{item.title}</h3>
+                  <p style={{
+                    fontSize: 'clamp(11px, 3vw, 12px)',
+                    color: '#475569',
+                    lineHeight: 1.5
+                  }}>{item.description}</p>
                 </div>
                 
                 <div style={{ position: 'absolute', bottom: '-64px', right: '-64px', width: '128px', height: '128px', background: 'rgba(139,92,246,0.05)', borderRadius: '50%', filter: 'blur(64px)' }} />
@@ -389,15 +351,43 @@ export default function Features() {
           })}
         </div>
 
-        {/* Showcase Section */}
-        <div style={{ marginTop: '96px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-            <span style={badgeStyle}>Visual Experience</span>
-            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 'bold', color: '#0f172a', marginTop: '12px' }}>See GHOSTwire in Action</h2>
-            <p style={{ color: '#475569', marginTop: '8px', maxWidth: '672px', margin: '8px auto 0' }}>Experience how GHOSTwire transforms your Telegram channels into an automated trading powerhouse</p>
+        {/* Showcase Section - Responsive Grid */}
+        <div style={{ marginTop: 'clamp(64px, 12vw, 96px)' }}>
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(32px, 6vw, 48px)' }}>
+            <span style={{
+              display: 'inline-block',
+              padding: '4px 12px',
+              fontSize: '12px',
+              fontFamily: 'monospace',
+              fontWeight: 500,
+              borderRadius: '9999px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              color: '#8b5cf6',
+              border: '1px solid rgba(139, 92, 246, 0.2)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.05em'
+            }}>Visual Experience</span>
+            <h2 style={{
+              fontSize: 'clamp(24px, 6vw, 30px)',
+              fontWeight: 'bold',
+              color: '#0f172a',
+              marginTop: '12px'
+            }}>See GHOSTwire in Action</h2>
+            <p style={{
+              color: '#475569',
+              marginTop: '8px',
+              maxWidth: '672px',
+              margin: '8px auto 0',
+              fontSize: 'clamp(13px, 4vw, 14px)',
+              padding: '0 16px'
+            }}>Experience how GHOSTwire transforms your Telegram channels into an automated trading powerhouse</p>
           </div>
 
-          <div style={showcaseGridStyle}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '24px'
+          }}>
             {showcaseImages.map((image, idx) => (
               <motion.div
                 key={image.id}
@@ -405,22 +395,46 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                style={showcaseCardStyle}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.5)',
+                  borderRadius: '16px',
+                  border: '1px solid #e2e8f0',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s'
+                }}
               >
-                <div style={imageContainerStyle}>
+                <div style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  background: '#f1f5f9'
+                }}>
                   <img 
                     src={image.src} 
                     alt={image.alt}
-                    style={imageStyle}
+                    style={{
+                      width: '100%',
+                      height: 'auto',
+                      objectFit: 'cover',
+                      transition: 'transform 0.5s'
+                    }}
                     loading="lazy"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
                   />
                 </div>
-                <div style={showcaseContentStyle}>
-                  <h3 style={showcaseTitleStyle}>{image.title}</h3>
-                  <p style={showcaseDescStyle}>{image.description}</p>
+                <div style={{ padding: '16px' }}>
+                  <h3 style={{
+                    fontSize: 'clamp(13px, 4vw, 14px)',
+                    fontWeight: 600,
+                    color: '#0f172a',
+                    marginBottom: '4px'
+                  }}>{image.title}</h3>
+                  <p style={{
+                    fontSize: 'clamp(11px, 3vw, 12px)',
+                    color: '#475569',
+                    lineHeight: 1.5
+                  }}>{image.description}</p>
                 </div>
               </motion.div>
             ))}
