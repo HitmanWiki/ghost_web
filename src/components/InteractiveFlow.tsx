@@ -26,7 +26,7 @@ const SIMULATION_STEPS: SimulatedMessage[] = [
     id: '2',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `GHOSTwire Bot - Solana Sniper Bot
 
 Auto-snipe tokens from Telegram channels, track your portfolio, and automate your trading strategy.
@@ -59,7 +59,7 @@ Select an option below:`,
     id: '4',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `💼 WALLET
 
 Address:
@@ -83,7 +83,7 @@ Balance: 0.0000 SOL
     id: '6',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📋 Your Channels
 
 No channels configured.
@@ -106,7 +106,7 @@ No channels configured.
     id: '8',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `➕ Add Channel
 
 🌐 Public — Anyone can view
@@ -130,7 +130,7 @@ No channels configured.
     id: '10',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📋 Add Channel
 
 Send channel username (@name):
@@ -151,7 +151,7 @@ Type cancel to abort.
     id: '12',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📋 Channel: @crypto_signals
 
 💼 Select Wallet for this Channel:
@@ -174,7 +174,7 @@ Type cancel to abort.
     id: '14',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📋 Channel: @crypto_signals
 💼 Wallet: W1
 
@@ -197,7 +197,7 @@ Enter amount or skip for default: 0.01 SOL
     id: '16',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📊 Slippage %
 
 Enter % (e.g., 10) or skip for default:
@@ -217,7 +217,7 @@ Enter % (e.g., 10) or skip for default:
     id: '18',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `🎯 Take Profit %
 
 Auto-sell when profit reaches this %
@@ -238,7 +238,7 @@ Auto-sell when profit reaches this %
     id: '20',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `✅ Channel Added! (🌐 Public)
 
 📋 @crypto_signals
@@ -268,7 +268,7 @@ Good luck!`,
     id: '22',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `🔥 Sniping token!
 
 GNL7MQSz...pump
@@ -282,7 +282,7 @@ Amount: 0.01 SOL
     id: '23',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `🟢 BUY EXECUTED!
 
 Token: LUCY
@@ -298,7 +298,7 @@ MC: $67,384`,
     id: '24',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📊 Portfolio Overview
 
 • LUCY — 12,096.07
@@ -311,7 +311,7 @@ MC: $67,384`,
     id: '25',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `📈 LUCY status update:
 ⚡ Active P&L: +24.5% ($42k -> $53k Mcap)`,
     time: '14:36:50'
@@ -320,7 +320,7 @@ MC: $67,384`,
     id: '26',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `🎯 Auto-Sell Triggered!
 
 Token: LUCY
@@ -336,7 +336,7 @@ TX: 8xKp7YqVzRcT2NmLw...`,
     id: '27',
     sender: 'ghostwire',
     senderName: 'GHOSTwire',
-    avatar: '👻',
+    avatar: '/logo.jpg',  // Changed from '👻' to '/logo.jpg'
     text: `✅ Auto-sell executed! Profit locked.`,
     time: '14:38:16'
   }
@@ -851,21 +851,40 @@ export default function InteractiveFlow() {
                       }}
                     >
                       {!isUser && (
-                        <div style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '50%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          flexShrink: 0,
-                          fontSize: '14px',
-                          background: isChannel ? 'rgba(17, 94, 89, 0.45)' : 'rgba(139, 92, 246, 0.2)',
-                          border: isChannel ? '1px solid rgba(20, 184, 166, 0.3)' : '1px solid rgba(139, 92, 246, 0.3)'
-                        }}>
-                          {msg.avatar}
-                        </div>
-                      )}
+  <div style={{
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+    fontSize: '14px',
+    background: isChannel ? 'rgba(17, 94, 89, 0.45)' : 'rgba(139, 92, 246, 0.2)',
+    border: isChannel ? '1px solid rgba(20, 184, 166, 0.3)' : '1px solid rgba(139, 92, 246, 0.3)',
+    overflow: 'hidden'
+  }}>
+    {msg.avatar && (msg.avatar === '/logo.jpg' || msg.avatar.endsWith('.jpg') || msg.avatar.endsWith('.png')) ? (
+      <img 
+        src={msg.avatar} 
+        alt={msg.senderName}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        }}
+        onError={(e) => {
+          e.currentTarget.style.display = 'none';
+          if (e.currentTarget.parentElement) {
+            e.currentTarget.parentElement.innerHTML = '👻';
+          }
+        }}
+      />
+    ) : (
+      <span>{msg.avatar}</span>
+    )}
+  </div>
+)}
 
                       <div>
                         <p style={{
