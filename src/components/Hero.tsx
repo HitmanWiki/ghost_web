@@ -47,7 +47,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
   }, []);
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText('t.me/ghostwire_bot');
+    navigator.clipboard.writeText('t.me/@ghowr_bot');
     setCopiedText(true);
     setTimeout(() => setCopiedText(false), 2000);
   };
@@ -508,7 +508,7 @@ const mobileWidgetStyle: React.CSSProperties = {
               transition={{ duration: 0.5, delay: 0.3 }}
               style={ctaContainerStyle}
             >
-              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={primaryBtnStyle}>
+              <a href="https://t.me/@ghowr_bot" target="_blank" rel="noreferrer" style={primaryBtnStyle}>
                 <span>{isMobile ? 'Start Trading' : 'Start Trading on Telegram'}</span>
                 <ArrowUpRight size={16} />
               </a>
@@ -528,7 +528,7 @@ const mobileWidgetStyle: React.CSSProperties = {
                 <div style={quickStartSymbolStyle}>$</div>
                 <div style={{ flex: 1 }}>
                   <p style={quickStartLabelStyle}>Quick Summon</p>
-                  <p style={quickStartBotStyle}>t.me/ghostwire_bot</p>
+                  <p style={quickStartBotStyle}>t.me/@ghowr_bot</p>
                 </div>
               </div>
               <button onClick={handleCopyCode} style={copyBtnStyle}>

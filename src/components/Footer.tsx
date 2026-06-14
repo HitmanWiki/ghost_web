@@ -18,7 +18,7 @@ export default function Footer() {
   }, []);
 
   const quickStartSteps = [
-    'Open Telegram and search for @ghostwire_bot',
+    'Open Telegram and search for @@ghowr_bot',
     'Send command /start to create your secure wallet',
     'Copy your custom derived on-chain SOL address',
     'Deposit SOL to your balance (minimum 0.05 recommended)',
@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   const handleCopyCode = () => {
-    const rawTerminal = `1. Open Telegram t.me/ghostwire_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
+    const rawTerminal = `1. Open Telegram t.me/@ghowr_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
     navigator.clipboard.writeText(rawTerminal);
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
@@ -329,7 +329,7 @@ export default function Footer() {
               Connect with fellow Solana snipers. Stay updated with token updates, claim priority referral pins, and ask our developer squad questions relative to on-chain automation.
             </p>
             <a
-              href="https://t.me/ghostwire_bot"
+              href="https://t.me/@ghowr_bot"
               target="_blank"
               rel="noreferrer"
               style={joinButtonStyle}
@@ -408,7 +408,7 @@ export default function Footer() {
             <h4 style={linksTitleStyle}>Protocol links</h4>
             <div style={linksContainerStyle}>
               <a 
-                href="https://t.me/ghostwire_bot" 
+                href="https://t.me/@ghowr_bot" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}
@@ -436,7 +436,7 @@ export default function Footer() {
                 Technical Documentation <ArrowUpRight size={isMobile ? 10 : 12} />
               </a>
               <a 
-                href="https://t.me/ghostwire_bot" 
+                href="https://t.me/@ghowr_bot" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}

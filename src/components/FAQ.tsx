@@ -32,7 +32,7 @@ export default function FAQ() {
     },
     {
       question: 'How do I earn from referrals?',
-      answer: 'Go to 🔗 Referral → Copy your unique link: `https://t.me/ghostwire_bot?start=ref_USERID`. Share it with friends. When they join and trade, you earn 20% of all trading fees they pay — forever!'
+      answer: 'Go to 🔗 Referral → Copy your unique link: `https://t.me/@ghowr_bot?start=ref_USERID`. Share it with friends. When they join and trade, you earn 20% of all trading fees they pay — forever!'
     },
     {
       question: 'How do I import my GHOSTwire wallet into Phantom?',
@@ -359,7 +359,7 @@ export default function FAQ() {
             <p style={ctaDescStyle}>Contact our support bot or join our Telegram community.</p>
           </div>
           <a
-            href="https://t.me/ghostwire_bot"
+            href="https://t.me/@ghowr_bot"
             target="_blank"
             rel="noreferrer"
             style={ctaButtonStyle}
