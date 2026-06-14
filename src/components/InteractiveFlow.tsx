@@ -421,41 +421,101 @@ export default function InteractiveFlow() {
   return (
     <motion.section 
       ref={sectionRef}
-      className="py-20 relative overflow-hidden"
-      id="demo"
       style={{
+        padding: '80px 0',
+        position: 'relative',
+        overflow: 'hidden',
         background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)'
       }}
+      id="demo"
     >
       {/* Light Gradient Orbs */}
       <motion.div 
-        className="absolute top-20 -left-40 w-80 h-80 bg-ghost-purple/10 rounded-full blur-[100px]"
+        style={{
+          position: 'absolute',
+          top: '80px',
+          left: '-160px',
+          width: '320px',
+          height: '320px',
+          background: 'rgba(139, 92, 246, 0.1)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          y: bgY
+        }}
         animate={{ scale: [1, 1.2, 1], x: [0, 20, 0], y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        style={{ y: bgY }}
       />
       <motion.div 
-        className="absolute bottom-20 -right-40 w-80 h-80 bg-ghost-cyan/10 rounded-full blur-[100px]"
+        style={{
+          position: 'absolute',
+          bottom: '80px',
+          right: '-160px',
+          width: '320px',
+          height: '320px',
+          background: 'rgba(6, 182, 212, 0.1)',
+          borderRadius: '50%',
+          filter: 'blur(100px)',
+          y: bgY
+        }}
         animate={{ scale: [1.2, 1, 1.2], x: [0, -20, 0], y: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        style={{ y: bgY }}
       />
       <motion.div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-ghost-pink/5 rounded-full blur-[120px]"
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '384px',
+          height: '384px',
+          background: 'rgba(236, 72, 153, 0.05)',
+          borderRadius: '50%',
+          filter: 'blur(120px)'
+        }}
         animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Subtle grid overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(#c4b5fd_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none" />
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(196, 181, 253, 1) 1px, transparent 1px)',
+        backgroundSize: '24px 24px',
+        opacity: 0.2,
+        pointerEvents: 'none'
+      }} />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center max-w-2xl mx-auto mb-16">
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: '0 24px',
+        position: 'relative',
+        zIndex: 10
+      }}>
+        <div style={{
+          textAlign: 'center',
+          maxWidth: '672px',
+          margin: '0 auto 64px auto'
+        }}>
           <motion.span 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="px-3 py-1 text-xs font-mono font-medium rounded-full bg-ghost-purple/10 text-ghost-purple border border-ghost-purple/20 uppercase tracking-widest inline-block mb-4"
+            style={{
+              padding: '4px 12px',
+              fontSize: '10px',
+              fontFamily: 'monospace',
+              fontWeight: 500,
+              borderRadius: '9999px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              color: '#8b5cf6',
+              border: '1px solid rgba(139, 92, 246, 0.2)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+              display: 'inline-block',
+              marginBottom: '16px'
+            }}
           >
             Live Simulator
           </motion.span>
@@ -464,7 +524,13 @@ export default function InteractiveFlow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl font-bold tracking-tight text-slate-900 mb-4"
+            style={{
+              fontSize: '36px',
+              fontWeight: 'bold',
+              letterSpacing: '-0.025em',
+              color: '#0f172a',
+              marginBottom: '16px'
+            }}
           >
             See GHOSTwire in Action
           </motion.h2>
@@ -473,67 +539,122 @@ export default function InteractiveFlow() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-slate-600"
+            style={{ color: '#475569' }}
           >
             Watch how GHOSTwire detects signals, executes trades, and auto-sells for profit.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '40px',
+          alignItems: 'stretch'
+        }}>
           
           {/* Left Side - Info Panel */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="space-y-6">
-              <h3 className="text-2xl font-bold text-slate-900 flex items-center gap-3">
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <h3 style={{
+                fontSize: '24px',
+                fontWeight: 'bold',
+                color: '#0f172a',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}>
                 <motion.div
                   animate={{ rotate: [0, 10, 0, -10, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 >
-                  <Sparkles className="w-6 h-6 text-ghost-purple" />
+                  <Sparkles style={{ width: '24px', height: '24px', color: '#8b5cf6' }} />
                 </motion.div>
                 Complete Trading Flow
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p style={{ color: '#475569', lineHeight: '1.625' }}>
                 This simulation shows the entire GHOSTwire experience — from starting the bot, adding a channel, detecting a signal, executing a buy, tracking P&L, and auto-selling at profit target.
               </p>
 
               {/* Feature Icons */}
-              <div className="grid grid-cols-3 gap-3 pt-4">
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '12px',
+                paddingTop: '16px'
+              }}>
                 <motion.div 
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm"
+                  style={{
+                    textAlign: 'center',
+                    padding: '12px',
+                    borderRadius: '12px',
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                  }}
                 >
-                  <Wallet className="w-5 h-5 text-ghost-purple mx-auto mb-1" />
-                  <p className="text-[10px] text-slate-500">Derived Wallet</p>
+                  <Wallet style={{ width: '20px', height: '20px', color: '#8b5cf6', margin: '0 auto 4px auto' }} />
+                  <p style={{ fontSize: '10px', color: '#64748b' }}>Derived Wallet</p>
                 </motion.div>
                 <motion.div 
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm"
+                  style={{
+                    textAlign: 'center',
+                    padding: '12px',
+                    borderRadius: '12px',
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                  }}
                 >
-                  <Radar className="w-5 h-5 text-ghost-cyan mx-auto mb-1" />
-                  <p className="text-[10px] text-slate-500">24/7 Monitoring</p>
+                  <Radar style={{ width: '20px', height: '20px', color: '#06b6d4', margin: '0 auto 4px auto' }} />
+                  <p style={{ fontSize: '10px', color: '#64748b' }}>24/7 Monitoring</p>
                 </motion.div>
                 <motion.div 
                   whileHover={{ y: -3, scale: 1.02 }}
-                  className="text-center p-3 rounded-xl bg-white border border-slate-200 shadow-sm"
+                  style={{
+                    textAlign: 'center',
+                    padding: '12px',
+                    borderRadius: '12px',
+                    background: 'white',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                  }}
                 >
-                  <Zap className="w-5 h-5 text-amber-500 mx-auto mb-1" />
-                  <p className="text-[10px] text-slate-500">Auto-Sell</p>
+                  <Zap style={{ width: '20px', height: '20px', color: '#f59e0b', margin: '0 auto 4px auto' }} />
+                  <p style={{ fontSize: '10px', color: '#64748b' }}>Auto-Sell</p>
                 </motion.div>
               </div>
 
               {/* Progress indicator */}
-              <div className="space-y-2 mt-4">
-                <p className="text-xs text-slate-500">Simulation Progress</p>
-                <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '16px' }}>
+                <p style={{ fontSize: '12px', color: '#64748b' }}>Simulation Progress</p>
+                <div style={{
+                  height: '6px',
+                  background: '#e2e8f0',
+                  borderRadius: '9999px',
+                  overflow: 'hidden'
+                }}>
                   <motion.div 
-                    className="h-full bg-gradient-to-r from-ghost-purple to-ghost-cyan rounded-full"
+                    style={{
+                      height: '100%',
+                      background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                      borderRadius: '9999px'
+                    }}
                     initial={{ width: 0 }}
                     animate={{ width: `${(stepIndex / SIMULATION_STEPS.length) * 100}%` }}
                     transition={{ duration: 0.3 }}
                   />
                 </div>
-                <p className="text-[10px] text-slate-400 text-right">
+                <p style={{
+                  fontSize: '10px',
+                  color: '#94a3b8',
+                  textAlign: 'right'
+                }}>
                   Step {stepIndex} of {SIMULATION_STEPS.length}
                 </p>
               </div>
@@ -544,63 +665,149 @@ export default function InteractiveFlow() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="bg-white border border-slate-200 rounded-2xl p-5 mt-8 flex items-center justify-between shadow-sm"
+              style={{
+                background: 'white',
+                border: '1px solid #e2e8f0',
+                borderRadius: '16px',
+                padding: '20px',
+                marginTop: '32px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+              }}
             >
-              <div className="flex gap-2">
+              <div style={{ display: 'flex', gap: '8px' }}>
                 <button
                   onClick={handleReset}
-                  className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all"
+                  style={{
+                    padding: '10px',
+                    borderRadius: '12px',
+                    background: '#f1f5f9',
+                    border: '1px solid #e2e8f0',
+                    color: '#334155',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#e2e8f0'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = '#f1f5f9'}
                   title="Replay Simulation"
                 >
-                  <RefreshCw className="w-4 h-4" />
+                  <RefreshCw style={{ width: '16px', height: '16px' }} />
                 </button>
                 <button
                   onClick={handleNext}
                   disabled={stepIndex >= SIMULATION_STEPS.length}
-                  className="p-2.5 rounded-xl bg-ghost-purple hover:bg-ghost-purple/80 text-white transition-all disabled:opacity-30 disabled:pointer-events-none"
+                  style={{
+                    padding: '10px',
+                    borderRadius: '12px',
+                    background: '#8b5cf6',
+                    border: 'none',
+                    color: 'white',
+                    cursor: stepIndex >= SIMULATION_STEPS.length ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.2s ease',
+                    opacity: stepIndex >= SIMULATION_STEPS.length ? 0.3 : 1
+                  }}
+                  onMouseEnter={(e) => {
+                    if (stepIndex < SIMULATION_STEPS.length) {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.8)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (stepIndex < SIMULATION_STEPS.length) {
+                      e.currentTarget.style.background = '#8b5cf6';
+                    }
+                  }}
                 >
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight style={{ width: '16px', height: '16px' }} />
                 </button>
               </div>
-              <div className="flex items-center gap-2">
-                <div className={`w-2 h-2 rounded-full ${isAutoPlaying ? 'bg-ghost-green animate-pulse' : 'bg-slate-400'}`} />
-                <span className="text-[10px] text-slate-500">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  background: isAutoPlaying ? '#22c55e' : '#94a3b8',
+                  animation: isAutoPlaying ? 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' : 'none'
+                }} />
+                <span style={{ fontSize: '10px', color: '#64748b' }}>
                   {isAutoPlaying ? 'Auto-playing' : 'Paused'}
                 </span>
               </div>
             </motion.div>
           </div>
 
-          {/* Right Side - Chat Simulator (keep dark for contrast) */}
-          <div className="lg:col-span-7">
+          {/* Right Side - Chat Simulator */}
+          <div>
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-gradient-to-b from-[#180C36] to-[#0A041B] border border-ghost-purple/30 rounded-2xl shadow-2xl h-[580px] flex flex-col overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, #180C36, #0A041B)',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                borderRadius: '16px',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                height: '580px',
+                display: 'flex',
+                flexDirection: 'column',
+                overflow: 'hidden'
+              }}
             >
               {/* Header with Logo */}
-              <div className="bg-[#150D2E] border-b border-ghost-purple/20 px-5 py-3.5 flex items-center justify-between shrink-0">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-ghost-purple to-ghost-cyan flex items-center justify-center shadow-lg">
+              <div style={{
+                background: '#150D2E',
+                borderBottom: '1px solid rgba(139, 92, 246, 0.2)',
+                padding: '14px 20px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                flexShrink: 0
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+                  }}>
                     <img 
                       src="/logo.jpg" 
                       alt="GHOSTwire Logo" 
-                      className="w-full h-full object-cover"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
                       onError={(e) => {
                         e.currentTarget.style.display = 'none';
                         if (e.currentTarget.parentElement) {
-                          e.currentTarget.parentElement.innerHTML = '<span class="text-white text-lg">👻</span>';
+                          e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 20px;">👻</span>';
                         }
                       }}
                     />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">GHOSTwire</h4>
-                    <div className="flex items-center gap-1.5">
-                      <div className="w-1.5 h-1.5 rounded-full bg-ghost-green animate-pulse" />
-                      <p className="text-[10px] text-ghost-neon/80 font-mono">Online • Derived Wallet Active</p>
+                    <h4 style={{ fontSize: '14px', fontWeight: 'bold', color: 'white' }}>GHOSTwire</h4>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <div style={{
+                        width: '6px',
+                        height: '6px',
+                        borderRadius: '50%',
+                        background: '#22c55e',
+                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+                      }} />
+                      <p style={{
+                        fontSize: '10px',
+                        color: 'rgba(0, 255, 255, 0.8)',
+                        fontFamily: 'monospace'
+                      }}>Online • Derived Wallet Active</p>
                     </div>
                   </div>
                 </div>
@@ -608,16 +815,23 @@ export default function InteractiveFlow() {
                   animate={{ rotate: [0, 5, 0, -5, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <Bot className="w-5 h-5 text-gray-400" />
+                  <Bot style={{ width: '20px', height: '20px', color: '#9ca3af' }} />
                 </motion.div>
               </div>
 
               {/* Chat Messages - Auto-scrolling */}
               <div 
                 ref={chatContainerRef}
-                className="flex-1 overflow-y-auto p-5 space-y-4 flex flex-col"
+                style={{
+                  flex: 1,
+                  overflowY: 'auto',
+                  padding: '20px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '16px'
+                }}
               >
-                <div className="flex-1" />
+                <div style={{ flex: 1 }} />
                 
                 {messages.map((msg, idx) => {
                   const isUser = msg.sender === 'user';
@@ -629,39 +843,96 @@ export default function InteractiveFlow() {
                       initial={{ opacity: 0, y: 20, scale: 0.95 }}
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{ duration: 0.3 }}
-                      className={`flex gap-3 max-w-[85%] ${isUser ? 'ml-auto flex-row-reverse' : ''}`}
+                      style={{
+                        display: 'flex',
+                        gap: '12px',
+                        maxWidth: '85%',
+                        marginLeft: isUser ? 'auto' : 0,
+                        flexDirection: isUser ? 'row-reverse' : 'row'
+                      }}
                     >
                       {!isUser && (
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 text-sm ${
-                          isChannel ? 'bg-teal-900/45 border border-teal-500/30' : 'bg-ghost-purple/20 border border-ghost-purple/30'
-                        }`}>
+                        <div style={{
+                          width: '32px',
+                          height: '32px',
+                          borderRadius: '50%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          fontSize: '14px',
+                          background: isChannel ? 'rgba(17, 94, 89, 0.45)' : 'rgba(139, 92, 246, 0.2)',
+                          border: isChannel ? '1px solid rgba(20, 184, 166, 0.3)' : '1px solid rgba(139, 92, 246, 0.3)'
+                        }}>
                           {msg.avatar}
                         </div>
                       )}
 
                       <div>
-                        <p className={`text-[10px] text-gray-500 mb-1 ${isUser ? 'text-right' : ''}`}>
+                        <p style={{
+                          fontSize: '10px',
+                          color: '#6b7280',
+                          marginBottom: '4px',
+                          textAlign: isUser ? 'right' : 'left'
+                        }}>
                           {msg.senderName} • {msg.time}
                         </p>
 
-                        <div className={`p-3.5 rounded-2xl whitespace-pre-line text-sm leading-relaxed ${
-                          isUser 
-                            ? 'bg-ghost-purple text-white rounded-tr-none' 
+                        <div style={{
+                          padding: '14px',
+                          borderRadius: '16px',
+                          whiteSpace: 'pre-line',
+                          fontSize: '14px',
+                          lineHeight: '1.625',
+                          ...(isUser 
+                            ? {
+                                background: '#8b5cf6',
+                                color: 'white',
+                                borderTopRightRadius: 0
+                              }
                             : isChannel
-                              ? 'bg-teal-950/20 border border-teal-500/20 text-teal-100 rounded-tl-none'
-                              : 'bg-[#1D123D] border border-ghost-purple/15 text-gray-100 rounded-tl-none'
-                        }`}>
+                              ? {
+                                  background: 'rgba(17, 94, 89, 0.2)',
+                                  border: '1px solid rgba(20, 184, 166, 0.2)',
+                                  color: '#5eead4',
+                                  borderTopLeftRadius: 0
+                                }
+                              : {
+                                  background: '#1D123D',
+                                  border: '1px solid rgba(139, 92, 246, 0.15)',
+                                  color: '#f3f4f6',
+                                  borderTopLeftRadius: 0
+                                }
+                          )
+                        }}>
                           {msg.text.split('\n').map((line, lidx) => (
-                            <p key={lidx} className="mb-0.5 last:mb-0">{line}</p>
+                            <p key={lidx} style={{
+                              marginBottom: lidx === msg.text.split('\n').length - 1 ? 0 : '2px'
+                            }}>{line}</p>
                           ))}
 
                           {msg.txHash && (
-                            <div className="mt-2.5">
+                            <div style={{ marginTop: '10px' }}>
                               <button 
                                 onClick={() => copyText(msg.txHash!)}
-                                className="text-xs text-ghost-cyan hover:text-cyan-300 font-mono inline-flex items-center gap-1 bg-black/30 px-2 py-1 rounded transition-all"
+                                style={{
+                                  fontSize: '12px',
+                                  color: '#06b6d4',
+                                  fontFamily: 'monospace',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '4px',
+                                  background: 'rgba(0, 0, 0, 0.3)',
+                                  padding: '4px 8px',
+                                  borderRadius: '8px',
+                                  border: 'none',
+                                  cursor: 'pointer',
+                                  transition: 'all 0.2s ease'
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.color = '#67e8f9'}
+                                onMouseLeave={(e) => e.currentTarget.style.color = '#06b6d4'}
                               >
-                                {copied ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
+                                {copied ? <Check style={{ width: '12px', height: '12px', color: '#4ade80' }} /> : <Copy style={{ width: '12px', height: '12px' }} />}
                                 TX: {msg.txHash.slice(0, 12)}...
                               </button>
                             </div>
@@ -674,15 +945,28 @@ export default function InteractiveFlow() {
               </div>
 
               {/* Input Bar */}
-              <div className="bg-[#150D2E] border-t border-ghost-purple/20 p-4">
-                <div className="flex items-center gap-2">
-                  <div className="flex-1 bg-black/30 border border-ghost-purple/20 px-4 py-3 rounded-xl font-mono text-xs text-gray-400">
+              <div style={{
+                background: '#150D2E',
+                borderTop: '1px solid rgba(139, 92, 246, 0.2)',
+                padding: '16px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <div style={{
+                    flex: 1,
+                    background: 'rgba(0, 0, 0, 0.3)',
+                    border: '1px solid rgba(139, 92, 246, 0.2)',
+                    padding: '12px 16px',
+                    borderRadius: '12px',
+                    fontFamily: 'monospace',
+                    fontSize: '12px',
+                    color: '#9ca3af'
+                  }}>
                     {stepIndex < SIMULATION_STEPS.length && isAutoPlaying ? (
-                      <div className="flex items-center gap-1">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <span>GHOSTwire is processing</span>
-                        <span className="animate-pulse">.</span>
-                        <span className="animate-pulse delay-75">.</span>
-                        <span className="animate-pulse delay-150">.</span>
+                        <span style={{ animation: 'pulse 1s infinite' }}>.</span>
+                        <span style={{ animation: 'pulse 1s infinite 0.075s' }}>.</span>
+                        <span style={{ animation: 'pulse 1s infinite 0.15s' }}>.</span>
                       </div>
                     ) : stepIndex >= SIMULATION_STEPS.length ? (
                       "Simulation complete! Click restart to watch again."
@@ -693,34 +977,83 @@ export default function InteractiveFlow() {
                   <motion.div 
                     animate={{ scale: isAutoPlaying ? [1, 1.1, 1] : 1 }}
                     transition={{ duration: 1, repeat: Infinity }}
-                    className="p-3 rounded-xl bg-ghost-purple/20 text-ghost-neon opacity-60"
+                    style={{
+                      padding: '12px',
+                      borderRadius: '12px',
+                      background: 'rgba(139, 92, 246, 0.2)',
+                      color: '#00ffff',
+                      opacity: 0.6
+                    }}
                   >
-                    <Send className="w-4 h-4" />
+                    <Send style={{ width: '16px', height: '16px' }} />
                   </motion.div>
                 </div>
               </div>
             </motion.div>
 
             {/* Powered by */}
-            <div className="flex flex-wrap items-center justify-center gap-6 mt-6 opacity-60">
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-wider">Powered by:</span>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-ghost-cyan" />
-                <span className="text-[10px] font-mono text-slate-600">Jupiter API</span>
+            <div style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '24px',
+              marginTop: '24px',
+              opacity: 0.6
+            }}>
+              <span style={{
+                fontSize: '10px',
+                fontFamily: 'monospace',
+                color: '#64748b',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>Powered by:</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#06b6d4'
+                }} />
+                <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#475569' }}>Jupiter API</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
-                <span className="text-[10px] font-mono text-slate-600">Solana</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#a855f7'
+                }} />
+                <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#475569' }}>Solana</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-pink-500" />
-                <span className="text-[10px] font-mono text-slate-600">DexScreener</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  background: '#ec4899'
+                }} />
+                <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#475569' }}>DexScreener</span>
               </div>
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Add keyframe animations */}
+      <style>
+        {`
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0;
+            }
+          }
+        `}
+      </style>
     </motion.section>
   );
 }

@@ -10,8 +10,8 @@ export default function Features() {
       description: 'GHOSTwire provisions on-chain Solana wallets derived cryptographically from your Telegram ID instantly. No private keys stored on any servers — absolute security meets supreme execution.',
       badge: 'Self-Custodial Always',
       isLarge: true,
-      color: 'from-ghost-purple to-indigo-600',
-      iconColor: 'text-ghost-purple'
+      gradient: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(79, 70, 229, 0.05))',
+      iconColor: '#8b5cf6'
     },
     {
       id: 'channel_monitoring',
@@ -19,7 +19,7 @@ export default function Features() {
       title: 'Channel Monitoring',
       description: 'Continuous 24/7 active scanning of designated public or private Telegram channels for Solana contract addresses.',
       badge: '24/7 Autopilot',
-      iconColor: 'text-cyan-600'
+      iconColor: '#0891b2'
     },
     {
       id: 'instant_swaps',
@@ -27,7 +27,7 @@ export default function Features() {
       title: 'Instant Buy/Sell',
       description: 'Harness the power of Jupiter Aggregators to discover and execute the most capital-efficient swap routes automatically. Execution finishes within milliseconds.',
       badge: 'Best Rates',
-      iconColor: 'text-amber-600'
+      iconColor: '#d97706'
     },
     {
       id: 'portfolio_tracking',
@@ -36,8 +36,8 @@ export default function Features() {
       description: 'Real-time calculation of your performance metrics (P&L, cost basis, current valuations) aggregate by active wallet, contract address, or specific source channels.',
       badge: 'Dynamic Analytics',
       isLarge: true,
-      color: 'from-ghost-cyan to-teal-500',
-      iconColor: 'text-teal-600'
+      gradient: 'linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(20, 184, 166, 0.05))',
+      iconColor: '#0d9488'
     },
     {
       id: 'auto_sell',
@@ -45,7 +45,7 @@ export default function Features() {
       title: 'Auto-Sell Target Profit',
       description: 'Lock in your profit. Put your take profit goals on autopilot. The sniper executes immediate out-clicks the moment your target return is locked.',
       badge: 'Auto Take-Profit',
-      iconColor: 'text-emerald-600'
+      iconColor: '#059669'
     },
     {
       id: 'transfers',
@@ -53,7 +53,7 @@ export default function Features() {
       title: 'Smart Transfers',
       description: 'Sweep or transfer native SOL and SPL tokens between your derived wallets or securely bridge them to physical ledger addresses with ease.',
       badge: 'Zero Slippage',
-      iconColor: 'text-pink-600'
+      iconColor: '#db2777'
     },
     {
       id: 'referral_program',
@@ -61,7 +61,7 @@ export default function Features() {
       title: 'Referral Rewards',
       description: 'Earn 20% lifetime shares of all transaction commissions paid by your recruits. Direct payouts land on your derived balance instant and peer-to-peer.',
       badge: 'Earn 20%',
-      iconColor: 'text-purple-600'
+      iconColor: '#9333ea'
     },
     {
       id: 'private_channels',
@@ -69,7 +69,7 @@ export default function Features() {
       title: 'Private Channels Support',
       description: 'Snipes private alpha groups too. Direct QR code authorization/OTP logins empower your bot instance to read and trigger from private alpha signals safely.',
       badge: 'Alpha Priority',
-      iconColor: 'text-rose-600'
+      iconColor: '#e11d48'
     }
   ];
 
@@ -104,38 +104,227 @@ export default function Features() {
     }
   ];
 
+  const sectionStyle: React.CSSProperties = {
+    padding: '6rem 0',
+    position: 'relative',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+  };
+
+  const containerStyle: React.CSSProperties = {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 24px',
+  };
+
+  const headerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginBottom: '64px',
+    gap: '24px',
+  };
+
+  const headerLeftStyle: React.CSSProperties = {
+    maxWidth: '576px',
+    textAlign: 'left',
+  };
+
+  const badgeStyle: React.CSSProperties = {
+    display: 'inline-block',
+    padding: '4px 12px',
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    fontWeight: 500,
+    borderRadius: '9999px',
+    background: 'rgba(139, 92, 246, 0.1)',
+    color: '#8b5cf6',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    marginBottom: '12px',
+  };
+
+  const titleStyle: React.CSSProperties = {
+    fontSize: 'clamp(1.875rem, 5vw, 2.25rem)',
+    fontWeight: 900,
+    color: '#0f172a',
+    letterSpacing: '-0.02em',
+    marginBottom: '8px',
+  };
+
+  const subtitleStyle: React.CSSProperties = {
+    color: '#475569',
+    marginTop: '8px',
+  };
+
+  const securityBadgeStyle: React.CSSProperties = {
+    padding: '12px',
+    background: 'rgba(255, 255, 255, 0.6)',
+    border: '1px solid #e2e8f0',
+    borderRadius: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontFamily: 'monospace',
+    fontSize: '12px',
+  };
+
+  const gridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gap: '24px',
+  };
+
+  const largeCardStyle: (gradient: string) => React.CSSProperties = (gradient) => ({
+    gridColumn: 'span 2',
+    padding: '24px',
+    borderRadius: '24px',
+    background: gradient,
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: '290px',
+    position: 'relative',
+    overflow: 'hidden',
+    transition: 'all 0.3s',
+  });
+
+  const cardStyle: React.CSSProperties = {
+    padding: '24px',
+    borderRadius: '24px',
+    background: 'rgba(255, 255, 255, 0.4)',
+    border: '1px solid #e2e8f0',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    minHeight: '290px',
+    position: 'relative',
+    overflow: 'hidden',
+    transition: 'all 0.3s',
+  };
+
+  const iconContainerStyle: React.CSSProperties = {
+    padding: '12px',
+    background: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: '16px',
+    border: '1px solid #e2e8f0',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const badgePillStyle: (bgColor: string) => React.CSSProperties = (bgColor) => ({
+    background: bgColor,
+    backdropFilter: 'blur(4px)',
+    border: '1px solid rgba(255, 255, 255, 0.15)',
+    padding: '4px 10px',
+    borderRadius: '9999px',
+    fontSize: '10px',
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    color: '#1e293b',
+  });
+
+  const cardTitleStyle: React.CSSProperties = {
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: '#0f172a',
+    marginBottom: '8px',
+    marginTop: '16px',
+  };
+
+  const cardDescStyle: React.CSSProperties = {
+    fontSize: '0.875rem',
+    color: '#475569',
+    lineHeight: 1.625,
+  };
+
+  const checkStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    marginTop: '16px',
+  };
+
+  const smallCardTitleStyle: React.CSSProperties = {
+    fontSize: '1rem',
+    fontWeight: 'bold',
+    color: '#0f172a',
+    marginBottom: '6px',
+    marginTop: '16px',
+  };
+
+  const showcaseGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+    gap: '24px',
+    marginTop: '48px',
+  };
+
+  const showcaseCardStyle: React.CSSProperties = {
+    background: 'rgba(255, 255, 255, 0.5)',
+    borderRadius: '16px',
+    border: '1px solid #e2e8f0',
+    overflow: 'hidden',
+    transition: 'all 0.3s',
+  };
+
+  const imageContainerStyle: React.CSSProperties = {
+    position: 'relative',
+    overflow: 'hidden',
+    background: '#f1f5f9',
+  };
+
+  const imageStyle: React.CSSProperties = {
+    width: '100%',
+    height: 'auto',
+    objectFit: 'cover',
+    transition: 'transform 0.5s',
+  };
+
+  const showcaseContentStyle: React.CSSProperties = {
+    padding: '16px',
+  };
+
+  const showcaseTitleStyle: React.CSSProperties = {
+    fontSize: '0.875rem',
+    fontWeight: 600,
+    color: '#0f172a',
+    marginBottom: '4px',
+  };
+
+  const showcaseDescStyle: React.CSSProperties = {
+    fontSize: '0.75rem',
+    color: '#475569',
+    lineHeight: 1.5,
+  };
+
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 relative" id="features">
-      {/* Background glow flares */}
-      <div className="absolute top-[20%] right-10 w-96 h-96 bg-ghost-purple/5 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[20%] left-10 w-96 h-96 bg-ghost-cyan/5 rounded-full blur-[130px] pointer-events-none" />
+    <section style={sectionStyle} id="features">
+      {/* Background glows */}
+      <div style={{ position: 'absolute', top: '20%', right: '40px', width: '384px', height: '384px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: '20%', left: '40px', width: '384px', height: '384px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(130px)', pointerEvents: 'none' }} />
 
-      <div className="max-w-7xl mx-auto px-6">
-        
-        {/* Header Title Section */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-xl text-left">
-            <span className="px-3 py-1 text-xs font-mono font-medium rounded-full bg-ghost-purple/10 text-ghost-purple dark:text-ghost-neon border border-ghost-purple/20 uppercase tracking-widest inline-block mb-3">
-              Edge Engine
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-              The ultimate trading edge for Solana on-chain
-            </h2>
-            <p className="text-slate-600 dark:text-gray-400 mt-2 font-sans">
-              Discover why experienced on-chain traders deploy GHOSTwire bot clusters to scale token trading, signal actions, and portfolio monitoring.
-            </p>
+      <div style={containerStyle}>
+        {/* Header */}
+        <div style={headerStyle}>
+          <div style={headerLeftStyle}>
+            <span style={badgeStyle}>Edge Engine</span>
+            <h2 style={titleStyle}>The ultimate trading edge for Solana on-chain</h2>
+            <p style={subtitleStyle}>Discover why experienced on-chain traders deploy GHOSTwire bot clusters to scale token trading, signal actions, and portfolio monitoring.</p>
           </div>
-
-          <div className="flex gap-4 self-start md:self-end">
-            <div className="p-3 bg-white/60 dark:bg-ghost-card/50 border border-slate-200 dark:border-white/5 rounded-2xl flex items-center gap-2 font-mono text-xs">
-              <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-ghost-green shrink-0" />
-              <span className="text-slate-700 dark:text-gray-300">Audited Derived Wallets Security</span>
-            </div>
+          <div style={securityBadgeStyle}>
+            <ShieldCheck size={16} style={{ color: '#059669' }} />
+            <span>Audited Derived Wallets Security</span>
           </div>
         </div>
 
-        {/* Bento Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Features Grid */}
+        <div style={gridStyle}>
           {features.map((item, idx) => {
             const IconComponent = item.icon;
             if (item.isLarge) {
@@ -146,32 +335,25 @@ export default function Features() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.05 }}
-                  className={`col-span-1 md:col-span-2 p-6 rounded-3xl bg-gradient-to-br ${item.color} bg-opacity-5 border border-ghost-purple/20 flex flex-col justify-between h-auto min-h-[290px] relative overflow-hidden group hover:border-ghost-purple/40 transition-all`}
+                  style={largeCardStyle(item.gradient || 'linear-gradient(135deg, rgba(139,92,246,0.05), rgba(79,70,229,0.02))')}
                 >
-                  <div className="absolute -top-12 -right-12 w-48 h-48 bg-white/50 dark:bg-white/5 rounded-full blur-2xl group-hover:bg-white/60 dark:group-hover:bg-white/10 transition-all" />
-
-                  <div className="flex items-start justify-between relative z-10 w-full mb-6">
-                    <div className="p-3 bg-white/50 dark:bg-white/10 rounded-2xl border border-slate-200 dark:border-white/10 flex items-center justify-center">
-                      <IconComponent className={`w-6 h-6 ${item.iconColor}`} />
+                  <div style={{ position: 'absolute', top: '-48px', right: '-48px', width: '192px', height: '192px', background: 'rgba(255,255,255,0.5)', borderRadius: '50%', filter: 'blur(64px)' }} />
+                  
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px', position: 'relative', zIndex: 10 }}>
+                    <div style={iconContainerStyle}>
+                      <IconComponent size={24} style={{ color: item.iconColor }} />
                     </div>
                     {item.badge && (
-                      <span className="bg-white/60 dark:bg-white/15 backdrop-blur border border-slate-300 dark:border-white/15 px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-white">
-                        {item.badge}
-                      </span>
+                      <span style={badgePillStyle('rgba(255,255,255,0.6)')}>{item.badge}</span>
                     )}
                   </div>
 
-                  <div className="relative z-10">
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-slate-600 dark:text-white/80 leading-relaxed max-w-xl">
-                      {item.description}
-                    </p>
-                    
-                    <div className="mt-4 flex items-center gap-2">
-                      <CheckCircle2 className="w-4.5 h-4.5 text-slate-500 dark:text-white/50" />
-                      <span className="text-xs font-mono text-slate-500 dark:text-white/60">Fully compatible with SPL standards</span>
+                  <div style={{ position: 'relative', zIndex: 10 }}>
+                    <h3 style={cardTitleStyle}>{item.title}</h3>
+                    <p style={cardDescStyle}>{item.description}</p>
+                    <div style={checkStyle}>
+                      <CheckCircle2 size={18} style={{ color: '#64748b' }} />
+                      <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#64748b' }}>Fully compatible with SPL standards</span>
                     </div>
                   </div>
                 </motion.div>
@@ -185,47 +367,37 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="p-6 rounded-3xl bg-white/40 dark:bg-[#120D23]/60 hover:bg-white/60 dark:hover:bg-[#120D23]/80 border border-slate-200 dark:border-white/5 hover:border-ghost-purple/30 flex flex-col justify-between h-auto min-h-[290px] transition-all group relative overflow-hidden"
+                style={cardStyle}
               >
-                <div className="flex items-start justify-between w-full mb-6 relative z-10">
-                  <div className="p-3 bg-white/60 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 rounded-2xl flex items-center justify-center group-hover:bg-ghost-purple/10 group-hover:border-ghost-purple/20 transition-all">
-                    <IconComponent className={`w-5.5 h-5.5 ${item.iconColor}`} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
+                  <div style={iconContainerStyle}>
+                    <IconComponent size={22} style={{ color: item.iconColor }} />
                   </div>
                   {item.badge && (
-                    <span className="bg-white/80 dark:bg-[#1b0d36] border border-slate-300 dark:border-ghost-purple/20 px-2 py-0.5 rounded-full text-[9px] font-mono text-ghost-purple dark:text-ghost-neon font-semibold tracking-wider">
-                      {item.badge}
-                    </span>
+                    <span style={badgePillStyle('rgba(255,255,255,0.8)')}>{item.badge}</span>
                   )}
                 </div>
 
-                <div className="relative z-10">
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-1.5 leading-tight group-hover:text-ghost-purple dark:group-hover:text-ghost-neon transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                    {item.description}
-                  </p>
+                <div>
+                  <h3 style={smallCardTitleStyle}>{item.title}</h3>
+                  <p style={{ fontSize: '12px', color: '#475569', lineHeight: 1.5 }}>{item.description}</p>
                 </div>
                 
-                <div className="absolute -bottom-16 -right-16 w-32 h-32 bg-ghost-purple/5 group-hover:bg-ghost-purple/10 rounded-full blur-2xl transition-all" />
+                <div style={{ position: 'absolute', bottom: '-64px', right: '-64px', width: '128px', height: '128px', background: 'rgba(139,92,246,0.05)', borderRadius: '50%', filter: 'blur(64px)' }} />
               </motion.div>
             );
           })}
         </div>
 
-        {/* Image Showcase Section */}
-        <div className="mt-24">
-          <div className="text-center mb-12">
-            <span className="px-3 py-1 text-xs font-mono font-medium rounded-full bg-ghost-purple/10 text-ghost-purple dark:text-ghost-neon border border-ghost-purple/20 uppercase tracking-widest inline-block mb-3">
-              Visual Experience
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">See GHOSTwire in Action</h2>
-            <p className="text-slate-600 dark:text-gray-400 mt-2 max-w-2xl mx-auto">
-              Experience how GHOSTwire transforms your Telegram channels into an automated trading powerhouse
-            </p>
+        {/* Showcase Section */}
+        <div style={{ marginTop: '96px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <span style={badgeStyle}>Visual Experience</span>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', fontWeight: 'bold', color: '#0f172a', marginTop: '12px' }}>See GHOSTwire in Action</h2>
+            <p style={{ color: '#475569', marginTop: '8px', maxWidth: '672px', margin: '8px auto 0' }}>Experience how GHOSTwire transforms your Telegram channels into an automated trading powerhouse</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div style={showcaseGridStyle}>
             {showcaseImages.map((image, idx) => (
               <motion.div
                 key={image.id}
@@ -233,46 +405,27 @@ export default function Features() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="group relative"
+                style={showcaseCardStyle}
               >
-                <div className="bg-white/50 dark:bg-gradient-to-br from-[#120D23] to-[#0a0a12] rounded-2xl border border-slate-200 dark:border-white/10 overflow-hidden hover:border-ghost-purple/40 transition-all duration-300 hover:transform hover:-translate-y-1">
-                  <div className="relative overflow-hidden bg-slate-100 dark:bg-ghost-card/50">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt}
-                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                        if (e.currentTarget.nextElementSibling) {
-                          (e.currentTarget.nextElementSibling as HTMLElement).style.display = 'flex';
-                        }
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                  
-                  <div className="hidden w-full h-48 bg-gradient-to-br from-ghost-purple/20 to-ghost-cyan/20 flex items-center justify-center">
-                    <div className="text-center p-4">
-                      <div className="text-4xl mb-2">👻</div>
-                      <p className="text-xs text-gray-400">{image.title}</p>
-                    </div>
-                  </div>
-                  
-                  <div className="p-4">
-                    <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-1 group-hover:text-ghost-purple dark:group-hover:text-ghost-neon transition-colors">
-                      {image.title}
-                    </h3>
-                    <p className="text-xs text-slate-600 dark:text-gray-400 leading-relaxed">
-                      {image.description}
-                    </p>
-                  </div>
+                <div style={imageContainerStyle}>
+                  <img 
+                    src={image.src} 
+                    alt={image.alt}
+                    style={imageStyle}
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
+                <div style={showcaseContentStyle}>
+                  <h3 style={showcaseTitleStyle}>{image.title}</h3>
+                  <p style={showcaseDescStyle}>{image.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

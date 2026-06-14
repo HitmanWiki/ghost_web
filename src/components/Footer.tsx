@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Copy, Check, MessageSquare, Terminal, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, Copy, Check, MessageSquare, Terminal } from 'lucide-react';
 
 export default function Footer() {
   const [copiedCode, setCopiedCode] = useState(false);
 
   const quickStartSteps = [
-    'Open Telegram and search for @ghowr_bot',
+    'Open Telegram and search for @ghostwire_bot',
     'Send command /start to create your secure wallet',
     'Copy your custom derived on-chain SOL address',
     'Deposit SOL to your balance (minimum 0.05 recommended)',
@@ -15,145 +15,375 @@ export default function Footer() {
   ];
 
   const handleCopyCode = () => {
-    const rawTerminal = `1. Open Telegram t.me/ghowr_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
+    const rawTerminal = `1. Open Telegram t.me/ghostwire_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
     navigator.clipboard.writeText(rawTerminal);
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
   };
 
-  return (
-    <footer className="bg-white/80 dark:bg-ghost-dark/80 pt-20 pb-8 border-t border-slate-200 dark:border-white/5 relative overflow-hidden" id="quickstart">
-      {/* Glow Effects */}
-      <div className="absolute bottom-[-10%] right-[10%] w-96 h-96 bg-ghost-purple/5 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute top-10 left-[10%] w-80 h-80 bg-ghost-cyan/5 rounded-full blur-[100px] pointer-events-none" />
+  const footerStyle: React.CSSProperties = {
+    background: 'rgba(255, 255, 255, 0.8)',
+    paddingTop: '80px',
+    paddingBottom: '32px',
+    borderTop: '1px solid #e2e8f0',
+    position: 'relative',
+    overflow: 'hidden',
+  };
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        
-        {/* Main Banner section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start border-b border-slate-200 dark:border-white/5 pb-16">
-          
-          {/* Join Call block */}
-          <div className="lg:col-span-5 text-left space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white leading-tight">
+  const containerStyle: React.CSSProperties = {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 24px',
+    position: 'relative',
+    zIndex: 10,
+  };
+
+  const mainGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gap: '48px',
+    alignItems: 'start',
+    borderBottom: '1px solid #e2e8f0',
+    paddingBottom: '64px',
+  };
+
+  const joinColStyle: React.CSSProperties = {
+    gridColumn: 'span 5',
+    textAlign: 'left',
+  };
+
+  const joinTitleStyle: React.CSSProperties = {
+    fontSize: 'clamp(1.875rem, 4vw, 2.25rem)',
+    fontWeight: 900,
+    color: '#0f172a',
+    lineHeight: 1.2,
+    marginBottom: '24px',
+  };
+
+  const gradientTextStyle: React.CSSProperties = {
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
+
+  const joinDescStyle: React.CSSProperties = {
+    fontSize: '0.875rem',
+    color: '#475569',
+    lineHeight: 1.625,
+    marginBottom: '24px',
+  };
+
+  const joinButtonStyle: React.CSSProperties = {
+    padding: '16px 24px',
+    borderRadius: '12px',
+    background: '#8b5cf6',
+    color: 'white',
+    fontSize: '0.875rem',
+    fontWeight: 600,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none',
+    transition: 'all 0.2s',
+  };
+
+  const terminalColStyle: React.CSSProperties = {
+    gridColumn: 'span 7',
+    width: '100%',
+  };
+
+  const terminalStyle: React.CSSProperties = {
+    background: '#f1f5f9',
+    border: '1px solid #cbd5e1',
+    borderRadius: '16px',
+    padding: '24px',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    position: 'relative',
+    overflow: 'hidden',
+    textAlign: 'left',
+    fontFamily: 'monospace',
+  };
+
+  const terminalHeaderStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: '1px solid #cbd5e1',
+    paddingBottom: '14px',
+    marginBottom: '16px',
+  };
+
+  const terminalHeaderLeftStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  };
+
+  const terminalTitleStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontWeight: 600,
+    color: '#334155',
+  };
+
+  const copyButtonStyle: React.CSSProperties = {
+    padding: '6px 8px',
+    background: '#e2e8f0',
+    border: '1px solid #cbd5e1',
+    borderRadius: '8px',
+    fontSize: '10px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+  };
+
+  const terminalContentStyle: React.CSSProperties = {
+    fontSize: '11px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+    color: '#334155',
+  };
+
+  const terminalLineStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '10px',
+  };
+
+  const stepNumberStyle: React.CSSProperties = {
+    color: '#8b5cf6',
+    flexShrink: 0,
+  };
+
+  const stepTextStyle: React.CSSProperties = {
+    color: '#475569',
+    lineHeight: 1.4,
+  };
+
+  const footerNavGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gap: '40px',
+    padding: '48px 0',
+    textAlign: 'left',
+  };
+
+  const brandColStyle: React.CSSProperties = {
+    gridColumn: 'span 5',
+  };
+
+  const logoContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    textDecoration: 'none',
+    marginBottom: '16px',
+  };
+
+  const logoSymbolStyle: React.CSSProperties = {
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+  };
+
+  const logoTextStyle: React.CSSProperties = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 900,
+    fontSize: '1.25rem',
+    letterSpacing: '0.05em',
+    color: '#0f172a',
+  };
+
+  const brandDescStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: '#64748b',
+    maxWidth: '320px',
+    lineHeight: 1.5,
+  };
+
+  const linksColStyle: React.CSSProperties = {
+    gridColumn: 'span 3',
+  };
+
+  const linksTitleStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    fontWeight: 'bold',
+    color: '#64748b',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    marginBottom: '12px',
+  };
+
+  const linksContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '10px',
+  };
+
+  const linkStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: '#64748b',
+    textDecoration: 'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '4px',
+    transition: 'color 0.2s',
+  };
+
+  const contactColStyle: React.CSSProperties = {
+    gridColumn: 'span 4',
+  };
+
+  const contactDescStyle: React.CSSProperties = {
+    fontSize: '12px',
+    color: '#64748b',
+    lineHeight: 1.5,
+    marginBottom: '8px',
+  };
+
+  const emailStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    color: '#8b5cf6',
+    textDecoration: 'underline',
+  };
+
+  const copyrightStyle: React.CSSProperties = {
+    borderTop: '1px solid #e2e8f0',
+    paddingTop: '32px',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    gap: '16px',
+    fontSize: '12px',
+    color: '#64748b',
+  };
+
+  const policyLinksStyle: React.CSSProperties = {
+    display: 'flex',
+    gap: '24px',
+  };
+
+  return (
+    <footer style={footerStyle} id="quickstart">
+      {/* Glow Effects */}
+      <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '384px', height: '384px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(110px)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '40px', left: '10%', width: '320px', height: '320px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(100px)', pointerEvents: 'none' }} />
+
+      <div style={containerStyle}>
+        {/* Main Banner */}
+        <div style={mainGridStyle}>
+          {/* Join Call */}
+          <div style={joinColStyle}>
+            <h2 style={joinTitleStyle}>
               Join the trading <br />
-              <span className="bg-gradient-to-r from-ghost-purple to-ghost-cyan bg-clip-text text-transparent font-black">
-                community on Telegram
-              </span>
+              <span style={gradientTextStyle}>community on Telegram</span>
             </h2>
-            <p className="text-sm text-slate-600 dark:text-gray-400 leading-relaxed font-sans">
+            <p style={joinDescStyle}>
               Connect with fellow Solana snipers. Stay updated with token updates, claim priority referral pins, and ask our developer squad questions relative to on-chain automation.
             </p>
-            
             <a
-              href="https://t.me/ghowr_bot"
+              href="https://t.me/ghostwire_bot"
               target="_blank"
               rel="noreferrer"
-              className="p-4 px-6 rounded-xl bg-ghost-purple text-white text-sm font-semibold hover:bg-ghost-purple/80 hover:shadow-[0_0_15px_rgba(139,92,246,0.4)] transition-all font-display inline-flex items-center gap-2"
+              style={joinButtonStyle}
             >
-              <MessageSquare className="w-4 h-4" />
+              <MessageSquare size={16} />
               <span>Join official Telegram Channel</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight size={16} />
             </a>
           </div>
 
-          {/* Quickstart Terminal Console widget */}
-          <div className="lg:col-span-7 w-full">
-            <div className="bg-slate-100 dark:bg-[#0f0923] border border-slate-300 dark:border-ghost-purple/20 rounded-2xl p-5 md:p-6 shadow-xl dark:shadow-2xl relative overflow-hidden text-left font-mono">
-              <div className="flex items-center justify-between border-b border-slate-300 dark:border-white/5 pb-3.5 mb-4">
-                <div className="flex items-center gap-2">
-                  <Terminal className="w-4.5 h-4.5 text-ghost-purple dark:text-ghost-cyan" />
-                  <span className="text-xs font-semibold text-slate-700 dark:text-gray-300">GHOSTwire Quick Onboarding Terminal</span>
+          {/* Terminal */}
+          <div style={terminalColStyle}>
+            <div style={terminalStyle}>
+              <div style={terminalHeaderStyle}>
+                <div style={terminalHeaderLeftStyle}>
+                  <Terminal size={18} style={{ color: '#8b5cf6' }} />
+                  <span style={terminalTitleStyle}>GHOSTwire Quick Onboarding Terminal</span>
                 </div>
                 <button
                   onClick={handleCopyCode}
-                  className="p-1.5 px-2 bg-slate-200 dark:bg-white/5 hover:bg-slate-300 dark:hover:bg-white/10 text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-white border border-slate-300 dark:border-white/5 hover:border-ghost-purple/30 rounded-lg flex items-center gap-1.5 text-[10px] transition-all cursor-pointer"
+                  style={copyButtonStyle}
                 >
-                  {copiedCode ? <Check className="w-3.5 h-3.5 text-green-500" /> : <Copy className="w-3.5 h-3.5" />}
+                  {copiedCode ? <Check size={14} style={{ color: '#10b981' }} /> : <Copy size={14} />}
                   {copiedCode ? 'Copied' : 'Copy Codes'}
                 </button>
               </div>
 
-              <div className="text-[11px] sm:text-xs space-y-2.5 text-slate-700 dark:text-gray-300">
-                <p className="text-ghost-purple">// Quick start Solana sniping (Under 5 minutes)</p>
+              <div style={terminalContentStyle}>
+                <p style={{ color: '#8b5cf6' }}>// Quick start Solana sniping (Under 5 minutes)</p>
                 {quickStartSteps.map((step, sIdx) => (
-                  <div key={sIdx} className="flex items-start gap-2.5">
-                    <span className="text-ghost-purple dark:text-ghost-cyan block shrink-0">{sIdx + 1}.</span>
-                    <span className="text-slate-600 dark:text-gray-300 leading-normal">{step}</span>
+                  <div key={sIdx} style={terminalLineStyle}>
+                    <span style={stepNumberStyle}>{sIdx + 1}.</span>
+                    <span style={stepTextStyle}>{step}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-
         </div>
 
-        {/* Footer navigational routes and legal */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 py-12 text-left items-start">
-          
-          {/* Logo Brand left - with actual logo image */}
-          <div className="md:col-span-5 space-y-4">
-            <a href="#" className="flex items-center gap-3 group cursor-pointer">
-              <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-ghost-purple to-ghost-cyan flex items-center justify-center shadow-lg group-hover:scale-105 transition-all duration-300">
-                <img 
-                  src="/logo.png" 
-                  alt="GHOSTwire Logo" 
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = '<span class="text-white text-xl">👻</span>';
-                  }}
-                />
+        {/* Footer Navigation */}
+        <div style={footerNavGridStyle}>
+          {/* Brand */}
+          <div style={brandColStyle}>
+            <a href="#" style={logoContainerStyle}>
+              <div style={logoSymbolStyle}>
+                <span style={{ fontSize: '20px' }}>👻</span>
               </div>
-              <span className="font-display font-black text-xl tracking-wider text-slate-900 dark:text-white uppercase">
-                GHOST<span className="text-ghost-purple">wire</span>
-              </span>
+              <span style={logoTextStyle}>GHOST<span style={{ color: '#8b5cf6' }}>wire</span></span>
             </a>
-            <p className="text-xs text-slate-500 dark:text-gray-500 max-w-sm leading-relaxed">
+            <p style={brandDescStyle}>
               Leading decentralized blockchain sniper utilities for Solana trades. Speed is our metric, self-custody is our core. Auto-sniping and profit goals.
             </p>
           </div>
 
-          {/* Nav Links Column */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="text-xs font-mono font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest">Protocol links</h4>
-            <div className="flex flex-col gap-2.5 text-xs text-slate-500 dark:text-gray-400">
-              <a href="https://t.me/ghowr_bot" target="_blank" rel="noreferrer" className="hover:text-ghost-purple dark:hover:text-white transition-colors inline-flex items-center gap-1">
-                Launch Telegram Bot <ArrowUpRight className="w-3 h-3 text-slate-400 dark:text-gray-600" />
+          {/* Links */}
+          <div style={linksColStyle}>
+            <h4 style={linksTitleStyle}>Protocol links</h4>
+            <div style={linksContainerStyle}>
+              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={linkStyle}>
+                Launch Telegram Bot <ArrowUpRight size={12} />
               </a>
-              <a href="https://scrap-docs.vercel.app/" target="_blank" rel="noreferrer" className="hover:text-ghost-purple dark:hover:text-white transition-colors inline-flex items-center gap-1">
-                Technical Documentation <ArrowUpRight className="w-3 h-3 text-slate-400 dark:text-gray-600" />
+              <a href="https://scrap-docs.vercel.app/" target="_blank" rel="noreferrer" style={linkStyle}>
+                Technical Documentation <ArrowUpRight size={12} />
               </a>
-              <a href="https://t.me/ghowr_bot" target="_blank" rel="noreferrer" className="hover:text-ghost-purple dark:hover:text-white transition-colors inline-flex items-center gap-1">
-                Helpdesk & Troubleshooting <ArrowUpRight className="w-3 h-3 text-slate-400 dark:text-gray-600" />
+              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={linkStyle}>
+                Helpdesk & Troubleshooting <ArrowUpRight size={12} />
               </a>
             </div>
           </div>
 
-          {/* Socials Column */}
-          <div className="md:col-span-4 space-y-3">
-            <h4 className="text-xs font-mono font-bold text-slate-500 dark:text-gray-400 uppercase tracking-widest font-mono">Contacts & Mail</h4>
-            <p className="text-xs text-slate-500 dark:text-gray-500 leading-normal">
+          {/* Contact */}
+          <div style={contactColStyle}>
+            <h4 style={linksTitleStyle}>Contacts & Mail</h4>
+            <p style={contactDescStyle}>
               For security vulnerability audits or licensing questions, contact our developer division:
             </p>
-            <div className="text-xs font-mono text-ghost-purple dark:text-ghost-neon hover:text-ghost-purple dark:hover:text-white transition-colors">
-              <a href="mailto:support@ghostwire.win" className="underline">support@ghostwire.win</a>
+            <div>
+              <a href="mailto:support@ghostwire.win" style={emailStyle}>support@ghostwire.win</a>
             </div>
           </div>
-
         </div>
 
-        {/* Flat copyright bar */}
-        <div className="border-t border-slate-200 dark:border-white/5 pt-8 text-center md:text-left flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <span className="text-xs text-slate-500 dark:text-gray-500 font-mono">
-            © 2026 GHOSTwire Solana Sniper Bot. All rights reserved.
-          </span>
-          
-          <div className="flex items-center justify-center md:justify-end gap-6 text-xs text-slate-500 dark:text-gray-500">
-            <a href="#" onClick={(e) => { e.preventDefault(); }} className="hover:text-ghost-purple dark:hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" onClick={(e) => { e.preventDefault(); }} className="hover:text-ghost-purple dark:hover:text-white transition-colors">Terms of Operations</a>
+        {/* Copyright */}
+        <div style={copyrightStyle}>
+          <span>© 2026 GHOSTwire Solana Sniper Bot. All rights reserved.</span>
+          <div style={policyLinksStyle}>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Privacy Policy</a>
+            <a href="#" style={{ color: '#64748b', textDecoration: 'none' }}>Terms of Operations</a>
           </div>
         </div>
-
       </div>
     </footer>
   );

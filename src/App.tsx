@@ -25,32 +25,97 @@ export default function App() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.02, 1]);
 
   const handleScrollTo = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-};
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
-    <div ref={containerRef} className="relative min-h-screen font-sans selection:bg-ghost-purple/30 selection:text-white antialiased overflow-x-hidden">
+    <div 
+      ref={containerRef} 
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+        overflowX: 'hidden',
+        WebkitFontSmoothing: 'antialiased',
+        MozOsxFontSmoothing: 'grayscale'
+      }}
+    >
       
       {/* ============================================ */}
       {/* CLEAN GEOMETRIC BACKGROUND PATTERNS */}
       {/* ============================================ */}
       
       {/* Floating gradient orbs - subtle and elegant */}
-      <div className="fixed top-0 -left-20 w-96 h-96 bg-ghost-purple/20 rounded-full blur-[80px] pointer-events-none animate-pulse" />
-      <div className="fixed bottom-0 -right-20 w-96 h-96 bg-ghost-cyan/20 rounded-full blur-[80px] pointer-events-none animate-pulse" style={{ animationDuration: '8s' }} />
-      <div className="fixed top-1/3 right-1/4 w-64 h-64 bg-ghost-pink/15 rounded-full blur-[70px] pointer-events-none animate-pulse" style={{ animationDuration: '10s' }} />
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: '-80px',
+          width: '384px',
+          height: '384px',
+          background: 'rgba(139, 92, 246, 0.2)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          pointerEvents: 'none',
+          animation: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }} 
+      />
+      <div 
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          right: '-80px',
+          width: '384px',
+          height: '384px',
+          background: 'rgba(6, 182, 212, 0.2)',
+          borderRadius: '50%',
+          filter: 'blur(80px)',
+          pointerEvents: 'none',
+          animation: 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }} 
+      />
+      <div 
+        style={{
+          position: 'fixed',
+          top: '33.333%',
+          right: '25%',
+          width: '256px',
+          height: '256px',
+          background: 'rgba(236, 72, 153, 0.15)',
+          borderRadius: '50%',
+          filter: 'blur(70px)',
+          pointerEvents: 'none',
+          animation: 'pulse 10s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }} 
+      />
       
       {/* Subtle grid pattern overlay */}
-      <div className="fixed inset-0 bg-[radial-gradient(#c4b5fd_1px,transparent_1px)] [background-size:32px_32px] opacity-30 pointer-events-none" />
+      <div 
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundImage: 'radial-gradient(rgba(196, 181, 253, 1) 1px, transparent 1px)',
+          backgroundSize: '32px 32px',
+          opacity: 0.3,
+          pointerEvents: 'none'
+        }} 
+      />
 
       {/* Navigation Header */}
       <Header onScrollTo={handleScrollTo} />
 
       {/* Main Landing Area */}
-      <main className="flex-grow relative z-10" style={{ opacity: typeof opacity === 'number' ? opacity : 1 }}>
+      <main 
+        style={{
+          flexGrow: 1,
+          position: 'relative',
+          zIndex: 10,
+          opacity: typeof opacity === 'number' ? opacity : 1
+        }}
+      >
         <Hero onScrollTo={handleScrollTo} />
         <Features />
         <InteractiveFlow />
@@ -59,6 +124,20 @@ export default function App() {
       </main>
 
       <Footer />
+
+      {/* Add keyframe animations */}
+      <style>
+        {`
+          @keyframes pulse {
+            0%, 100% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.5;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }

@@ -9,53 +9,281 @@ interface HeaderProps {
 export default function Header({ onScrollTo }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
- const navLinks = [
-  { num: '01', label: 'Home', action: 'hero' },
-  { num: '02', label: 'Features', action: 'features' },
-  { num: '03', label: '$GHOST', action: 'token' },
-  { num: '04', label: 'How It Works', action: 'demo' },
-  { num: '05', label: 'FAQ', action: 'faq' }
-];
+  const navLinks = [
+    { num: '01', label: 'Home', action: 'hero' },
+    { num: '02', label: 'Features', action: 'features' },
+    { num: '03', label: '$GHOST', action: 'token' },
+    { num: '04', label: 'How It Works', action: 'demo' },
+    { num: '05', label: 'FAQ', action: 'faq' }
+  ];
 
   const handleLinkClick = (action: string) => {
     setIsOpen(false);
     onScrollTo(action);
   };
 
+  const headerStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    background: 'rgba(255, 255, 255, 0.8)',
+    backdropFilter: 'blur(12px)',
+    borderBottom: '1px solid #e2e8f0',
+  };
+
+  const containerStyle: React.CSSProperties = {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '16px 24px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  };
+
+  const logoContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    textDecoration: 'none',
+    cursor: 'pointer',
+  };
+
+  const logoImageContainerStyle: React.CSSProperties = {
+    width: '36px',
+    height: '36px',
+    borderRadius: '50%',
+    overflow: 'hidden',
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 10px 15px -3px rgba(139, 92, 246, 0.25)',
+    transition: 'transform 0.3s',
+  };
+
+  const logoImageStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  };
+
+  const logoTextStyle: React.CSSProperties = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: '1.25rem',
+    letterSpacing: '0.025em',
+    color: '#0f172a',
+  };
+
+  const navStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '32px',
+  };
+
+  const navLinkStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    color: '#475569',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    transition: 'color 0.2s',
+  };
+
+  const navNumberStyle: React.CSSProperties = {
+    fontSize: '10px',
+    color: '#8b5cf6',
+    fontWeight: 'bold',
+  };
+
+  const docsLinkStyle: React.CSSProperties = {
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    color: '#475569',
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    transition: 'color 0.2s',
+  };
+
+  const desktopCtaStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+  };
+
+  const supportBtnStyle: React.CSSProperties = {
+    padding: '6px 14px',
+    borderRadius: '12px',
+    background: '#f1f5f9',
+    border: '1px solid #e2e8f0',
+    fontSize: '12px',
+    fontFamily: 'monospace',
+    fontWeight: 500,
+    color: '#334155',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none',
+    transition: 'all 0.2s',
+  };
+
+  const startBtnStyle: React.CSSProperties = {
+    padding: '10px 18px',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    color: 'white',
+    fontSize: '12px',
+    fontWeight: 600,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    textDecoration: 'none',
+    transition: 'all 0.2s',
+  };
+
+  const mobileMenuBtnStyle: React.CSSProperties = {
+    display: 'none',
+    padding: '8px',
+    borderRadius: '8px',
+    background: '#f1f5f9',
+    border: '1px solid #e2e8f0',
+    color: '#334155',
+    cursor: 'pointer',
+  };
+
+  const mobileDrawerStyle: React.CSSProperties = {
+    position: 'fixed',
+    inset: 0,
+    top: '69px',
+    zIndex: 40,
+    background: 'white',
+    padding: '32px 24px',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  };
+
+  const mobileLogoContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    paddingBottom: '16px',
+    borderBottom: '1px solid #e2e8f0',
+    marginBottom: '24px',
+  };
+
+  const mobileLogoImageStyle: React.CSSProperties = {
+    width: '32px',
+    height: '32px',
+    borderRadius: '50%',
+    objectFit: 'cover',
+  };
+
+  const mobileLinksContainerStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+  };
+
+  const mobileLinkStyle: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '16px',
+    textAlign: 'left',
+    fontSize: '1.125rem',
+    fontWeight: 500,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    color: '#1e293b',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    transition: 'color 0.2s',
+  };
+
+  const mobileBottomStyle: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+    paddingTop: '24px',
+    borderTop: '1px solid #e2e8f0',
+  };
+
+  const mobileGridStyle: React.CSSProperties = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '12px',
+  };
+
+  const mobileSupportBtnStyle: React.CSSProperties = {
+    padding: '14px',
+    textAlign: 'center',
+    fontSize: '12px',
+    fontWeight: 500,
+    color: '#334155',
+    background: '#f1f5f9',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+    textDecoration: 'none',
+  };
+
+  const mobileLaunchBtnStyle: React.CSSProperties = {
+    display: 'block',
+    width: '100%',
+    padding: '16px',
+    textAlign: 'center',
+    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    color: 'white',
+    fontWeight: 600,
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    borderRadius: '12px',
+    textDecoration: 'none',
+    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+  };
+
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-ghost-purple/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          
-          {/* Logo with image */}
-          <a href="#" className="flex items-center gap-3 group cursor-pointer" onClick={(e) => { e.preventDefault(); onScrollTo('hero'); }}>
-            {/* Logo Image */}
-            <div className="w-9 h-9 rounded-full overflow-hidden bg-gradient-to-br from-ghost-purple to-ghost-cyan flex items-center justify-center shadow-lg shadow-ghost-purple/25 group-hover:scale-105 transition-all duration-300">
+      <header style={headerStyle}>
+        <div style={containerStyle}>
+          {/* Logo */}
+          <a href="#" style={logoContainerStyle} onClick={(e) => { e.preventDefault(); onScrollTo('hero'); }}>
+            <div style={logoImageContainerStyle}>
               <img 
                 src="/logo.png" 
                 alt="GHOSTwire Logo" 
-                className="w-full h-full object-cover"
+                style={logoImageStyle}
                 onError={(e) => {
-                  // Fallback if image fails to load
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-white text-lg">👻</span>';
+                  if (e.currentTarget.parentElement) {
+                    e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 18px;">👻</span>';
+                  }
                 }}
               />
             </div>
-            <span className="font-display font-bold text-xl tracking-tight text-slate-900 dark:text-white uppercase">
-              GHOST<span className="text-ghost-purple">wire</span>
+            <span style={logoTextStyle}>
+              GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav style={navStyle}>
             {navLinks.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleLinkClick(link.action)}
-                className="text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-ghost-purple dark:hover:text-white transition-all flex items-center gap-1.5 cursor-pointer"
+                style={navLinkStyle}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#475569'}
               >
-                <span className="text-[10px] text-ghost-purple font-bold">{link.num}</span>
+                <span style={navNumberStyle}>{link.num}</span>
                 {link.label}
               </button>
             ))}
@@ -63,49 +291,58 @@ export default function Header({ onScrollTo }: HeaderProps) {
               href="https://scrap-docs.vercel.app/"
               target="_blank"
               rel="noreferrer"
-              className="text-xs font-mono text-slate-600 dark:text-gray-400 hover:text-ghost-purple dark:hover:text-white transition-all flex items-center gap-1.5"
+              style={docsLinkStyle}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#475569'}
             >
-              <span className="text-[10px] text-ghost-purple font-bold">05</span>
+              <span style={navNumberStyle}>05</span>
               Docs
-              <ArrowUpRight className="w-3 h-3 text-slate-500 dark:text-gray-500" />
+              <ArrowUpRight size={12} style={{ color: '#64748b' }} />
             </a>
           </nav>
 
-          {/* Desktop CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* Desktop CTA */}
+          <div style={desktopCtaStyle}>
             <a 
-              href="https://t.me/ghowr_bot" 
+              href="https://t.me/ghostwire_bot" 
               target="_blank" 
               rel="noreferrer" 
-              className="px-3.5 py-1.5 rounded-xl bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 text-slate-700 dark:text-gray-300 border border-slate-200 dark:border-white/10 text-xs font-mono font-medium flex items-center gap-2 transition-all"
+              style={supportBtnStyle}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = '#e2e8f0';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#f1f5f9';
+              }}
             >
-              <MessageCircle className="w-3.5 h-3.5 text-ghost-purple" />
+              <MessageCircle size={14} style={{ color: '#8b5cf6' }} />
               Support
             </a>
-            
             <a
-              href="https://t.me/ghowr_bot"
+              href="https://t.me/ghostwire_bot"
               target="_blank"
               rel="noreferrer"
-              className="px-4.5 py-2.5 rounded-xl bg-ghost-purple text-white text-xs font-semibold hover:bg-ghost-purple/80 hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-all cursor-pointer flex items-center gap-2 font-display"
+              style={startBtnStyle}
+              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.8'}
+              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
               <span>Start Sniping</span>
-              <ArrowUpRight className="w-4 h-4" />
+              <ArrowUpRight size={16} />
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 hover:border-ghost-purple/50 transition-all text-slate-700 dark:text-gray-300"
+            style={mobileMenuBtnStyle}
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -113,35 +350,33 @@ export default function Header({ onScrollTo }: HeaderProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-[69px] z-40 bg-white dark:bg-slate-900 bg-opacity-95 backdrop-blur-xl px-6 py-8 flex flex-col justify-between md:hidden"
+            style={mobileDrawerStyle}
           >
-            <div className="space-y-6">
-              {/* Mobile menu logo */}
-              <div className="flex items-center gap-3 pb-4 border-b border-slate-200 dark:border-white/5">
-                <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-ghost-purple to-ghost-cyan flex items-center justify-center">
-                  <img 
-                    src="/logo.png" 
-                    alt="GHOSTwire Logo" 
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement!.innerHTML = '<span class="text-white text-sm">👻</span>';
-                    }}
-                  />
-                </div>
-                <span className="font-display font-bold text-lg text-slate-900 dark:text-white uppercase">
-                  GHOST<span className="text-ghost-purple">wire</span>
+            <div>
+              {/* Mobile Logo */}
+              <div style={mobileLogoContainerStyle}>
+                <img 
+                  src="/logo.png" 
+                  alt="GHOSTwire Logo" 
+                  style={mobileLogoImageStyle}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <span style={logoTextStyle}>
+                  GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
                 </span>
               </div>
-              
-              <div className="flex flex-col gap-6">
+
+              {/* Mobile Links */}
+              <div style={mobileLinksContainerStyle}>
                 {navLinks.map((link) => (
                   <button
                     key={link.label}
                     onClick={() => handleLinkClick(link.action)}
-                    className="flex items-center gap-4 text-left text-lg font-display font-medium text-slate-800 dark:text-gray-300 hover:text-ghost-purple dark:hover:text-white transition-all cursor-pointer"
+                    style={mobileLinkStyle}
                   >
-                    <span className="font-mono text-xs text-ghost-purple">{link.num}</span>
+                    <span style={navNumberStyle}>{link.num}</span>
                     {link.label}
                   </button>
                 ))}
@@ -149,22 +384,23 @@ export default function Header({ onScrollTo }: HeaderProps) {
                   href="https://scrap-docs.vercel.app/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-4 text-left text-lg font-display font-medium text-slate-800 dark:text-gray-300 hover:text-ghost-purple dark:hover:text-white transition-all"
+                  style={mobileLinkStyle}
                 >
-                  <span className="font-mono text-xs text-ghost-purple">05</span>
+                  <span style={navNumberStyle}>05</span>
                   Docs
-                  <ArrowUpRight className="w-4 h-4 text-slate-500 dark:text-gray-500" />
+                  <ArrowUpRight size={16} style={{ color: '#64748b' }} />
                 </a>
               </div>
             </div>
 
-            <div className="space-y-4 border-t border-slate-200 dark:border-white/5 pt-6">
-              <div className="grid grid-cols-2 gap-3">
+            {/* Mobile Bottom Actions */}
+            <div style={mobileBottomStyle}>
+              <div style={mobileGridStyle}>
                 <a
-                  href="https://t.me/ghowr_bot"
+                  href="https://t.me/ghostwire_bot"
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3.5 text-center text-xs font-medium text-slate-700 dark:text-gray-300 bg-slate-100 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/15"
+                  style={mobileSupportBtnStyle}
                 >
                   Telegram Support
                 </a>
@@ -172,16 +408,16 @@ export default function Header({ onScrollTo }: HeaderProps) {
                   href="https://x.com"
                   target="_blank"
                   rel="noreferrer"
-                  className="p-3.5 text-center text-xs font-medium text-slate-700 dark:text-gray-300 bg-slate-100 dark:bg-white/5 rounded-xl border border-slate-200 dark:border-white/15"
+                  style={mobileSupportBtnStyle}
                 >
                   X (Twitter)
                 </a>
               </div>
               <a
-                href="https://t.me/ghowr_bot"
+                href="https://t.me/ghostwire_bot"
                 target="_blank"
                 rel="noreferrer"
-                className="w-full p-4 block text-center bg-ghost-purple hover:bg-ghost-purple/80 text-white font-semibold font-display rounded-xl shadow-lg transition-all"
+                style={mobileLaunchBtnStyle}
               >
                 Launch Bot Interface
               </a>
