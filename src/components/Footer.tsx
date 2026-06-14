@@ -18,7 +18,7 @@ export default function Footer() {
   }, []);
 
   const quickStartSteps = [
-    'Open Telegram and search for @@ghowr_bot',
+    'Open Telegram and search for @ghostwire_bot',
     'Send command /start to create your secure wallet',
     'Copy your custom derived on-chain SOL address',
     'Deposit SOL to your balance (minimum 0.05 recommended)',
@@ -27,7 +27,7 @@ export default function Footer() {
   ];
 
   const handleCopyCode = () => {
-    const rawTerminal = `1. Open Telegram t.me/@ghowr_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
+    const rawTerminal = `1. Open Telegram t.me/ghostwire_bot\n2. Send /start\n3. Copy your wallet address\n4. Fund with SOL\n5. Add channel via /add\n6. Start sniping!`;
     navigator.clipboard.writeText(rawTerminal);
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
@@ -212,6 +212,13 @@ export default function Footer() {
     alignItems: 'center',
     justifyContent: 'center',
     boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    overflow: 'hidden',
+  };
+
+  const logoImageStyle: React.CSSProperties = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   };
 
   const logoTextStyle: React.CSSProperties = {
@@ -329,7 +336,7 @@ export default function Footer() {
               Connect with fellow Solana snipers. Stay updated with token updates, claim priority referral pins, and ask our developer squad questions relative to on-chain automation.
             </p>
             <a
-              href="https://t.me/@ghowr_bot"
+              href="https://t.me/ghostwire_bot"
               target="_blank"
               rel="noreferrer"
               style={joinButtonStyle}
@@ -392,7 +399,17 @@ export default function Footer() {
           <div style={brandColStyle}>
             <a href="#" style={logoContainerStyle}>
               <div style={logoSymbolStyle}>
-                <span style={{ fontSize: isMobile ? '18px' : '20px' }}>👻</span>
+                <img 
+                  src="/logo.png" 
+                  alt="GHOSTwire Logo" 
+                  style={logoImageStyle}
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    if (e.currentTarget.parentElement) {
+                      e.currentTarget.parentElement.innerHTML = '<span style="font-size: 20px;">👻</span>';
+                    }
+                  }}
+                />
               </div>
               <span style={logoTextStyle}>
                 GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
@@ -408,7 +425,7 @@ export default function Footer() {
             <h4 style={linksTitleStyle}>Protocol links</h4>
             <div style={linksContainerStyle}>
               <a 
-                href="https://t.me/@ghowr_bot" 
+                href="https://t.me/ghostwire_bot" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}
@@ -436,7 +453,7 @@ export default function Footer() {
                 Technical Documentation <ArrowUpRight size={isMobile ? 10 : 12} />
               </a>
               <a 
-                href="https://t.me/@ghowr_bot" 
+                href="https://t.me/ghostwire_bot" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}
@@ -460,7 +477,7 @@ export default function Footer() {
             </p>
             <div>
               <a 
-                href="mailto:support@ghostwire.win" 
+                href="mailto:support@ghostwire.tech" 
                 style={emailStyle}
                 onMouseEnter={(e) => {
                   if (!isMobile) e.currentTarget.style.color = '#7c3aed';
@@ -469,7 +486,7 @@ export default function Footer() {
                   if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
                 }}
               >
-                support@ghostwire.win
+                support@ghostwire.tech
               </a>
             </div>
           </div>
