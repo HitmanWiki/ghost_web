@@ -47,225 +47,9 @@ export default function Hero({ onScrollTo }: HeroProps) {
   }, []);
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText('t.me/@ghowr_bot');
+    navigator.clipboard.writeText('t.me/ghostwire_bot');
     setCopiedText(true);
     setTimeout(() => setCopiedText(false), 2000);
-  };
-
-  const sectionStyle: React.CSSProperties = {
-    position: 'relative',
-    paddingTop: isMobile ? 'clamp(80px, 15vw, 128px)' : 'clamp(96px, 10vw, 128px)',
-    paddingBottom: isMobile ? 'clamp(40px, 8vw, 64px)' : 'clamp(48px, 6vw, 64px)',
-    minHeight: isMobile ? 'auto' : '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
-    overflow: 'hidden'
-  };
-
-  const containerStyle: React.CSSProperties = {
-    maxWidth: '1280px',
-    margin: '0 auto',
-    padding: isMobile ? '0 16px' : '0 24px',
-    position: 'relative',
-    zIndex: 10,
-    width: '100%',
-  };
-
-  const gridStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
-    gap: isMobile ? 'clamp(32px, 8vw, 48px)' : '48px',
-    alignItems: 'center',
-    marginBottom: isMobile ? 'clamp(40px, 10vw, 64px)' : '64px',
-  };
-
-  const leftContentStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: isMobile ? 'clamp(16px, 5vw, 24px)' : '24px',
-    flex: 1,
-    width: '100%',
-  };
-
-  const tagStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    background: 'rgba(139, 92, 246, 0.1)',
-    backdropFilter: 'blur(4px)',
-    border: '1px solid rgba(139, 92, 246, 0.3)',
-    borderRadius: '9999px',
-    padding: isMobile ? '4px 12px 4px 10px' : '6px 16px 6px 14px',
-    cursor: 'pointer',
-    alignSelf: 'flex-start',
-  };
-
-  const tagTextStyle: React.CSSProperties = {
-    fontSize: isMobile ? '9px' : '11px',
-    fontFamily: 'monospace',
-    color: '#334155',
-  };
-
-  const headingContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '16px',
-  };
-
-  const headingStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(32px, 8vw, 44px)' : 'clamp(44px, 5vw, 56px)',
-    fontWeight: 800,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-    lineHeight: 1.1,
-    color: '#0f172a',
-    letterSpacing: '-0.02em',
-  };
-
-  const gradientTextStyle: React.CSSProperties = {
-    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    backgroundClip: 'text',
-    fontWeight: 900,
-  };
-
-  const cursorStyle: React.CSSProperties = {
-    display: 'inline-block',
-    width: '3px',
-    height: isMobile ? 'clamp(32px, 6vw, 44px)' : '48px',
-    background: '#8b5cf6',
-    marginLeft: '4px',
-    animation: 'pulse 1s step-end infinite',
-  };
-
-  const descriptionStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(14px, 4vw, 16px)' : '18px',
-    color: '#475569',
-    lineHeight: 1.625,
-    maxWidth: '550px',
-  };
-
-  const ctaContainerStyle: React.CSSProperties = {
-    display: 'flex',
-    flexDirection: isMobile ? 'column' : 'row',
-    gap: isMobile ? '12px' : '16px',
-    marginTop: '8px',
-    width: '100%',
-  };
-
-  const primaryBtnStyle: React.CSSProperties = {
-    padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
-    borderRadius: '12px',
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-    color: 'white',
-    fontWeight: 600,
-    textDecoration: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
-    textAlign: 'center',
-    flex: isMobile ? 1 : 'auto',
-  };
-
-  const secondaryBtnStyle: React.CSSProperties = {
-    padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
-    borderRadius: '12px',
-    background: '#f1f5f9',
-    border: '1px solid #e2e8f0',
-    color: '#334155',
-    fontWeight: 600,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '8px',
-    cursor: 'pointer',
-    flex: isMobile ? 1 : 'auto',
-  };
-
-  const quickStartStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '12px',
-    background: 'white',
-    borderRadius: '16px',
-    padding: isMobile ? '12px 16px' : '16px',
-    width: '100%',
-    maxWidth: isMobile ? '100%' : '400px',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    border: '1px solid #e2e8f0',
-    flexWrap: isMobile ? 'wrap' : 'nowrap',
-  };
-
-  const quickStartLeftStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    flex: 1,
-  };
-
-  const quickStartSymbolStyle: React.CSSProperties = {
-    width: '28px',
-    height: '28px',
-    background: '#f1f5f9',
-    borderRadius: '8px',
-    border: '1px solid #e2e8f0',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'monospace',
-    fontSize: '10px',
-    color: '#64748b',
-  };
-
-  const quickStartLabelStyle: React.CSSProperties = {
-    fontSize: '10px',
-    textTransform: 'uppercase',
-    fontFamily: 'monospace',
-    color: '#64748b',
-  };
-
-  const quickStartBotStyle: React.CSSProperties = {
-    fontSize: isMobile ? '11px' : '12px',
-    fontFamily: 'monospace',
-    color: '#8b5cf6',
-    wordBreak: 'break-all',
-  };
-
-  const copyBtnStyle: React.CSSProperties = {
-    padding: '8px 12px',
-    background: 'rgba(139, 92, 246, 0.1)',
-    border: '1px solid rgba(139, 92, 246, 0.2)',
-    borderRadius: '12px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    gap: '6px',
-    fontSize: '12px',
-    fontFamily: 'monospace',
-    color: '#8b5cf6',
-    whiteSpace: 'nowrap',
-  };
-
-  const rightContentStyle: React.CSSProperties = {
-    position: 'relative',
-    display: 'flex',
-    justifyContent: 'center',
-    flex: 1,
-    width: '100%',
-  };
-
-  const glowBehindStyle: React.CSSProperties = {
-    position: 'absolute',
-    inset: '-16px',
-    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))',
-    borderRadius: '24px',
-    filter: 'blur(32px)',
-    zIndex: -1,
   };
 
   // Desktop widget style
@@ -284,36 +68,17 @@ export default function Hero({ onScrollTo }: HeroProps) {
   };
 
   // Mobile widget style (simplified)
-const mobileWidgetStyle: React.CSSProperties = {
-  width: '100%',
-  maxWidth: '100%',
-  height: 'auto',
-  background: 'linear-gradient(135deg, #180C36, #0A041B)',
-  border: '1px solid rgba(139, 92, 246, 0.3)',
-  borderRadius: '20px',
-  padding: '20px',
-  position: 'relative',
-  overflow: 'hidden',
-  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
-};
-
-  const statsBannerStyle: React.CSSProperties = {
-    border: '1px solid #e2e8f0',
-    background: 'white',
-    backdropFilter: 'blur(4px)',
-    borderRadius: '24px',
-    padding: isMobile ? 'clamp(20px, 5vw, 32px)' : '32px',
-    maxWidth: '1152px',
-    margin: isMobile ? 'clamp(32px, 8vw, 64px) auto 0' : '64px auto 0',
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-    overflowX: 'auto',
-  };
-
-  const statsGridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: isMobile ? `repeat(4, minmax(180px, 1fr))` : 'repeat(4, 1fr)',
-    gap: isMobile ? 'clamp(12px, 3vw, 24px)' : '24px',
-    minWidth: isMobile ? '560px' : 'auto',
+  const mobileWidgetStyle: React.CSSProperties = {
+    width: '100%',
+    maxWidth: '100%',
+    height: 'auto',
+    background: 'linear-gradient(135deg, #180C36, #0A041B)',
+    border: '1px solid rgba(139, 92, 246, 0.3)',
+    borderRadius: '20px',
+    padding: '20px',
+    position: 'relative',
+    overflow: 'hidden',
+    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
   };
 
   // Desktop Widget Component
@@ -321,7 +86,32 @@ const mobileWidgetStyle: React.CSSProperties = {
     <div style={desktopWidgetStyle}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '16px', marginBottom: '16px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '12px' }}>👻</span></div>
+          <div style={{
+            width: '32px',
+            height: '32px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <img 
+              src="/logo.jpg" 
+              alt="GHOSTwire Logo" 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                if (e.currentTarget.parentElement) {
+                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 16px;">👻</span>';
+                }
+              }}
+            />
+          </div>
           <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '14px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -390,7 +180,32 @@ const mobileWidgetStyle: React.CSSProperties = {
     <div style={mobileWidgetStyle}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', marginBottom: '12px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#8b5cf6', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '14px' }}>👻</span></div>
+          <div style={{
+            width: '32px',
+            height: '32px',
+            borderRadius: '50%',
+            overflow: 'hidden',
+            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}>
+            <img 
+              src="/logo.jpg" 
+              alt="GHOSTwire Logo" 
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                if (e.currentTarget.parentElement) {
+                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 16px;">👻</span>';
+                }
+              }}
+            />
+          </div>
           <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '16px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -442,7 +257,17 @@ const mobileWidgetStyle: React.CSSProperties = {
   );
 
   return (
-    <section style={sectionStyle} id="hero">
+    <section style={{
+      position: 'relative',
+      paddingTop: isMobile ? 'clamp(80px, 15vw, 128px)' : 'clamp(96px, 10vw, 128px)',
+      paddingBottom: isMobile ? 'clamp(40px, 8vw, 64px)' : 'clamp(48px, 6vw, 64px)',
+      minHeight: isMobile ? 'auto' : '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+      overflow: 'hidden'
+    }} id="hero">
       {/* Background glows - hidden on mobile for performance */}
       {!isMobile && (
         <>
@@ -460,43 +285,102 @@ const mobileWidgetStyle: React.CSSProperties = {
         pointerEvents: 'none' 
       }} />
 
-      <div style={containerStyle}>
+      <div style={{
+        maxWidth: '1280px',
+        margin: '0 auto',
+        padding: isMobile ? '0 16px' : '0 24px',
+        position: 'relative',
+        zIndex: 10,
+        width: '100%'
+      }}>
         {/* Main Grid */}
-        <div style={gridStyle}>
+        <div style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: isMobile ? 'clamp(32px, 8vw, 48px)' : '48px',
+          alignItems: 'center',
+          marginBottom: isMobile ? 'clamp(40px, 10vw, 64px)' : '64px'
+        }}>
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            style={leftContentStyle}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: isMobile ? 'clamp(16px, 5vw, 24px)' : '24px',
+              flex: 1,
+              width: '100%'
+            }}
           >
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              style={tagStyle}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                background: 'rgba(139, 92, 246, 0.1)',
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                borderRadius: '9999px',
+                padding: isMobile ? '4px 12px 4px 10px' : '6px 16px 6px 14px',
+                cursor: 'pointer',
+                alignSelf: 'flex-start'
+              }}
               onClick={() => onScrollTo('demo')}
             >
               <Zap size={isMobile ? 12 : 14} style={{ color: '#8b5cf6' }} />
-              <span style={tagTextStyle}>
+              <span style={{
+                fontSize: isMobile ? '9px' : '11px',
+                fontFamily: 'monospace',
+                color: '#334155'
+              }}>
                 {isMobile ? 'GHOSTwire auto-sniper live' : 'GHOSTwire auto-sniper live on Solana mainnet'}
               </span>
               <ChevronRight size={isMobile ? 10 : 12} style={{ color: '#8b5cf6' }} />
             </motion.div>
 
-            <div style={headingContainerStyle}>
-              <div style={headingStyle}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div style={{
+                fontSize: isMobile ? 'clamp(32px, 8vw, 44px)' : 'clamp(44px, 5vw, 56px)',
+                fontWeight: 800,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                lineHeight: 1.1,
+                color: '#0f172a',
+                letterSpacing: '-0.02em'
+              }}>
                 Auto-Snipe Solana{' '}
                 <span style={{ display: 'inline-block' }}>
-                  <span style={gradientTextStyle}>{displayText}</span>
-                  {!isTypingComplete && <span style={cursorStyle} />}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 900
+                  }}>{displayText}</span>
+                  {!isTypingComplete && <span style={{
+                    display: 'inline-block',
+                    width: '3px',
+                    height: isMobile ? 'clamp(32px, 6vw, 44px)' : '48px',
+                    background: '#8b5cf6',
+                    marginLeft: '4px',
+                    animation: 'pulse 1s step-end infinite'
+                  }} />}
                 </span>
               </div>
               <motion.p
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                style={descriptionStyle}
+                style={{
+                  fontSize: isMobile ? 'clamp(14px, 4vw, 16px)' : '18px',
+                  color: '#475569',
+                  lineHeight: 1.625,
+                  maxWidth: '550px'
+                }}
               >
                 The fastest Telegram sniper bot for Solana. Auto-detect signals from private & public channels, execute instant trades via Jupiter API, and track your portfolio P&L dynamically.
               </motion.p>
@@ -506,13 +390,46 @@ const mobileWidgetStyle: React.CSSProperties = {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              style={ctaContainerStyle}
+              style={{
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: isMobile ? '12px' : '16px',
+                marginTop: '8px',
+                width: '100%'
+              }}
             >
-              <a href="https://t.me/@ghowr_bot" target="_blank" rel="noreferrer" style={primaryBtnStyle}>
+              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={{
+                padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+                borderRadius: '12px',
+                background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                color: 'white',
+                fontWeight: 600,
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                textAlign: 'center',
+                flex: isMobile ? 1 : 'auto'
+              }}>
                 <span>{isMobile ? 'Start Trading' : 'Start Trading on Telegram'}</span>
                 <ArrowUpRight size={16} />
               </a>
-              <button onClick={() => onScrollTo('demo')} style={secondaryBtnStyle}>
+              <button onClick={() => onScrollTo('demo')} style={{
+                padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+                borderRadius: '12px',
+                background: '#f1f5f9',
+                border: '1px solid #e2e8f0',
+                color: '#334155',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                cursor: 'pointer',
+                flex: isMobile ? 1 : 'auto'
+              }}>
                 <span>{isMobile ? 'Watch Demo' : 'Watch Demo Run'}</span>
                 <Terminal size={16} style={{ color: '#06b6d4' }} />
               </button>
@@ -522,34 +439,101 @@ const mobileWidgetStyle: React.CSSProperties = {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              style={quickStartStyle}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '12px',
+                background: 'white',
+                borderRadius: '16px',
+                padding: isMobile ? '12px 16px' : '16px',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : '400px',
+                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+                border: '1px solid #e2e8f0',
+                flexWrap: isMobile ? 'wrap' : 'nowrap'
+              }}
             >
-              <div style={quickStartLeftStyle}>
-                <div style={quickStartSymbolStyle}>$</div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                flex: 1
+              }}>
+                <div style={{
+                  width: '28px',
+                  height: '28px',
+                  background: '#f1f5f9',
+                  borderRadius: '8px',
+                  border: '1px solid #e2e8f0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontFamily: 'monospace',
+                  fontSize: '10px',
+                  color: '#64748b'
+                }}>$</div>
                 <div style={{ flex: 1 }}>
-                  <p style={quickStartLabelStyle}>Quick Summon</p>
-                  <p style={quickStartBotStyle}>t.me/@ghowr_bot</p>
+                  <p style={{
+                    fontSize: '10px',
+                    textTransform: 'uppercase',
+                    fontFamily: 'monospace',
+                    color: '#64748b'
+                  }}>Quick Summon</p>
+                  <p style={{
+                    fontSize: isMobile ? '11px' : '12px',
+                    fontFamily: 'monospace',
+                    color: '#8b5cf6',
+                    wordBreak: 'break-all'
+                  }}>t.me/ghostwire_bot</p>
                 </div>
               </div>
-              <button onClick={handleCopyCode} style={copyBtnStyle}>
+              <button onClick={handleCopyCode} style={{
+                padding: '8px 12px',
+                background: 'rgba(139, 92, 246, 0.1)',
+                border: '1px solid rgba(139, 92, 246, 0.2)',
+                borderRadius: '12px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                fontSize: '12px',
+                fontFamily: 'monospace',
+                color: '#8b5cf6',
+                whiteSpace: 'nowrap'
+              }}>
                 {copiedText ? <Check size={14} style={{ color: '#10b981' }} /> : <Copy size={14} />}
                 {copiedText ? 'Copied' : 'Copy'}
               </button>
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Widget (shows on both mobile and desktop) */}
+          {/* Right Content - Widget */}
           <motion.div
             initial={{ opacity: 0, x: 200, rotate: 5, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, type: "spring", stiffness: 100, damping: 15 }}
-            style={rightContentStyle}
+            style={{
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'center',
+              flex: 1,
+              width: '100%'
+            }}
           >
             <motion.div
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              style={!isMobile ? glowBehindStyle : undefined}
+              style={{
+                position: 'absolute',
+                inset: '-16px',
+                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))',
+                borderRadius: '24px',
+                filter: 'blur(32px)',
+                zIndex: -1,
+                display: !isMobile ? 'block' : 'none'
+              }}
             />
             {isMobile ? <MobileWidget /> : <DesktopWidget />}
           </motion.div>
@@ -560,9 +544,24 @@ const mobileWidgetStyle: React.CSSProperties = {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          style={statsBannerStyle}
+          style={{
+            border: '1px solid #e2e8f0',
+            background: 'white',
+            backdropFilter: 'blur(4px)',
+            borderRadius: '24px',
+            padding: isMobile ? 'clamp(20px, 5vw, 32px)' : '32px',
+            maxWidth: '1152px',
+            margin: isMobile ? 'clamp(32px, 8vw, 64px) auto 0' : '64px auto 0',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+            overflowX: 'auto'
+          }}
         >
-          <div style={statsGridStyle}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? 'repeat(4, minmax(180px, 1fr))' : 'repeat(4, 1fr)',
+            gap: isMobile ? 'clamp(12px, 3vw, 24px)' : '24px',
+            minWidth: isMobile ? '560px' : 'auto'
+          }}>
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
               return (
@@ -611,13 +610,6 @@ const mobileWidgetStyle: React.CSSProperties = {
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: 0; }
-        }
-        
-        /* Additional responsive styles */
-        @media (max-width: 768px) {
-          .hide-on-mobile {
-            display: none;
-          }
         }
       `}</style>
     </section>

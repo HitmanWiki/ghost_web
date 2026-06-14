@@ -305,7 +305,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
               }}
             >
               <img 
-                src="/logo.png" 
+                src="/logo.jpg" 
                 alt="GHOSTwire Logo" 
                 style={logoImageStyle}
                 onError={(e) => {
@@ -407,7 +407,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
               {/* Mobile Logo */}
               <div style={mobileLogoContainerStyle}>
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpg" 
                   alt="GHOSTwire Logo" 
                   style={mobileLogoImageStyle}
                   onError={(e) => {

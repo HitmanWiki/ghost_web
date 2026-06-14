@@ -755,70 +755,69 @@ export default function InteractiveFlow() {
                 overflow: 'hidden'
               }}
             >
-              {/* Header with Logo */}
-              <div style={{
-                background: '#150D2E',
-                borderBottom: '1px solid rgba(139, 92, 246, 0.2)',
-                padding: '14px 20px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                flexShrink: 0
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div style={{
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    overflow: 'hidden',
-                    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
-                  }}>
-                    <img 
-                      src="/logo.jpg" 
-                      alt="GHOSTwire Logo" 
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                        if (e.currentTarget.parentElement) {
-                          e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 20px;">👻</span>';
-                        }
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <h4 style={{ fontSize: '14px', fontWeight: 'bold', color: 'white' }}>GHOSTwire</h4>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <div style={{
-                        width: '6px',
-                        height: '6px',
-                        borderRadius: '50%',
-                        background: '#22c55e',
-                        animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
-                      }} />
-                      <p style={{
-                        fontSize: '10px',
-                        color: 'rgba(0, 255, 255, 0.8)',
-                        fontFamily: 'monospace'
-                      }}>Online • Derived Wallet Active</p>
-                    </div>
-                  </div>
-                </div>
-                <motion.div 
-                  animate={{ rotate: [0, 5, 0, -5, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <Bot style={{ width: '20px', height: '20px', color: '#9ca3af' }} />
-                </motion.div>
-              </div>
-
+            {/* Header with Logo */}
+<div style={{
+  background: '#150D2E',
+  borderBottom: '1px solid rgba(139, 92, 246, 0.2)',
+  padding: '14px 20px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  flexShrink: 0
+}}>
+  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+    <div style={{
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      overflow: 'hidden',
+      background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+    }}>
+      <img 
+        src="/logo.jpg" 
+        alt="GHOSTwire Logo" 
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        }}
+        onError={(e) => {
+          e.currentTarget.style.display = 'none';
+          if (e.currentTarget.parentElement) {
+            e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 20px;">👻</span>';
+          }
+        }}
+      />
+    </div>
+    <div>
+      <h4 style={{ fontSize: '14px', fontWeight: 'bold', color: 'white' }}>GHOSTwire</h4>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <div style={{
+          width: '6px',
+          height: '6px',
+          borderRadius: '50%',
+          background: '#22c55e',
+          animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+        }} />
+        <p style={{
+          fontSize: '10px',
+          color: 'rgba(0, 255, 255, 0.8)',
+          fontFamily: 'monospace'
+        }}>Online • Derived Wallet Active</p>
+      </div>
+    </div>
+  </div>
+  <motion.div 
+    animate={{ rotate: [0, 5, 0, -5, 0] }}
+    transition={{ duration: 3, repeat: Infinity }}
+  >
+    <Bot style={{ width: '20px', height: '20px', color: '#9ca3af' }} />
+  </motion.div>
+</div>
               {/* Chat Messages - Auto-scrolling */}
               <div 
                 ref={chatContainerRef}
