@@ -400,7 +400,7 @@ export default function Footer() {
             <a href="#" style={logoContainerStyle}>
               <div style={logoSymbolStyle}>
                 <img 
-                  src="/logo.png" 
+                  src="/logo.jpg" 
                   alt="GHOSTwire Logo" 
                   style={logoImageStyle}
                   onError={(e) => {
