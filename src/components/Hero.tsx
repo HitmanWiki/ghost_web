@@ -47,7 +47,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
   }, []);
 
   const handleCopyCode = () => {
-    navigator.clipboard.writeText('t.me/ghostwire_bot');
+    navigator.clipboard.writeText('t.me/ghowr_bot');
     setCopiedText(true);
     setTimeout(() => setCopiedText(false), 2000);
   };
@@ -398,7 +398,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 width: '100%'
               }}
             >
-              <a href="https://t.me/ghostwire_bot" target="_blank" rel="noreferrer" style={{
+              <a href="https://t.me/ghowr_bot" target="_blank" rel="noreferrer" style={{
                 padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
                 borderRadius: '12px',
                 background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
@@ -485,7 +485,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
                     fontFamily: 'monospace',
                     color: '#8b5cf6',
                     wordBreak: 'break-all'
-                  }}>t.me/ghostwire_bot</p>
+                  }}>t.me/ghowr_bot</p>
                 </div>
               </div>
               <button onClick={handleCopyCode} style={{
