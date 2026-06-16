@@ -616,14 +616,14 @@ export default function Token() {
                 }}
               >
                 <span style={{ fontSize: '18px' }}>𝕏</span>
-                Twitter (X)
+                Twitter
               </motion.a>
             </div>
           </motion.div>
         </div>
 
         {/* Disclaimer - NOW MUCH LARGER */}
-        <motion.p 
+        {/* <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -644,10 +644,10 @@ export default function Token() {
             background: 'rgba(139, 92, 246, 0.03)',
             borderRadius: '12px',
             border: '1px solid rgba(139, 92, 246, 0.04)',
-          }}
-        >
-          ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research.
-        </motion.p>
+          }} */}
+        {/* > */}
+          {/* ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research. */}
+        {/* </motion.p> */}
 
       </div>
 
