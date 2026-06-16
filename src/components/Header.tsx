@@ -338,7 +338,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
               </button>
             ))}
             <a
-              href="https://scrap-docs.vercel.app/"
+              href="https://docs.ghostwirebot.tech/"
               target="_blank"
               rel="noreferrer"
               style={docsLinkStyle}
@@ -434,7 +434,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
                   </button>
                 ))}
                 <a
-                  href="https://scrap-docs.vercel.app/"
+                  href="https://docs.ghostwirebot.tech/"
                   target="_blank"
                   rel="noreferrer"
                   style={mobileLinkStyle}

@@ -439,7 +439,7 @@ export default function Footer() {
                 Launch Telegram Bot <ArrowUpRight size={isMobile ? 10 : 12} />
               </a>
               <a 
-                href="https://scrap-docs.vercel.app/" 
+                href="https://docs.ghostwirebot.tech/" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}
