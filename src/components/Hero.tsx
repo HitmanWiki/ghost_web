@@ -639,6 +639,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               </motion.p>
             </div>
 
+            {/* Start Trading & Watch Demo - NOW IN 1 ROW */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -648,7 +649,8 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 flexDirection: isMobile ? 'column' : 'row',
                 gap: isMobile ? '12px' : '16px',
                 marginTop: '8px',
-                width: '100%'
+                width: '100%',
+                flexWrap: isMobile ? 'wrap' : 'nowrap',
               }}
             >
               <a href="https://t.me/ghowr_bot" target="_blank" rel="noreferrer" style={{
@@ -668,6 +670,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 flex: isMobile ? 1 : 'auto',
                 transition: 'all 0.3s ease',
                 fontSize: isMobile ? 'clamp(15px, 3.5vw, 17px)' : 'clamp(16px, 1.1vw, 18px)',
+                whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
@@ -696,6 +699,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 flex: isMobile ? 1 : 'auto',
                 fontSize: isMobile ? 'clamp(15px, 3.5vw, 17px)' : 'clamp(16px, 1.1vw, 18px)',
                 transition: 'all 0.3s ease',
+                whiteSpace: 'nowrap',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
@@ -710,6 +714,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               </button>
             </motion.div>
 
+            {/* Quick Support - NOW IN 1 ROW */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -721,23 +726,24 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 gap: '12px',
                 background: 'rgba(255, 255, 255, 0.02)',
                 borderRadius: '14px',
-                padding: isMobile ? '10px 14px' : '14px 18px',
+                padding: isMobile ? '10px 14px' : '12px 20px',
                 width: '100%',
                 maxWidth: isMobile ? '100%' : '420px',
                 border: '1px solid rgba(139, 92, 246, 0.08)',
-                flexWrap: isMobile ? 'wrap' : 'nowrap',
                 backdropFilter: 'blur(8px)',
+                flexWrap: 'nowrap',
               }}
             >
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '10px',
-                flex: 1
+                gap: '12px',
+                flex: 1,
+                minWidth: 0,
               }}>
                 <div style={{
-                  width: '32px',
-                  height: '32px',
+                  width: isMobile ? '28px' : '32px',
+                  height: isMobile ? '28px' : '32px',
                   background: 'rgba(139, 92, 246, 0.08)',
                   borderRadius: '8px',
                   border: '1px solid rgba(139, 92, 246, 0.1)',
@@ -745,42 +751,52 @@ export default function Hero({ onScrollTo }: HeroProps) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontFamily: 'monospace',
-                  fontSize: '14px',
-                  color: '#a78bfa'
+                  fontSize: isMobile ? '12px' : '14px',
+                  color: '#a78bfa',
+                  flexShrink: 0,
                 }}>💬</div>
-                <div style={{ flex: 1 }}>
-                  <p style={{
+                <div style={{ 
+                  flex: 1, 
+                  minWidth: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: isMobile ? '6px' : '10px',
+                  flexWrap: 'wrap',
+                }}>
+                  <span style={{
                     fontSize: isMobile ? 'clamp(9px, 2vw, 10px)' : 'clamp(10px, 0.7vw, 11px)',
                     textTransform: 'uppercase',
                     fontFamily: 'monospace',
                     color: '#9ca3af',
                     letterSpacing: '0.05em',
                     fontWeight: 600,
-                  }}>Quick Support</p>
-                  <p style={{
-                    fontSize: isMobile ? 'clamp(13px, 3vw, 15px)' : 'clamp(14px, 1vw, 16px)',
+                    whiteSpace: 'nowrap',
+                  }}>Quick Support</span>
+                  <span style={{
+                    fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 0.9vw, 15px)',
                     fontFamily: 'monospace',
                     color: '#a78bfa',
-                    wordBreak: 'break-all',
                     fontWeight: 600,
-                  }}>t.me/ghowr_bot</p>
+                    wordBreak: 'break-all',
+                  }}>t.me/ghowr_bot</span>
                 </div>
               </div>
               <button onClick={handleCopyCode} style={{
-                padding: isMobile ? '8px 16px' : '10px 20px',
+                padding: isMobile ? '6px 14px' : '8px 18px',
                 background: 'rgba(139, 92, 246, 0.12)',
                 border: '1px solid rgba(139, 92, 246, 0.15)',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 0.9vw, 15px)',
+                gap: '6px',
+                fontSize: isMobile ? 'clamp(11px, 2vw, 13px)' : 'clamp(12px, 0.8vw, 14px)',
                 fontFamily: "'Inter', sans-serif",
                 fontWeight: 600,
                 color: '#a78bfa',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.3s ease',
+                flexShrink: 0,
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
@@ -790,7 +806,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 e.currentTarget.style.background = 'rgba(139, 92, 246, 0.12)';
                 e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
               }}>
-                {copiedText ? <Check size={isMobile ? 16 : 18} style={{ color: '#34d399' }} /> : <Copy size={isMobile ? 16 : 18} />}
+                {copiedText ? <Check size={isMobile ? 14 : 16} style={{ color: '#34d399' }} /> : <Copy size={isMobile ? 14 : 16} />}
                 {copiedText ? 'Copied!' : 'Copy'}
               </button>
             </motion.div>
@@ -827,7 +843,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Stats Banner - NOW MUCH LARGER */}
+        {/* Stats Banner */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
