@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef, useState } from 'react';
-import { Coins, TrendingUp, Users, ArrowUpRight, Copy, Check, Sparkles, Zap, Crown, MessageCircle, ExternalLink, Lock, Ticket, Gift, Star } from 'lucide-react';
+import { Coins, TrendingUp, Users, ArrowUpRight, Copy, Check, Sparkles, Zap, Crown, MessageCircle, ExternalLink, Lock, Gift, Star, Rocket, Shield, Award } from 'lucide-react';
 
 export default function Token() {
   const [copiedAddress, setCopiedAddress] = useState(false);
@@ -18,16 +18,16 @@ export default function Token() {
   const dexToolsLink = "https://www.dextools.io/app/en/solana/pair/GHOSTpumpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 
   const tokenStats = [
-    { label: 'Total Supply', value: '1,000,000,000', icon: Coins },
-    { label: 'Tax', value: '0/0', icon: TrendingUp, sub: 'Buy/Sell' },
-    { label: 'Liquidity', value: '100%', icon: Lock, sub: 'Locked' },
-    { label: 'Mint', value: 'Renounced', icon: Crown, sub: 'Authority' },
+    { label: 'Total Supply', value: '1,000,000,000', icon: Coins, color: '#a78bfa' },
+    { label: 'Tax', value: '0/0', icon: TrendingUp, sub: 'Buy/Sell', color: '#34d399' },
+    { label: 'Liquidity', value: '100%', icon: Lock, sub: 'Locked', color: '#67e8f9' },
+    { label: 'Mint', value: 'Renounced', icon: Crown, sub: 'Authority', color: '#fcd34d' },
   ];
 
   const links = [
-    { name: 'pump.fun', url: pumpFunLink, icon: ExternalLink, color: 'from-purple-500 to-pink-500' },
-    { name: 'DexScreener', url: dexscreenerLink, icon: ExternalLink, color: 'from-amber-500 to-orange-500' },
-    { name: 'DEXTools', url: dexToolsLink, icon: ExternalLink, color: 'from-blue-500 to-cyan-500' },
+    { name: 'pump.fun', url: pumpFunLink, icon: Rocket, gradient: 'linear-gradient(135deg, #a855f7, #ec4899)' },
+    { name: 'DexScreener', url: dexscreenerLink, icon: TrendingUp, gradient: 'linear-gradient(135deg, #f59e0b, #f97316)' },
+    { name: 'DEXTools', url: dexToolsLink, icon: Shield, gradient: 'linear-gradient(135deg, #3b82f6, #06b6d4)' },
   ];
 
   const copyToClipboard = () => {
@@ -36,28 +36,14 @@ export default function Token() {
     setTimeout(() => setCopiedAddress(false), 2000);
   };
 
-  // Helper function to get gradient background
-  const getGradientBackground = (color) => {
-    switch(color) {
-      case 'from-purple-500 to-pink-500':
-        return 'linear-gradient(135deg, #a855f7, #ec4899)';
-      case 'from-amber-500 to-orange-500':
-        return 'linear-gradient(135deg, #f59e0b, #f97316)';
-      case 'from-blue-500 to-cyan-500':
-        return 'linear-gradient(135deg, #3b82f6, #06b6d4)';
-      default:
-        return 'linear-gradient(135deg, #a855f7, #ec4899)';
-    }
-  };
-
   return (
     <motion.section 
       ref={sectionRef}
       style={{
-        padding: '96px 0',
+        padding: 'clamp(60px, 10vw, 96px) 0',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)'
+        background: 'radial-gradient(ellipse at 20% 30%, #1a0a2e 0%, #0A041B 40%, #060012 100%)',
       }}
       id="token"
     >
@@ -69,7 +55,7 @@ export default function Token() {
           left: '-160px',
           width: '320px',
           height: '320px',
-          background: 'rgba(139, 92, 246, 0.08)',
+          background: 'rgba(139, 92, 246, 0.05)',
           borderRadius: '50%',
           filter: 'blur(100px)',
           y: bgY
@@ -84,7 +70,7 @@ export default function Token() {
           right: '-160px',
           width: '320px',
           height: '320px',
-          background: 'rgba(6, 182, 212, 0.08)',
+          background: 'rgba(6, 182, 212, 0.04)',
           borderRadius: '50%',
           filter: 'blur(100px)',
           y: bgY
@@ -92,6 +78,16 @@ export default function Token() {
         animate={{ scale: [1.2, 1, 1.2], x: [0, -20, 0], y: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
       />
+
+      {/* Grid pattern */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
+        opacity: 0.25,
+        pointerEvents: 'none',
+      }} />
 
       <div style={{
         maxWidth: '1152px',
@@ -108,21 +104,24 @@ export default function Token() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             style={{
-              padding: '4px 12px',
-              fontSize: '10px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '4px 14px 4px 10px',
+              fontSize: '12px',
               fontFamily: 'monospace',
               fontWeight: 500,
               borderRadius: '9999px',
-              background: 'rgba(139, 92, 246, 0.1)',
-              color: '#8b5cf6',
+              background: 'rgba(139, 92, 246, 0.12)',
+              color: '#a78bfa',
               border: '1px solid rgba(139, 92, 246, 0.2)',
               textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              display: 'inline-block',
+              letterSpacing: '0.05em',
               marginBottom: '16px'
             }}
           >
-            <Sparkles style={{ width: '12px', height: '12px', display: 'inline', marginRight: '4px' }} /> Ecosystem Token
+            <Sparkles size={14} style={{ color: '#a78bfa' }} />
+            Ecosystem Token
           </motion.span>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
@@ -130,13 +129,24 @@ export default function Token() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             style={{
-              fontSize: 'clamp(36px, 5vw, 48px)',
+              fontSize: 'clamp(40px, 6vw, 56px)',
               fontWeight: 900,
-              color: '#0f172a',
-              marginBottom: '16px'
+              fontFamily: "'Inter', sans-serif",
+              color: '#ffffff',
+              letterSpacing: '-0.03em',
+              marginBottom: '16px',
+              lineHeight: 1.1,
             }}
           >
-            $GHOST Token
+            <span style={{
+              background: 'linear-gradient(135deg, #c084fc, #8b5cf6, #7c3aed)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}>
+              $GHOST
+            </span>{' '}
+            Token
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -144,9 +154,12 @@ export default function Token() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             style={{
-              color: '#475569',
+              color: '#c4b5fd',
               maxWidth: '672px',
-              margin: '0 auto'
+              margin: '0 auto',
+              fontSize: 'clamp(16px, 2.5vw, 18px)',
+              lineHeight: 1.7,
+              fontWeight: 400,
             }}
           >
             The official token of the GHOSTwire ecosystem. Fair launched on pump.fun with zero taxes.
@@ -161,7 +174,7 @@ export default function Token() {
           transition={{ delay: 0.3 }}
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
             gap: '16px',
             marginBottom: '48px'
           }}
@@ -169,23 +182,70 @@ export default function Token() {
           {tokenStats.map((stat, idx) => {
             const Icon = stat.icon;
             return (
-              <div key={idx} style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '20px',
-                textAlign: 'center',
-                border: '1px solid #e2e8f0',
-                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                transition: 'box-shadow 0.3s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1)'}
-              onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 1px 2px 0 rgba(0, 0, 0, 0.05)'}
+              <motion.div 
+                key={idx} 
+                whileHover={{ y: -4, scale: 1.02 }}
+                style={{
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  borderRadius: '16px',
+                  padding: '24px 20px',
+                  textAlign: 'center',
+                  border: '1px solid rgba(139, 92, 246, 0.08)',
+                  backdropFilter: 'blur(8px)',
+                  transition: 'all 0.3s ease',
+                }}
               >
-                <Icon style={{ width: '24px', height: '24px', color: '#8b5cf6', margin: '0 auto 8px auto' }} />
-                <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#0f172a' }}>{stat.value}</div>
-                <div style={{ fontSize: '12px', color: '#64748b' }}>{stat.label}</div>
-                {stat.sub && <div style={{ fontSize: '10px', color: '#94a3b8', marginTop: '4px' }}>{stat.sub}</div>}
-              </div>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '12px',
+                }}>
+                  <div style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '12px',
+                    background: `rgba(139, 92, 246, 0.08)`,
+                    border: '1px solid rgba(139, 92, 246, 0.1)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <Icon size={24} style={{ color: stat.color }} />
+                  </div>
+                </div>
+                <div style={{ 
+                  fontSize: 'clamp(28px, 4vw, 36px)', 
+                  fontWeight: 800, 
+                  fontFamily: "'Inter', sans-serif",
+                  color: '#ffffff',
+                  letterSpacing: '-0.02em',
+                  lineHeight: 1.2,
+                }}>
+                  {stat.value}
+                </div>
+                <div style={{ 
+                  fontSize: 'clamp(13px, 1.5vw, 15px)', 
+                  color: '#c4b5fd',
+                  fontWeight: 600,
+                  fontFamily: "'Inter', sans-serif",
+                  marginTop: '4px',
+                }}>
+                  {stat.label}
+                </div>
+                {stat.sub && (
+                  <div style={{ 
+                    fontSize: 'clamp(11px, 1vw, 12px)', 
+                    color: '#6b7280',
+                    fontWeight: 400,
+                    fontFamily: 'monospace',
+                    marginTop: '2px',
+                    letterSpacing: '0.05em',
+                  }}>
+                    {stat.sub}
+                  </div>
+                )}
+              </motion.div>
             );
           })}
         </motion.div>
@@ -197,12 +257,12 @@ export default function Token() {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
           style={{
-            background: 'white',
+            background: 'rgba(255, 255, 255, 0.02)',
             borderRadius: '16px',
-            padding: '24px',
-            border: '1px solid #e2e8f0',
-            boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-            marginBottom: '32px'
+            padding: '24px 28px',
+            border: '1px solid rgba(139, 92, 246, 0.08)',
+            backdropFilter: 'blur(8px)',
+            marginBottom: '32px',
           }}
         >
           <div style={{
@@ -210,38 +270,78 @@ export default function Token() {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '16px'
+            gap: '16px',
           }}>
             <div style={{ width: '100%' }}>
-              <p style={{ fontSize: '12px', color: '#64748b', fontFamily: 'monospace', marginBottom: '4px' }}>Token Contract Address</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <p style={{ 
+                fontSize: 'clamp(11px, 1vw, 12px)', 
+                color: '#9ca3af', 
+                fontFamily: 'monospace',
+                fontWeight: 500,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                marginBottom: '8px',
+              }}>
+                📋 Token Contract Address
+              </p>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '12px',
+                flexWrap: 'wrap',
+              }}>
                 <code style={{
-                  fontSize: '14px',
+                  fontSize: 'clamp(14px, 1.5vw, 16px)',
                   fontFamily: 'monospace',
-                  color: '#334155',
-                  background: '#f1f5f9',
-                  padding: '8px 12px',
-                  borderRadius: '8px',
+                  fontWeight: 600,
+                  color: '#e5e7eb',
+                  background: 'rgba(139, 92, 246, 0.06)',
+                  padding: '10px 16px',
+                  borderRadius: '10px',
                   wordBreak: 'break-all',
-                  flex: 1
+                  flex: 1,
+                  border: '1px solid rgba(139, 92, 246, 0.06)',
                 }}>
                   {tokenAddress.slice(0, 20)}...{tokenAddress.slice(-16)}
                 </code>
                 <button 
                   onClick={copyToClipboard}
                   style={{
-                    padding: '8px',
-                    borderRadius: '8px',
-                    background: '#f1f5f9',
-                    border: 'none',
+                    padding: '10px 18px',
+                    borderRadius: '10px',
+                    background: 'rgba(139, 92, 246, 0.08)',
+                    border: '1px solid rgba(139, 92, 246, 0.1)',
                     cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    flexShrink: 0
+                    transition: 'all 0.3s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    fontSize: 'clamp(12px, 1vw, 13px)',
+                    fontFamily: "'Inter', sans-serif",
+                    fontWeight: 600,
+                    color: '#a78bfa',
+                    flexShrink: 0,
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#e2e8f0'}
-                  onMouseLeave={(e) => e.currentTarget.style.background = '#f1f5f9'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.08)';
+                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.1)';
+                  }}
                 >
-                  {copiedAddress ? <Check style={{ width: '16px', height: '16px', color: '#22c55e' }} /> : <Copy style={{ width: '16px', height: '16px', color: '#64748b' }} />}
+                  {copiedAddress ? (
+                    <>
+                      <Check size={16} style={{ color: '#34d399' }} />
+                      <span style={{ color: '#34d399' }}>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={16} />
+                      <span>Copy</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -262,31 +362,38 @@ export default function Token() {
           }}
         >
           {links.map((link, idx) => (
-            <a 
+            <motion.a 
               key={idx}
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              whileHover={{ y: -3, scale: 1.02 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '16px',
-                borderRadius: '12px',
-                background: getGradientBackground(link.color),
+                padding: '16px 20px',
+                borderRadius: '14px',
+                background: link.gradient,
                 color: 'white',
                 textDecoration: 'none',
-                transition: 'opacity 0.2s ease'
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.9'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
-              <span style={{ fontWeight: 600, fontSize: '14px' }}>{link.name}</span>
-              <link.icon style={{ width: '16px', height: '16px', transition: 'transform 0.2s ease' }} 
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateX(2px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateX(0)'}
-              />
-            </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <link.icon size={18} />
+                <span style={{ 
+                  fontWeight: 700, 
+                  fontSize: 'clamp(14px, 1.2vw, 16px)',
+                  fontFamily: "'Inter', sans-serif",
+                  letterSpacing: '-0.01em',
+                }}>
+                  {link.name}
+                </span>
+              </div>
+              <ArrowUpRight size={18} style={{ opacity: 0.7 }} />
+            </motion.a>
           ))}
         </motion.div>
 
@@ -294,8 +401,8 @@ export default function Token() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '32px',
-          marginBottom: '48px'
+          gap: '24px',
+          marginBottom: '32px'
         }}>
           {/* Token Info Card */}
           <motion.div 
@@ -304,42 +411,109 @@ export default function Token() {
             viewport={{ once: true }}
             transition={{ delay: 0.6 }}
             style={{
-              background: 'white',
+              background: 'rgba(255, 255, 255, 0.02)',
               borderRadius: '16px',
               padding: '24px',
-              border: '1px solid #e2e8f0',
-              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+              border: '1px solid rgba(139, 92, 246, 0.08)',
+              backdropFilter: 'blur(8px)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
               <div style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '12px',
                 background: 'rgba(139, 92, 246, 0.1)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                border: '1px solid rgba(139, 92, 246, 0.1)',
               }}>
-                <Zap style={{ width: '20px', height: '20px', color: '#8b5cf6' }} />
+                <Zap size={22} style={{ color: '#a78bfa' }} />
               </div>
-              <h3 style={{ fontWeight: 'bold', color: '#0f172a' }}>About $GHOST</h3>
+              <h3 style={{ 
+                fontWeight: 700, 
+                color: '#ffffff',
+                fontSize: 'clamp(18px, 2vw, 20px)',
+                fontFamily: "'Inter', sans-serif",
+              }}>
+                About $GHOST
+              </h3>
             </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '14px', color: '#475569' }}>
-                <span style={{ color: '#8b5cf6', marginTop: '2px' }}>◆</span>
+            <ul style={{ 
+              listStyle: 'none', 
+              padding: 0, 
+              margin: 0, 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '14px' 
+            }}>
+              <li style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start', 
+                gap: '12px', 
+                fontSize: 'clamp(14px, 1.2vw, 15px)', 
+                color: '#c4b5fd',
+                fontWeight: 400,
+                lineHeight: 1.6,
+              }}>
+                <span style={{ 
+                  color: '#a78bfa', 
+                  marginTop: '2px',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                }}>◆</span>
                 <span>Fair launched on pump.fun — no presale, no team allocation</span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '14px', color: '#475569' }}>
-                <span style={{ color: '#8b5cf6', marginTop: '2px' }}>◆</span>
+              <li style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start', 
+                gap: '12px', 
+                fontSize: 'clamp(14px, 1.2vw, 15px)', 
+                color: '#c4b5fd',
+                fontWeight: 400,
+                lineHeight: 1.6,
+              }}>
+                <span style={{ 
+                  color: '#34d399', 
+                  marginTop: '2px',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                }}>◆</span>
                 <span>Zero taxes on buys and sells — trade freely</span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '14px', color: '#475569' }}>
-                <span style={{ color: '#8b5cf6', marginTop: '2px' }}>◆</span>
+              <li style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start', 
+                gap: '12px', 
+                fontSize: 'clamp(14px, 1.2vw, 15px)', 
+                color: '#c4b5fd',
+                fontWeight: 400,
+                lineHeight: 1.6,
+              }}>
+                <span style={{ 
+                  color: '#67e8f9', 
+                  marginTop: '2px',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                }}>◆</span>
                 <span>Liquidity locked — safe and secure</span>
               </li>
-              <li style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '14px', color: '#475569' }}>
-                <span style={{ color: '#8b5cf6', marginTop: '2px' }}>◆</span>
+              <li style={{ 
+                display: 'flex', 
+                alignItems: 'flex-start', 
+                gap: '12px', 
+                fontSize: 'clamp(14px, 1.2vw, 15px)', 
+                color: '#c4b5fd',
+                fontWeight: 400,
+                lineHeight: 1.6,
+              }}>
+                <span style={{ 
+                  color: '#fcd34d', 
+                  marginTop: '2px',
+                  fontSize: '18px',
+                  fontWeight: 700,
+                }}>◆</span>
                 <span>Mint authority renounced — no more tokens can be created</span>
               </li>
             </ul>
@@ -352,86 +526,103 @@ export default function Token() {
             viewport={{ once: true }}
             transition={{ delay: 0.7 }}
             style={{
-              background: 'white',
+              background: 'rgba(255, 255, 255, 0.02)',
               borderRadius: '16px',
               padding: '24px',
-              border: '1px solid #e2e8f0',
-              boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+              border: '1px solid rgba(139, 92, 246, 0.08)',
+              backdropFilter: 'blur(8px)',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
               <div style={{
-                width: '40px',
-                height: '40px',
+                width: '44px',
+                height: '44px',
                 borderRadius: '12px',
-                background: 'rgba(6, 182, 212, 0.1)',
+                background: 'rgba(6, 182, 212, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                border: '1px solid rgba(6, 182, 212, 0.1)',
               }}>
-                <Users style={{ width: '20px', height: '20px', color: '#06b6d4' }} />
+                <Users size={22} style={{ color: '#67e8f9' }} />
               </div>
-              <h3 style={{ fontWeight: 'bold', color: '#0f172a' }}>Community</h3>
+              <h3 style={{ 
+                fontWeight: 700, 
+                color: '#ffffff',
+                fontSize: 'clamp(18px, 2vw, 20px)',
+                fontFamily: "'Inter', sans-serif",
+              }}>
+                Community
+              </h3>
             </div>
-            <p style={{ fontSize: '14px', color: '#475569', marginBottom: '16px' }}>
+            <p style={{ 
+              fontSize: 'clamp(14px, 1.2vw, 15px)', 
+              color: '#c4b5fd',
+              lineHeight: 1.7,
+              fontWeight: 400,
+              marginBottom: '16px',
+            }}>
               Join the fastest growing Solana sniper community. Get real-time updates, alpha calls, and connect with thousands of traders.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
-              <a 
+              <motion.a 
                 href="https://t.me/ghost_wirebot" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                whileHover={{ y: -2, scale: 1.02 }}
                 style={{
                   flex: 1,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  padding: '10px 16px',
+                  gap: '10px',
+                  padding: '14px 20px',
                   borderRadius: '12px',
                   background: '#26A5E4',
                   color: 'white',
                   textDecoration: 'none',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  transition: 'all 0.2s ease'
+                  fontSize: 'clamp(14px, 1vw, 15px)',
+                  fontWeight: 600,
+                  fontFamily: "'Inter', sans-serif",
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 15px rgba(38, 165, 228, 0.3)',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#1e8dc0'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#26A5E4'}
               >
-                <MessageCircle style={{ width: '16px', height: '16px' }} />
+                <MessageCircle size={18} />
                 Telegram
-              </a>
-              <a 
+              </motion.a>
+              <motion.a 
                 href="https://x.com/GhostWire_bot" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                whileHover={{ y: -2, scale: 1.02 }}
                 style={{
                   flex: 1,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '8px',
-                  padding: '10px 16px',
+                  gap: '10px',
+                  padding: '14px 20px',
                   borderRadius: '12px',
-                  background: 'black',
+                  background: '#000000',
                   color: 'white',
                   textDecoration: 'none',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  transition: 'all 0.2s ease'
+                  fontSize: 'clamp(14px, 1vw, 15px)',
+                  fontWeight: 600,
+                  fontFamily: "'Inter', sans-serif",
+                  transition: 'all 0.3s ease',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  boxShadow: '0 4px 15px rgba(0,0,0,0.3)',
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#1f2937'}
-                onMouseLeave={(e) => e.currentTarget.style.background = 'black'}
               >
-                <span>𝕏</span>
+                <span style={{ fontSize: '18px' }}>𝕏</span>
                 Twitter (X)
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         </div>
 
-        {/* Disclaimer */}
+        {/* Disclaimer - NOW MUCH LARGER */}
         <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -439,15 +630,35 @@ export default function Token() {
           transition={{ delay: 0.8 }}
           style={{
             textAlign: 'center',
-            fontSize: '10px',
-            color: '#94a3b8',
-            marginTop: '16px'
+            fontSize: 'clamp(14px, 1.5vw, 17px)',
+            color: '#6b7280',
+            marginTop: '24px',
+            fontFamily: "'Inter', sans-serif",
+            fontWeight: 500,
+            letterSpacing: '0.02em',
+            maxWidth: '672px',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            lineHeight: 1.6,
+            padding: '16px 24px',
+            background: 'rgba(139, 92, 246, 0.03)',
+            borderRadius: '12px',
+            border: '1px solid rgba(139, 92, 246, 0.04)',
           }}
         >
-          $GHOST is a community-driven token with no promises of returns. Always do your own research.
+          ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research.
         </motion.p>
 
       </div>
+
+      <style>
+        {`
+          @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+          }
+        `}
+      </style>
     </motion.section>
   );
 }

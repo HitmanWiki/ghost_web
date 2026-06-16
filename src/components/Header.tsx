@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight, MessageCircle } from 'lucide-react';
+import { Menu, X, ArrowUpRight, MessageCircle, Zap } from 'lucide-react';
 
 interface HeaderProps {
   onScrollTo: (sectionId: string) => void;
@@ -9,12 +9,10 @@ interface HeaderProps {
 export default function Header({ onScrollTo }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
       setIsMobile(window.innerWidth < 768);
-      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
     };
     checkScreenSize();
     window.addEventListener('resize', checkScreenSize);
@@ -40,15 +38,16 @@ export default function Header({ onScrollTo }: HeaderProps) {
     left: 0,
     right: 0,
     zIndex: 50,
-    background: 'rgba(255, 255, 255, 0.95)',
-    backdropFilter: 'blur(12px)',
-    borderBottom: '1px solid #e2e8f0',
+    background: 'rgba(10, 4, 27, 0.92)',
+    backdropFilter: 'blur(16px)',
+    borderBottom: '1px solid rgba(139, 92, 246, 0.2)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.3)',
   };
 
   const containerStyle: React.CSSProperties = {
     maxWidth: '1280px',
     margin: '0 auto',
-    padding: isMobile ? '12px 16px' : isTablet ? '14px 24px' : '16px 24px',
+    padding: isMobile ? '12px 16px' : '16px 24px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -57,22 +56,23 @@ export default function Header({ onScrollTo }: HeaderProps) {
   const logoContainerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: isMobile ? '8px' : '12px',
+    gap: isMobile ? '10px' : '14px',
     textDecoration: 'none',
     cursor: 'pointer',
   };
 
   const logoImageContainerStyle: React.CSSProperties = {
-    width: isMobile ? '32px' : '36px',
-    height: isMobile ? '32px' : '36px',
-    borderRadius: '50%',
+    width: isMobile ? '40px' : '48px',
+    height: isMobile ? '40px' : '48px',
+    borderRadius: '12px',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 10px 15px -3px rgba(139, 92, 246, 0.25)',
-    transition: 'transform 0.3s',
+    boxShadow: '0 0 30px rgba(139, 92, 246, 0.3)',
+    transition: 'transform 0.3s, box-shadow 0.3s',
+    flexShrink: 0,
   };
 
   const logoImageStyle: React.CSSProperties = {
@@ -82,157 +82,170 @@ export default function Header({ onScrollTo }: HeaderProps) {
   };
 
   const logoTextStyle: React.CSSProperties = {
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-    fontWeight: 700,
-    fontSize: isMobile ? '1rem' : '1.25rem',
-    letterSpacing: '0.025em',
-    color: '#0f172a',
+    fontFamily: "'Plus Jakarta Sans', 'Inter', sans-serif",
+    fontWeight: 800,
+    fontSize: isMobile ? '1.25rem' : '1.5rem',
+    letterSpacing: '-0.02em',
+    color: '#ffffff',
+  };
+
+  const logoAccentStyle: React.CSSProperties = {
+    color: '#8b5cf6',
   };
 
   const navStyle: React.CSSProperties = {
     display: isMobile ? 'none' : 'flex',
     alignItems: 'center',
-    gap: isTablet ? '16px' : '32px',
+    gap: '8px',
   };
 
   const navLinkStyle: React.CSSProperties = {
-    fontSize: isTablet ? '10px' : '12px',
-    fontFamily: 'monospace',
-    color: '#475569',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    fontFamily: "'Inter', sans-serif",
+    color: '#c4b5fd',
     background: 'none',
     border: 'none',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: '4px',
-    transition: 'color 0.2s',
-    padding: '8px 4px',
+    gap: '6px',
+    padding: '10px 16px',
+    borderRadius: '10px',
+    transition: 'all 0.2s',
     whiteSpace: 'nowrap',
+    position: 'relative',
   };
 
   const navNumberStyle: React.CSSProperties = {
-    fontSize: isTablet ? '8px' : '10px',
+    fontSize: '0.7rem',
     color: '#8b5cf6',
-    fontWeight: 'bold',
+    fontWeight: 700,
+    opacity: 0.6,
   };
 
   const docsLinkStyle: React.CSSProperties = {
-    fontSize: isTablet ? '10px' : '12px',
-    fontFamily: 'monospace',
-    color: '#475569',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    fontFamily: "'Inter', sans-serif",
+    color: '#c4b5fd',
     textDecoration: 'none',
     display: 'flex',
     alignItems: 'center',
-    gap: '4px',
-    transition: 'color 0.2s',
-    padding: '8px 4px',
+    gap: '6px',
+    padding: '10px 16px',
+    borderRadius: '10px',
+    transition: 'all 0.2s',
     whiteSpace: 'nowrap',
   };
 
   const desktopCtaStyle: React.CSSProperties = {
     display: isMobile ? 'none' : 'flex',
     alignItems: 'center',
-    gap: isTablet ? '8px' : '16px',
+    gap: '12px',
   };
 
   const supportBtnStyle: React.CSSProperties = {
-    padding: isTablet ? '4px 10px' : '6px 14px',
+    padding: '10px 18px',
     borderRadius: '12px',
-    background: '#f1f5f9',
-    border: '1px solid #e2e8f0',
-    fontSize: isTablet ? '10px' : '12px',
-    fontFamily: 'monospace',
+    background: 'rgba(139, 92, 246, 0.15)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    fontSize: '0.875rem',
     fontWeight: 500,
-    color: '#334155',
+    fontFamily: "'Inter', sans-serif",
+    color: '#c4b5fd',
     display: 'flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '8px',
     textDecoration: 'none',
     transition: 'all 0.2s',
     whiteSpace: 'nowrap',
   };
 
   const startBtnStyle: React.CSSProperties = {
-    padding: isTablet ? '8px 14px' : '10px 18px',
+    padding: '10px 22px',
     borderRadius: '12px',
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     color: 'white',
-    fontSize: isTablet ? '10px' : '12px',
+    fontSize: '0.875rem',
     fontWeight: 600,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
     display: 'flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '8px',
     textDecoration: 'none',
     transition: 'all 0.2s',
     whiteSpace: 'nowrap',
+    boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)',
   };
 
   const mobileMenuBtnStyle: React.CSSProperties = {
     display: isMobile ? 'flex' : 'none',
-    padding: '8px',
-    borderRadius: '8px',
-    background: '#f1f5f9',
-    border: '1px solid #e2e8f0',
-    color: '#334155',
+    padding: '10px',
+    borderRadius: '10px',
+    background: 'rgba(139, 92, 246, 0.15)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    color: '#c4b5fd',
     cursor: 'pointer',
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: '40px',
-    minHeight: '40px',
+    minWidth: '44px',
+    minHeight: '44px',
   };
 
   const mobileDrawerStyle: React.CSSProperties = {
     position: 'fixed',
     inset: 0,
-    top: isMobile ? '57px' : '69px',
+    top: isMobile ? '69px' : '80px',
     zIndex: 40,
-    background: 'white',
-    padding: '24px 20px',
+    background: '#0A041B',
+    padding: '32px 24px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     overflowY: 'auto',
-    maxHeight: 'calc(100vh - 57px)',
+    maxHeight: 'calc(100vh - 69px)',
+    borderTop: '1px solid rgba(139, 92, 246, 0.1)',
   };
 
   const mobileLogoContainerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
-    paddingBottom: '16px',
-    borderBottom: '1px solid #e2e8f0',
-    marginBottom: '24px',
+    gap: '14px',
+    paddingBottom: '20px',
+    borderBottom: '1px solid rgba(139, 92, 246, 0.1)',
+    marginBottom: '28px',
   };
 
   const mobileLogoImageStyle: React.CSSProperties = {
-    width: '32px',
-    height: '32px',
-    borderRadius: '50%',
+    width: '44px',
+    height: '44px',
+    borderRadius: '12px',
     objectFit: 'cover',
   };
 
   const mobileLinksContainerStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
-    gap: '16px',
+    gap: '8px',
     flex: 1,
   };
 
   const mobileLinkStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '14px',
     textAlign: 'left',
-    fontSize: '1rem',
+    fontSize: '1.1rem',
     fontWeight: 500,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
-    color: '#1e293b',
-    background: 'none',
-    border: 'none',
+    fontFamily: "'Inter', sans-serif",
+    color: '#e5e7eb',
+    background: 'rgba(139, 92, 246, 0.05)',
+    border: '1px solid rgba(139, 92, 246, 0.08)',
+    borderRadius: '12px',
     cursor: 'pointer',
-    transition: 'color 0.2s',
-    padding: '12px 8px',
+    transition: 'all 0.2s',
+    padding: '16px 20px',
     width: '100%',
   };
 
@@ -241,7 +254,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
     flexDirection: 'column',
     gap: '16px',
     paddingTop: '24px',
-    borderTop: '1px solid #e2e8f0',
+    borderTop: '1px solid rgba(139, 92, 246, 0.1)',
     marginTop: 'auto',
   };
 
@@ -252,31 +265,32 @@ export default function Header({ onScrollTo }: HeaderProps) {
   };
 
   const mobileSupportBtnStyle: React.CSSProperties = {
-    padding: '14px',
+    padding: '16px',
     textAlign: 'center',
-    fontSize: '13px',
+    fontSize: '0.95rem',
     fontWeight: 500,
-    color: '#334155',
-    background: '#f1f5f9',
+    color: '#c4b5fd',
+    background: 'rgba(139, 92, 246, 0.1)',
     borderRadius: '12px',
-    border: '1px solid #e2e8f0',
+    border: '1px solid rgba(139, 92, 246, 0.15)',
     textDecoration: 'none',
     display: 'block',
+    fontFamily: "'Inter', sans-serif",
   };
 
   const mobileLaunchBtnStyle: React.CSSProperties = {
     display: 'block',
     width: '100%',
-    padding: '16px',
+    padding: '18px',
     textAlign: 'center',
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     color: 'white',
     fontWeight: 600,
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
     borderRadius: '12px',
     textDecoration: 'none',
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
-    fontSize: '14px',
+    boxShadow: '0 10px 30px rgba(139, 92, 246, 0.3)',
+    fontSize: '1rem',
   };
 
   return (
@@ -298,26 +312,28 @@ export default function Header({ onScrollTo }: HeaderProps) {
               onMouseEnter={(e) => {
                 if (!isMobile) {
                   e.currentTarget.style.transform = 'scale(1.05)';
+                  e.currentTarget.style.boxShadow = '0 0 40px rgba(139, 92, 246, 0.5)';
                 }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'scale(1)';
+                e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.3)';
               }}
             >
               <img 
                 src="/logo.jpg" 
-                alt="GHOSTwire Logo" 
+                alt="GHOSTwire" 
                 style={logoImageStyle}
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
                   if (e.currentTarget.parentElement) {
-                    e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 18px;">👻</span>';
+                    e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 24px;">👻</span>';
                   }
                 }}
               />
             </div>
             <span style={logoTextStyle}>
-              GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
+              GHOST<span style={logoAccentStyle}>wire</span>
             </span>
           </a>
 
@@ -328,13 +344,17 @@ export default function Header({ onScrollTo }: HeaderProps) {
                 key={link.label}
                 onClick={() => handleLinkClick(link.action)}
                 style={navLinkStyle}
-                onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
-                onMouseLeave={(e) => e.currentTarget.style.color = '#475569'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#ffffff';
+                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '#c4b5fd';
+                  e.currentTarget.style.background = 'none';
+                }}
               >
                 <span style={navNumberStyle}>{link.num}</span>
-                {!isTablet && link.label}
-                {isTablet && link.label === 'How It Works' && 'Demo'}
-                {isTablet && link.label !== 'How It Works' && link.label}
+                {link.label}
               </button>
             ))}
             <a
@@ -342,12 +362,18 @@ export default function Header({ onScrollTo }: HeaderProps) {
               target="_blank"
               rel="noreferrer"
               style={docsLinkStyle}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#475569'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#ffffff';
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#c4b5fd';
+                e.currentTarget.style.background = 'none';
+              }}
             >
               <span style={navNumberStyle}>06</span>
               Docs
-              <ArrowUpRight size={isTablet ? 10 : 12} style={{ color: '#64748b' }} />
+              <ArrowUpRight size={14} style={{ color: '#64748b' }} />
             </a>
           </nav>
 
@@ -359,26 +385,34 @@ export default function Header({ onScrollTo }: HeaderProps) {
               rel="noreferrer" 
               style={supportBtnStyle}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = '#e2e8f0';
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.25)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.4)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = '#f1f5f9';
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
               }}
             >
-              <MessageCircle size={isTablet ? 12 : 14} style={{ color: '#8b5cf6' }} />
-              {!isTablet && 'Support'}
-              {isTablet && 'Help'}
+              <MessageCircle size={16} style={{ color: '#8b5cf6' }} />
+              Support
             </a>
             <a
               href="https://t.me/@ghowr_bot"
               target="_blank"
               rel="noreferrer"
               style={startBtnStyle}
-              onMouseEnter={(e) => e.currentTarget.style.opacity = '0.85'}
-              onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(139, 92, 246, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.3)';
+              }}
             >
-              <span>{isTablet ? 'Trade' : 'Start Sniping'}</span>
-              <ArrowUpRight size={isTablet ? 12 : 16} />
+              <Zap size={16} />
+              <span>Start Sniping</span>
+              <ArrowUpRight size={16} />
             </a>
           </div>
 
@@ -388,7 +422,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
             style={mobileMenuBtnStyle}
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </header>
@@ -408,14 +442,14 @@ export default function Header({ onScrollTo }: HeaderProps) {
               <div style={mobileLogoContainerStyle}>
                 <img 
                   src="/logo.jpg" 
-                  alt="GHOSTwire Logo" 
+                  alt="GHOSTwire" 
                   style={mobileLogoImageStyle}
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
                 />
                 <span style={logoTextStyle}>
-                  GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
+                  GHOST<span style={logoAccentStyle}>wire</span>
                 </span>
               </div>
 
@@ -426,8 +460,14 @@ export default function Header({ onScrollTo }: HeaderProps) {
                     key={link.label}
                     onClick={() => handleLinkClick(link.action)}
                     style={mobileLinkStyle}
-                    onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
-                    onMouseLeave={(e) => e.currentTarget.style.color = '#1e293b'}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.05)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.08)';
+                    }}
                   >
                     <span style={navNumberStyle}>{link.num}</span>
                     {link.label}
@@ -438,12 +478,18 @@ export default function Header({ onScrollTo }: HeaderProps) {
                   target="_blank"
                   rel="noreferrer"
                   style={mobileLinkStyle}
-                  onMouseEnter={(e) => e.currentTarget.style.color = '#8b5cf6'}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#1e293b'}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.05)';
+                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.08)';
+                  }}
                 >
                   <span style={navNumberStyle}>06</span>
                   Docs
-                  <ArrowUpRight size={16} style={{ color: '#64748b' }} />
+                  <ArrowUpRight size={18} style={{ color: '#64748b', marginLeft: 'auto' }} />
                 </a>
               </div>
             </div>
@@ -481,28 +527,18 @@ export default function Header({ onScrollTo }: HeaderProps) {
         )}
       </AnimatePresence>
 
-      {/* Add styles for mobile improvements */}
       <style>
         {`
           @media (max-width: 768px) {
             body {
-              padding-top: 57px;
-            }
-          }
-          
-          @media (min-width: 769px) and (max-width: 1024px) {
-            body {
               padding-top: 69px;
             }
           }
-          
-          @media (min-width: 1025px) {
+          @media (min-width: 769px) {
             body {
-              padding-top: 73px;
+              padding-top: 80px;
             }
           }
-          
-          /* Prevent body scroll when mobile menu is open */
           body.menu-open {
             overflow: hidden;
           }

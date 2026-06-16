@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { ChevronDown, HelpCircle, ArrowUpRight } from 'lucide-react';
+import { ChevronDown, HelpCircle, ArrowUpRight, Sparkles, MessageCircle } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -45,10 +45,10 @@ export default function FAQ() {
   };
 
   const sectionStyle: React.CSSProperties = {
-    padding: '6rem 0',
+    padding: 'clamp(60px, 10vw, 96px) 0',
     position: 'relative',
     overflow: 'hidden',
-    background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+    background: 'radial-gradient(ellipse at 20% 30%, #1a0a2e 0%, #0A041B 40%, #060012 100%)',
   };
 
   const containerStyle: React.CSSProperties = {
@@ -75,32 +75,45 @@ export default function FAQ() {
   };
 
   const badgeStyle: React.CSSProperties = {
-    display: 'inline-block',
-    padding: '4px 12px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '4px 14px 4px 10px',
     fontSize: '12px',
     fontFamily: 'monospace',
     fontWeight: 500,
     borderRadius: '9999px',
-    background: 'rgba(139, 92, 246, 0.1)',
-    color: '#8b5cf6',
+    background: 'rgba(139, 92, 246, 0.12)',
+    color: '#a78bfa',
     border: '1px solid rgba(139, 92, 246, 0.2)',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
-    marginBottom: '12px',
+    marginBottom: '16px',
   };
 
   const titleStyle: React.CSSProperties = {
-    fontSize: 'clamp(1.875rem, 5vw, 2.25rem)',
+    fontSize: 'clamp(36px, 5vw, 48px)',
     fontWeight: 900,
-    color: '#0f172a',
-    letterSpacing: '-0.02em',
-    marginBottom: '8px',
+    fontFamily: "'Inter', sans-serif",
+    color: '#ffffff',
+    letterSpacing: '-0.03em',
+    marginBottom: '12px',
+    lineHeight: 1.1,
+  };
+
+  const titleGradientStyle: React.CSSProperties = {
+    background: 'linear-gradient(135deg, #c084fc, #8b5cf6, #7c3aed)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
   };
 
   const subtitleStyle: React.CSSProperties = {
-    color: '#475569',
-    fontSize: '1rem',
+    color: '#c4b5fd',
+    fontSize: 'clamp(16px, 2.5vw, 18px)',
     marginTop: '8px',
+    lineHeight: 1.7,
+    fontWeight: 400,
   };
 
   const accordionContainerStyle: React.CSSProperties = {
@@ -110,57 +123,67 @@ export default function FAQ() {
   };
 
   const accordionItemStyle: React.CSSProperties = {
-    background: 'rgba(255, 255, 255, 0.8)',
-    backdropFilter: 'blur(4px)',
-    border: '1px solid #e2e8f0',
+    background: 'rgba(255, 255, 255, 0.02)',
+    backdropFilter: 'blur(8px)',
+    border: '1px solid rgba(139, 92, 246, 0.08)',
     borderRadius: '16px',
     overflow: 'hidden',
-    transition: 'all 0.3s',
-    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+    boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.1)',
   };
 
   const accordionButtonStyle: React.CSSProperties = {
     width: '100%',
-    padding: '20px 24px',
+    padding: 'clamp(18px, 2vw, 24px) clamp(20px, 2.5vw, 28px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '16px',
     textAlign: 'left',
-    fontWeight: 600,
-    color: '#0f172a',
+    fontWeight: 700,
+    fontFamily: "'Inter', sans-serif",
+    color: '#ffffff',
     background: 'none',
     border: 'none',
     cursor: 'pointer',
+    fontSize: 'clamp(16px, 1.5vw, 19px)',
+    lineHeight: 1.4,
   };
 
   const questionContainerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '14px',
+    flex: 1,
   };
 
   const iconStyle: React.CSSProperties = {
-    width: '20px',
-    height: '20px',
-    color: '#8b5cf6',
+    width: '24px',
+    height: '24px',
+    color: '#a78bfa',
     flexShrink: 0,
   };
 
   const questionTextStyle: React.CSSProperties = {
-    fontSize: 'clamp(0.875rem, 4vw, 1rem)',
+    fontSize: 'clamp(16px, 1.5vw, 19px)',
     paddingRight: '16px',
     lineHeight: 1.4,
+    fontWeight: 700,
+    fontFamily: "'Inter', sans-serif",
+    color: '#ffffff',
   };
 
   const chevronStyle: React.CSSProperties = {
-    padding: '6px',
-    background: '#f1f5f9',
-    border: '1px solid #e2e8f0',
-    borderRadius: '8px',
-    color: '#64748b',
+    padding: '10px',
+    background: 'rgba(139, 92, 246, 0.08)',
+    border: '1px solid rgba(139, 92, 246, 0.1)',
+    borderRadius: '10px',
+    color: '#a78bfa',
     flexShrink: 0,
-    transition: 'all 0.2s',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   const answerContainerStyle: React.CSSProperties = {
@@ -168,27 +191,28 @@ export default function FAQ() {
   };
 
   const answerStyle: React.CSSProperties = {
-    padding: '4px 24px 24px 24px',
-    fontSize: 'clamp(0.75rem, 3vw, 0.875rem)',
-    color: '#475569',
-    lineHeight: 1.625,
-    borderTop: '1px solid #f1f5f9',
-    background: 'rgba(248, 250, 252, 0.5)',
-    fontFamily: 'system-ui, sans-serif',
+    padding: 'clamp(4px, 1vw, 8px) clamp(20px, 2.5vw, 28px) clamp(20px, 2.5vw, 28px) clamp(20px, 2.5vw, 28px)',
+    fontSize: 'clamp(15px, 1.3vw, 17px)',
+    color: '#c4b5fd',
+    lineHeight: 1.8,
+    borderTop: '1px solid rgba(139, 92, 246, 0.06)',
+    background: 'rgba(139, 92, 246, 0.02)',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: 400,
   };
 
   const ctaStyle: React.CSSProperties = {
     marginTop: '48px',
-    padding: '24px',
+    padding: 'clamp(20px, 2.5vw, 28px)',
     borderRadius: '16px',
-    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.05))',
-    border: '1px solid rgba(139, 92, 246, 0.2)',
+    background: 'rgba(139, 92, 246, 0.06)',
+    border: '1px solid rgba(139, 92, 246, 0.1)',
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: '16px',
-    backdropFilter: 'blur(4px)',
+    backdropFilter: 'blur(8px)',
   };
 
   const ctaTextContainerStyle: React.CSSProperties = {
@@ -196,31 +220,35 @@ export default function FAQ() {
   };
 
   const ctaTitleStyle: React.CSSProperties = {
-    color: '#0f172a',
-    fontWeight: 'bold',
-    fontSize: 'clamp(0.875rem, 4vw, 1rem)',
+    color: '#ffffff',
+    fontWeight: 700,
+    fontSize: 'clamp(17px, 1.5vw, 20px)',
+    fontFamily: "'Inter', sans-serif",
     marginBottom: '4px',
   };
 
   const ctaDescStyle: React.CSSProperties = {
-    fontSize: '12px',
-    color: '#64748b',
+    fontSize: 'clamp(14px, 1vw, 15px)',
+    color: '#c4b5fd',
+    fontWeight: 400,
+    fontFamily: "'Inter', sans-serif",
   };
 
   const ctaButtonStyle: React.CSSProperties = {
-    padding: '12px 20px',
+    padding: 'clamp(14px, 1.5vw, 18px) clamp(24px, 2.5vw, 32px)',
     whiteSpace: 'nowrap',
-    background: '#8b5cf6',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     color: 'white',
-    fontWeight: 600,
-    fontSize: '12px',
+    fontWeight: 700,
+    fontSize: 'clamp(14px, 1.2vw, 16px)',
+    fontFamily: "'Inter', sans-serif",
     borderRadius: '12px',
     display: 'flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '10px',
     textDecoration: 'none',
-    transition: 'all 0.2s',
-    boxShadow: '0 4px 12px rgba(139, 92, 246, 0.2)',
+    transition: 'all 0.3s ease',
+    boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)',
   };
 
   return (
@@ -231,7 +259,8 @@ export default function FAQ() {
           ...orbStyle,
           top: '80px',
           left: '-160px',
-          background: 'rgba(139, 92, 246, 0.1)',
+          background: 'rgba(139, 92, 246, 0.05)',
+          y: bgY,
         }}
         animate={{ scale: [1, 1.2, 1], x: [0, 20, 0], y: [0, -20, 0] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -241,7 +270,8 @@ export default function FAQ() {
           ...orbStyle,
           bottom: '80px',
           right: '-160px',
-          background: 'rgba(6, 182, 212, 0.08)',
+          background: 'rgba(6, 182, 212, 0.04)',
+          y: bgY,
         }}
         animate={{ scale: [1.2, 1, 1.2], x: [0, -20, 0], y: [0, 20, 0] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
@@ -254,7 +284,7 @@ export default function FAQ() {
           transform: 'translate(-50%, -50%)',
           width: '384px',
           height: '384px',
-          background: 'rgba(236, 72, 153, 0.05)',
+          background: 'rgba(236, 72, 153, 0.03)',
         }}
         animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.2, 0.4, 0.2] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
@@ -264,9 +294,9 @@ export default function FAQ() {
       <div style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'radial-gradient(#c4b5fd 1px, transparent 1px)',
-        backgroundSize: '32px 32px',
-        opacity: 0.2,
+        backgroundImage: 'radial-gradient(rgba(139, 92, 246, 0.06) 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
+        opacity: 0.25,
         pointerEvents: 'none',
       }} />
 
@@ -279,6 +309,7 @@ export default function FAQ() {
             viewport={{ once: true }}
             style={badgeStyle}
           >
+            <Sparkles size={14} style={{ color: '#a78bfa' }} />
             Q&A Core
           </motion.span>
           <motion.h2
@@ -288,7 +319,8 @@ export default function FAQ() {
             transition={{ delay: 0.1 }}
             style={titleStyle}
           >
-            Frequently Asked Questions
+            Frequently Asked{' '}
+            <span style={titleGradientStyle}>Questions</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -311,12 +343,26 @@ export default function FAQ() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                style={accordionItemStyle}
+                transition={{ delay: index * 0.05 }}
+                style={{
+                  ...accordionItemStyle,
+                  borderColor: isOpen ? 'rgba(139, 92, 246, 0.2)' : 'rgba(139, 92, 246, 0.08)',
+                  boxShadow: isOpen ? '0 4px 30px rgba(139, 92, 246, 0.05)' : '0 1px 2px 0 rgba(0, 0, 0, 0.1)',
+                }}
               >
                 <button
                   onClick={() => toggleAccordion(index)}
                   style={accordionButtonStyle}
+                  onMouseEnter={(e) => {
+                    if (!isOpen) {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.02)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isOpen) {
+                      e.currentTarget.style.background = 'none';
+                    }
+                  }}
                 >
                   <div style={questionContainerStyle}>
                     <HelpCircle style={iconStyle} />
@@ -324,10 +370,14 @@ export default function FAQ() {
                   </div>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    style={chevronStyle}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    style={{
+                      ...chevronStyle,
+                      background: isOpen ? 'rgba(139, 92, 246, 0.15)' : 'rgba(139, 92, 246, 0.08)',
+                      borderColor: isOpen ? 'rgba(139, 92, 246, 0.2)' : 'rgba(139, 92, 246, 0.1)',
+                    }}
                   >
-                    <ChevronDown size={16} />
+                    <ChevronDown size={20} />
                   </motion.div>
                 </button>
 
@@ -363,12 +413,30 @@ export default function FAQ() {
             target="_blank"
             rel="noreferrer"
             style={ctaButtonStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 30px rgba(139, 92, 246, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.3)';
+            }}
           >
+            <MessageCircle size={18} />
             Contact Support Bot
-            <ArrowUpRight size={16} />
+            <ArrowUpRight size={18} />
           </a>
         </motion.div>
       </div>
+
+      <style>
+        {`
+          @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+          }
+        `}
+      </style>
     </motion.section>
   );
 }

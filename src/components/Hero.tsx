@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { ArrowUpRight, Zap, Target, Lock, TrendingUp, ChevronRight, Copy, Check, Terminal } from 'lucide-react';
+import { ArrowUpRight, Zap, Target, Lock, TrendingUp, ChevronRight, Copy, Check, Terminal, Sparkles, Bot, LineChart, Wallet as WalletIcon, Radar } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 interface HeroProps {
@@ -14,10 +14,10 @@ export default function Hero({ onScrollTo }: HeroProps) {
   const [isTablet, setIsTablet] = useState(false);
 
   const stats = [
-    { label: 'Uptime', value: '24/7 Monitor', desc: 'Continuous active crawling', icon: Zap, color: '#06b6d4' },
-    { label: 'Wallets', value: 'Up to 5', desc: 'Derived per account', icon: Target, color: '#8b5cf6' },
-    { label: 'Ref Revenue', value: '20% Shares', desc: 'Trading fee commission', icon: TrendingUp, color: '#ec4899' },
-    { label: 'Trading Fee', value: '0.05%', desc: 'Ultra-competitive pricing', icon: Lock, color: '#10b981' },
+    { label: 'Uptime', value: '24/7', desc: 'Continuous monitoring', icon: Zap, color: '#a78bfa' },
+    { label: 'Wallets', value: 'Up to 5', desc: 'Derived per account', icon: WalletIcon, color: '#818cf8' },
+    { label: 'Ref Revenue', value: '20%', desc: 'Trading fee commission', icon: TrendingUp, color: '#c084fc' },
+    { label: 'Trading Fee', value: '0.05%', desc: 'Ultra-competitive', icon: Lock, color: '#34d399' },
   ];
 
   const fullText = "Tokens instantly.";
@@ -55,203 +55,429 @@ export default function Hero({ onScrollTo }: HeroProps) {
   // Desktop widget style
   const desktopWidgetStyle: React.CSSProperties = {
     width: '100%',
-    maxWidth: isTablet ? '340px' : '390px',
+    maxWidth: isTablet ? '360px' : '420px',
     height: 'auto',
-    minHeight: '580px',
-    background: 'linear-gradient(135deg, #180C36, #0A041B)',
-    border: '1px solid rgba(139, 92, 246, 0.3)',
-    borderRadius: '24px',
+    background: 'linear-gradient(145deg, #0D0520, #16082E)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    borderRadius: '20px',
     padding: isTablet ? '20px' : '24px',
     position: 'relative',
     overflow: 'hidden',
-    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(139, 92, 246, 0.1)',
   };
 
-  // Mobile widget style (simplified)
   const mobileWidgetStyle: React.CSSProperties = {
     width: '100%',
     maxWidth: '100%',
     height: 'auto',
-    background: 'linear-gradient(135deg, #180C36, #0A041B)',
-    border: '1px solid rgba(139, 92, 246, 0.3)',
-    borderRadius: '20px',
-    padding: '20px',
+    background: 'linear-gradient(145deg, #0D0520, #16082E)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    borderRadius: '16px',
+    padding: '16px',
     position: 'relative',
     overflow: 'hidden',
-    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.2)',
+    boxShadow: '0 10px 30px -5px rgba(0, 0, 0, 0.4)',
   };
 
   // Desktop Widget Component
   const DesktopWidget = () => (
     <div style={desktopWidgetStyle}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '16px', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+      {/* Background glow */}
+      <div style={{
+        position: 'absolute',
+        top: '-30%',
+        right: '-30%',
+        width: '80%',
+        height: '80%',
+        background: 'radial-gradient(circle, rgba(139, 92, 246, 0.05), transparent 70%)',
+        pointerEvents: 'none',
+      }} />
+      
+      {/* Header */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        borderBottom: '1px solid rgba(139, 92, 246, 0.08)', 
+        paddingBottom: '14px', 
+        marginBottom: '16px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
-            width: '32px',
-            height: '32px',
-            borderRadius: '50%',
+            width: '36px',
+            height: '36px',
+            borderRadius: '10px',
             overflow: 'hidden',
-            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+            background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            boxShadow: '0 0 20px rgba(139, 92, 246, 0.2)',
+            flexShrink: 0,
           }}>
             <img 
               src="/logo.jpg" 
-              alt="GHOSTwire Logo" 
+              alt="GHOSTwire" 
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
               }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 if (e.currentTarget.parentElement) {
-                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 16px;">👻</span>';
+                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 18px;">👻</span>';
                 }
               }}
             />
           </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '14px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#06b6d4' }} />
-          <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#06b6d4' }}>SYSTEM: LIVE</span>
-        </div>
-      </div>
-
-      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-          <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🚨 Automated Feed</span>
-          <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#a78bfa', background: 'rgba(139,92,246,0.1)', borderRadius: '4px', padding: '2px 6px' }}>Alpha Group</span>
-        </div>
-        <p style={{ fontSize: '12px', color: '#e5e7eb', fontWeight: 600, marginBottom: '4px' }}>Contract Detected: GNL7M...</p>
-        <p style={{ fontSize: '11px', color: '#9ca3af' }}>Processed through Jupiter aggregator route in 0.12s</p>
-      </div>
-
-      <div style={{ background: '#0F0824', border: '1px solid rgba(139,92,246,0.2)', borderRadius: '16px', padding: '16px', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
           <div>
-            <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>UNISOL / SOL</span>
-            <h4 style={{ fontSize: '18px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>$0.0418</h4>
+            <span style={{ 
+              fontFamily: "'Inter', sans-serif", 
+              fontWeight: 800, 
+              fontSize: '14px', 
+              letterSpacing: '0.5px', 
+              color: 'white',
+              display: 'block',
+            }}>GHOSTwire</span>
+            <span style={{ 
+              fontSize: '9px', 
+              fontFamily: 'monospace', 
+              color: '#8b5cf6',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}>
+              <span style={{ 
+                width: '6px', 
+                height: '6px', 
+                borderRadius: '50%', 
+                background: '#34d399',
+                display: 'inline-block',
+              }} />
+              Auto-Initialized
+            </span>
+          </div>
+        </div>
+        <div style={{ 
+          display: 'flex', 
+          alignItems: 'center', 
+          gap: '6px',
+          background: 'rgba(139, 92, 246, 0.08)',
+          padding: '4px 12px',
+          borderRadius: '20px',
+          border: '1px solid rgba(139, 92, 246, 0.1)',
+        }}>
+          <span style={{ 
+            fontSize: '8px', 
+            fontFamily: 'monospace', 
+            color: '#a78bfa',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em',
+          }}>Alpha Group</span>
+        </div>
+      </div>
+
+      {/* Feed Alert */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.08)', 
+        borderRadius: '12px', 
+        padding: '12px 14px', 
+        marginBottom: '14px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+          <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🚀 AUTO-DETECTED FEED</span>
+          <span style={{ fontSize: '8px', fontFamily: 'monospace', color: '#a78bfa', background: 'rgba(139,92,246,0.12)', borderRadius: '4px', padding: '1px 8px' }}>Alpha Group</span>
+        </div>
+        <p style={{ fontSize: '11px', color: '#e5e7eb', fontWeight: 600, marginBottom: '2px', fontFamily: "'Inter', sans-serif" }}>
+          Contract Detected: GNL7M...
+        </p>
+        <p style={{ fontSize: '10px', color: '#9ca3af' }}>Processed through Jupiter aggregator route in 0.12s</p>
+      </div>
+
+      {/* Price Chart */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.08)', 
+        borderRadius: '12px', 
+        padding: '14px', 
+        marginBottom: '14px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+          <div>
+            <span style={{ fontSize: '8px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>UNISOL / SOL</span>
+            <h4 style={{ fontSize: '20px', fontFamily: 'monospace', fontWeight: 700, color: 'white', marginTop: '2px' }}>$0.0418</h4>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <span style={{ fontSize: '9px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Live Profit</span>
-            <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: '#10b981' }}>+50.7%</span>
+            <span style={{ fontSize: '8px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Live Profit</span>
+            <span style={{ fontSize: '14px', fontFamily: 'monospace', fontWeight: 700, color: '#34d399' }}>+50.7%</span>
           </div>
         </div>
-        <svg style={{ width: '100%', height: '64px' }} viewBox="0 0 100 30">
-          <path d="M 0 25 Q 15 28 30 18 T 60 10 T 90 2 T 100 0" stroke="#8b5cf6" strokeWidth="2" fill="none" />
-          <circle cx="90" cy="2" r="2.5" fill="#06b6d4" />
+        
+        {/* Chart SVG */}
+        <svg style={{ width: '100%', height: '48px' }} viewBox="0 0 100 20">
+          <defs>
+            <linearGradient id="chartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.1 }} />
+              <stop offset="100%" style={{ stopColor: '#8b5cf6', stopOpacity: 0.6 }} />
+            </linearGradient>
+          </defs>
+          <path d="M 0 18 Q 15 20 30 14 T 60 8 T 90 3 T 100 0" stroke="#8b5cf6" strokeWidth="2" fill="none" strokeLinecap="round" />
+          <circle cx="90" cy="3" r="2.5" fill="#a78bfa" />
         </svg>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '16px' }}>
-          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
-            <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>BUY</span>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '10px' }}>0.10 SOL</span>
+        
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr 1fr', 
+          gap: '8px', 
+          marginTop: '12px',
+          borderTop: '1px solid rgba(139, 92, 246, 0.06)',
+          paddingTop: '12px',
+        }}>
+          <div style={{ 
+            padding: '6px', 
+            background: 'rgba(139, 92, 246, 0.06)', 
+            borderRadius: '8px', 
+            textAlign: 'center',
+            border: '1px solid rgba(139, 92, 246, 0.05)',
+          }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '8px', textTransform: 'uppercase', fontFamily: 'monospace' }}>Buy</span>
+            <span style={{ color: 'white', fontWeight: 700, fontSize: '10px', fontFamily: 'monospace' }}>0.10 SOL</span>
           </div>
-          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '12px', textAlign: 'center' }}>
-            <span style={{ color: '#9ca3af', display: 'block', fontSize: '10px' }}>SELL Target</span>
-            <span style={{ color: '#8b5cf6', fontWeight: 'bold', fontSize: '10px' }}>0.15 SOL (+50%)</span>
+          <div style={{ 
+            padding: '6px', 
+            background: 'rgba(139, 92, 246, 0.06)', 
+            borderRadius: '8px', 
+            textAlign: 'center',
+            border: '1px solid rgba(139, 92, 246, 0.05)',
+          }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '8px', textTransform: 'uppercase', fontFamily: 'monospace' }}>Sell Target</span>
+            <span style={{ color: '#a78bfa', fontWeight: 700, fontSize: '10px', fontFamily: 'monospace' }}>0.15 SOL (+50%)</span>
           </div>
         </div>
       </div>
 
-      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '16px', padding: '14px', marginBottom: '16px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-          <span style={{ fontSize: '10px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Self Custody Wallet</span>
-          <span style={{ fontSize: '10px', fontFamily: 'monospace', fontWeight: 'bold', color: '#a78bfa' }}>Wallet #1</span>
+      {/* Wallet */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.08)', 
+        borderRadius: '12px', 
+        padding: '12px 14px', 
+        marginBottom: '14px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
+          <span style={{ fontSize: '8px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🔐 Self Custody Wallet</span>
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', fontWeight: 600, color: '#a78bfa' }}>Wallet #1</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '12px', fontFamily: 'monospace', color: '#d1d5db' }}>GnL9mQz...3kS4p</span>
-          <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>1.55 SOL</span>
+          <span style={{ fontSize: '11px', fontFamily: 'monospace', color: '#d1d5db' }}>GnL9mQz...3kS4p</span>
+          <span style={{ fontSize: '11px', fontFamily: 'monospace', fontWeight: 700, color: 'white' }}>1.55 SOL</span>
         </div>
       </div>
 
-      <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', padding: '12px', fontFamily: 'monospace', fontSize: '9px', color: '#a78bfa' }}>
-        <p>&gt; scanning telegram signals...</p>
-        <p style={{ color: '#06b6d4' }}>&gt; match: CA `GNL7MQSzzkYQ75mXU4mNz...`</p>
-        <p style={{ color: '#10b981' }}>&gt; Jupiter Swap executed (+50% TP Set)</p>
+      {/* Terminal Log */}
+      <div style={{ 
+        background: 'rgba(0,0,0,0.4)', 
+        borderRadius: '10px', 
+        border: '1px solid rgba(139, 92, 246, 0.06)', 
+        padding: '10px 12px', 
+        fontFamily: 'monospace', 
+        fontSize: '8px', 
+        color: '#a78bfa', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <p style={{ color: '#9ca3af' }}>&gt; scanning telegram signals...</p>
+        <p style={{ color: '#818cf8' }}>&gt; match: CA `GNL7MQSzzkYQ75mXU4mNz...`</p>
+        <p style={{ color: '#34d399' }}>&gt; Jupiter Swap executed (+50% TP Set)</p>
       </div>
     </div>
   );
 
-  // Mobile Widget Component (simplified)
+  // Mobile Widget Component
   const MobileWidget = () => (
     <div style={mobileWidgetStyle}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px', marginBottom: '12px' }}>
+      {/* Header */}
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        borderBottom: '1px solid rgba(139, 92, 246, 0.08)', 
+        paddingBottom: '12px', 
+        marginBottom: '12px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <div style={{
             width: '32px',
             height: '32px',
-            borderRadius: '50%',
+            borderRadius: '8px',
             overflow: 'hidden',
-            background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+            background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            flexShrink: 0,
           }}>
             <img 
               src="/logo.jpg" 
-              alt="GHOSTwire Logo" 
+              alt="GHOSTwire" 
               style={{
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover'
+                objectFit: 'cover',
               }}
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
                 if (e.currentTarget.parentElement) {
-                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 16px;">👻</span>';
+                  e.currentTarget.parentElement.innerHTML = '<span style="color: white; font-size: 14px;">👻</span>';
                 }
               }}
             />
           </div>
-          <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 900, fontSize: '16px', letterSpacing: '1px', color: 'white' }}>GHOSTWIRE</span>
+          <div>
+            <span style={{ 
+              fontFamily: "'Inter', sans-serif", 
+              fontWeight: 800, 
+              fontSize: '13px', 
+              color: 'white',
+              display: 'block',
+            }}>GHOSTwire</span>
+            <span style={{ 
+              fontSize: '8px', 
+              fontFamily: 'monospace', 
+              color: '#8b5cf6',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '4px',
+            }}>
+              <span style={{ 
+                width: '5px', 
+                height: '5px', 
+                borderRadius: '50%', 
+                background: '#34d399',
+                display: 'inline-block',
+              }} />
+              Auto-Initialized
+            </span>
+          </div>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }} />
-          <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#10b981' }}>ACTIVE</span>
+        <div style={{ 
+          background: 'rgba(139, 92, 246, 0.08)',
+          padding: '2px 10px',
+          borderRadius: '16px',
+          border: '1px solid rgba(139, 92, 246, 0.08)',
+        }}>
+          <span style={{ fontSize: '7px', fontFamily: 'monospace', color: '#a78bfa', textTransform: 'uppercase' }}>Alpha</span>
         </div>
       </div>
 
-      <div style={{ background: '#0F0824', border: '1px solid rgba(139,92,246,0.2)', borderRadius: '14px', padding: '14px', marginBottom: '12px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
+      {/* Feed */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.06)', 
+        borderRadius: '10px', 
+        padding: '10px', 
+        marginBottom: '10px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+          <span style={{ fontSize: '7px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🚀 AUTO-DETECTED FEED</span>
+          <span style={{ fontSize: '7px', fontFamily: 'monospace', color: '#a78bfa', background: 'rgba(139,92,246,0.1)', borderRadius: '4px', padding: '1px 6px' }}>Alpha</span>
+        </div>
+        <p style={{ fontSize: '10px', color: '#e5e7eb', fontWeight: 600, fontFamily: "'Inter', sans-serif" }}>Contract Detected: GNL7M...</p>
+        <p style={{ fontSize: '8px', color: '#9ca3af' }}>Jupiter route: 0.12s</p>
+      </div>
+
+      {/* Price */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.06)', 
+        borderRadius: '10px', 
+        padding: '12px', 
+        marginBottom: '10px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <div>
-            <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>LUCY / SOL</span>
-            <h4 style={{ fontSize: '16px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>$0.0418</h4>
+            <span style={{ fontSize: '7px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>UNISOL / SOL</span>
+            <h4 style={{ fontSize: '16px', fontFamily: 'monospace', fontWeight: 700, color: 'white' }}>$0.0418</h4>
           </div>
           <div style={{ textAlign: 'right' }}>
-            <span style={{ fontSize: '8px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>P&L</span>
-            <span style={{ fontSize: '11px', fontFamily: 'monospace', fontWeight: 'bold', color: '#10b981' }}>+50.7%</span>
+            <span style={{ fontSize: '7px', display: 'block', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Live Profit</span>
+            <span style={{ fontSize: '12px', fontFamily: 'monospace', fontWeight: 700, color: '#34d399' }}>+50.7%</span>
           </div>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', textAlign: 'center' }}>
-            <span style={{ color: '#9ca3af', display: 'block', fontSize: '9px' }}>BUY</span>
-            <span style={{ color: 'white', fontWeight: 'bold', fontSize: '10px' }}>0.01 SOL</span>
+        <svg style={{ width: '100%', height: '32px' }} viewBox="0 0 100 14">
+          <path d="M 0 12 Q 15 14 30 10 T 60 6 T 90 2 T 100 0" stroke="#8b5cf6" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+          <circle cx="90" cy="2" r="2" fill="#a78bfa" />
+        </svg>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: '1fr 1fr', 
+          gap: '6px', 
+          marginTop: '8px',
+          borderTop: '1px solid rgba(139, 92, 246, 0.06)',
+          paddingTop: '8px',
+        }}>
+          <div style={{ padding: '4px', background: 'rgba(139, 92, 246, 0.06)', borderRadius: '6px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '7px', textTransform: 'uppercase', fontFamily: 'monospace' }}>Buy</span>
+            <span style={{ color: 'white', fontWeight: 700, fontSize: '9px', fontFamily: 'monospace' }}>0.10 SOL</span>
           </div>
-          <div style={{ padding: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', textAlign: 'center' }}>
-            <span style={{ color: '#9ca3af', display: 'block', fontSize: '9px' }}>TARGET</span>
-            <span style={{ color: '#8b5cf6', fontWeight: 'bold', fontSize: '10px' }}>0.015 SOL</span>
+          <div style={{ padding: '4px', background: 'rgba(139, 92, 246, 0.06)', borderRadius: '6px', textAlign: 'center' }}>
+            <span style={{ color: '#9ca3af', display: 'block', fontSize: '7px', textTransform: 'uppercase', fontFamily: 'monospace' }}>Sell</span>
+            <span style={{ color: '#a78bfa', fontWeight: 700, fontSize: '9px', fontFamily: 'monospace' }}>0.15 SOL</span>
           </div>
         </div>
       </div>
 
-      <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '12px', marginBottom: '12px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-          <span style={{ fontSize: '9px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>Wallet</span>
-          <span style={{ fontSize: '9px', fontFamily: 'monospace', fontWeight: 'bold', color: '#a78bfa' }}>W1</span>
+      {/* Wallet */}
+      <div style={{ 
+        background: 'rgba(139, 92, 246, 0.04)', 
+        border: '1px solid rgba(139, 92, 246, 0.06)', 
+        borderRadius: '10px', 
+        padding: '10px', 
+        marginBottom: '10px', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+          <span style={{ fontSize: '7px', textTransform: 'uppercase', fontFamily: 'monospace', color: '#9ca3af' }}>🔐 Wallet</span>
+          <span style={{ fontSize: '7px', fontFamily: 'monospace', fontWeight: 600, color: '#a78bfa' }}>#1</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontSize: '10px', fontFamily: 'monospace', color: '#d1d5db' }}>74BoTq...MFSL</span>
-          <span style={{ fontSize: '10px', fontFamily: 'monospace', fontWeight: 'bold', color: 'white' }}>1.55 SOL</span>
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', color: '#d1d5db' }}>GnL9...3kS4p</span>
+          <span style={{ fontSize: '9px', fontFamily: 'monospace', fontWeight: 700, color: 'white' }}>1.55 SOL</span>
         </div>
       </div>
 
-      <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', padding: '10px', fontFamily: 'monospace', fontSize: '8px', color: '#a78bfa' }}>
-        <p>&gt; scanning signals...</p>
-        <p style={{ color: '#06b6d4' }}>&gt; contract detected</p>
-        <p style={{ color: '#10b981' }}>&gt; auto-buy executed</p>
+      {/* Terminal */}
+      <div style={{ 
+        background: 'rgba(0,0,0,0.4)', 
+        borderRadius: '8px', 
+        border: '1px solid rgba(139, 92, 246, 0.06)', 
+        padding: '8px 10px', 
+        fontFamily: 'monospace', 
+        fontSize: '7px', 
+        color: '#a78bfa', 
+        position: 'relative', 
+        zIndex: 1 
+      }}>
+        <p style={{ color: '#9ca3af' }}>&gt; scanning signals...</p>
+        <p style={{ color: '#818cf8' }}>&gt; CA detected</p>
+        <p style={{ color: '#34d399' }}>&gt; Swap executed</p>
       </div>
     </div>
   );
@@ -259,30 +485,45 @@ export default function Hero({ onScrollTo }: HeroProps) {
   return (
     <section style={{
       position: 'relative',
-      paddingTop: isMobile ? 'clamp(80px, 15vw, 128px)' : 'clamp(96px, 10vw, 128px)',
-      paddingBottom: isMobile ? 'clamp(40px, 8vw, 64px)' : 'clamp(48px, 6vw, 64px)',
+      paddingTop: isMobile ? 'clamp(70px, 15vw, 110px)' : 'clamp(100px, 12vw, 140px)',
+      paddingBottom: isMobile ? 'clamp(40px, 8vw, 60px)' : 'clamp(60px, 8vw, 80px)',
       minHeight: isMobile ? 'auto' : '100vh',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
-      background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 50%, #faf5ff 100%)',
+      background: 'radial-gradient(ellipse at 20% 50%, #1a0a2e 0%, #0A041B 40%, #060012 100%)',
       overflow: 'hidden'
     }} id="hero">
-      {/* Background glows - hidden on mobile for performance */}
-      {!isMobile && (
-        <>
-          <div style={{ position: 'absolute', top: '-10%', left: '10%', width: '500px', height: '500px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(140px)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: '40%', right: '-10%', width: '600px', height: '600px', background: 'rgba(139, 92, 246, 0.03)', borderRadius: '50%', filter: 'blur(160px)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', bottom: '0%', left: '20%', width: '450px', height: '450px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(120px)', pointerEvents: 'none' }} />
-        </>
-      )}
-      <div style={{ 
-        position: 'absolute', 
-        inset: 0, 
-        backgroundImage: 'radial-gradient(#c4b5fd 1px, transparent 1px)', 
-        backgroundSize: isMobile ? '12px 12px' : '16px 16px', 
-        opacity: 0.15, 
-        pointerEvents: 'none' 
+      {/* Animated background glows */}
+      <div style={{
+        position: 'absolute',
+        top: '-20%',
+        left: '-10%',
+        width: '60%',
+        height: '80%',
+        background: 'radial-gradient(ellipse, rgba(139, 92, 246, 0.06), transparent 70%)',
+        pointerEvents: 'none',
+        animation: 'floatGlow 8s ease-in-out infinite',
+      }} />
+      <div style={{
+        position: 'absolute',
+        bottom: '-20%',
+        right: '-10%',
+        width: '50%',
+        height: '60%',
+        background: 'radial-gradient(ellipse, rgba(139, 92, 246, 0.04), transparent 70%)',
+        pointerEvents: 'none',
+        animation: 'floatGlow 10s ease-in-out infinite reverse',
+      }} />
+      
+      {/* Grid pattern */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(139, 92, 246, 0.08) 1px, transparent 1px)',
+        backgroundSize: isMobile ? '12px 12px' : '16px 16px',
+        opacity: 0.25,
+        pointerEvents: 'none',
       }} />
 
       <div style={{
@@ -323,51 +564,62 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 alignItems: 'center',
                 gap: '8px',
                 background: 'rgba(139, 92, 246, 0.1)',
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(139, 92, 246, 0.3)',
+                backdropFilter: 'blur(8px)',
+                border: '1px solid rgba(139, 92, 246, 0.15)',
                 borderRadius: '9999px',
-                padding: isMobile ? '4px 12px 4px 10px' : '6px 16px 6px 14px',
+                padding: isMobile ? '5px 14px 5px 12px' : '6px 20px 6px 16px',
                 cursor: 'pointer',
-                alignSelf: 'flex-start'
+                alignSelf: 'flex-start',
+                transition: 'all 0.3s ease',
               }}
               onClick={() => onScrollTo('demo')}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.18)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
+              }}
             >
-              <Zap size={isMobile ? 12 : 14} style={{ color: '#8b5cf6' }} />
+              <Sparkles size={isMobile ? 12 : 14} style={{ color: '#a78bfa' }} />
               <span style={{
-                fontSize: isMobile ? '9px' : '11px',
-                fontFamily: 'monospace',
-                color: '#334155'
+                fontSize: isMobile ? 'clamp(11px, 2.5vw, 13px)' : 'clamp(13px, 1vw, 15px)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                color: '#c4b5fd'
               }}>
-                {isMobile ? 'GHOSTwire auto-sniper live' : 'GHOSTwire auto-sniper live on Solana mainnet'}
+                {isMobile ? 'Auto-sniper live' : 'GHOSTwire auto-sniper live on Solana mainnet'}
               </span>
-              <ChevronRight size={isMobile ? 10 : 12} style={{ color: '#8b5cf6' }} />
+              <ChevronRight size={isMobile ? 10 : 12} style={{ color: '#a78bfa' }} />
             </motion.div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{
-                fontSize: isMobile ? 'clamp(32px, 8vw, 44px)' : 'clamp(44px, 5vw, 56px)',
+                fontSize: isMobile ? 'clamp(36px, 10vw, 48px)' : 'clamp(48px, 6vw, 64px)',
                 fontWeight: 800,
-                fontFamily: "'Plus Jakarta Sans', sans-serif",
-                lineHeight: 1.1,
-                color: '#0f172a',
-                letterSpacing: '-0.02em'
+                fontFamily: "'Inter', 'Plus Jakarta Sans', sans-serif",
+                lineHeight: 1.05,
+                color: '#ffffff',
+                letterSpacing: '-0.03em'
               }}>
-                Auto-Snipe Solana{' '}
+                Auto-Snipe{' '}
                 <span style={{ display: 'inline-block' }}>
                   <span style={{
-                    background: 'linear-gradient(135deg, #8b5cf6, #ec4899, #06b6d4)',
+                    background: 'linear-gradient(135deg, #c084fc, #8b5cf6, #7c3aed)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     fontWeight: 900
-                  }}>{displayText}</span>
+                  }}>Solana {displayText}</span>
                   {!isTypingComplete && <span style={{
                     display: 'inline-block',
                     width: '3px',
-                    height: isMobile ? 'clamp(32px, 6vw, 44px)' : '48px',
+                    height: isMobile ? 'clamp(36px, 6vw, 48px)' : '52px',
                     background: '#8b5cf6',
                     marginLeft: '4px',
-                    animation: 'pulse 1s step-end infinite'
+                    animation: 'pulse 1s step-end infinite',
+                    boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)',
                   }} />}
                 </span>
               </div>
@@ -376,10 +628,11 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 style={{
-                  fontSize: isMobile ? 'clamp(14px, 4vw, 16px)' : '18px',
-                  color: '#475569',
-                  lineHeight: 1.625,
-                  maxWidth: '550px'
+                  fontSize: isMobile ? 'clamp(15px, 4vw, 17px)' : 'clamp(17px, 1.3vw, 19px)',
+                  color: '#c4b5fd',
+                  lineHeight: 1.7,
+                  maxWidth: '550px',
+                  fontWeight: 400,
                 }}
               >
                 The fastest Telegram sniper bot for Solana. Auto-detect signals from private & public channels, execute instant trades via Jupiter API, and track your portfolio P&L dynamically.
@@ -399,39 +652,61 @@ export default function Hero({ onScrollTo }: HeroProps) {
               }}
             >
               <a href="https://t.me/ghowr_bot" target="_blank" rel="noreferrer" style={{
-                padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+                padding: isMobile ? 'clamp(14px, 4vw, 16px) clamp(20px, 5vw, 28px)' : 'clamp(14px, 1.2vw, 16px) clamp(28px, 3vw, 36px)',
                 borderRadius: '12px',
-                background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+                background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
                 color: 'white',
-                fontWeight: 600,
+                fontWeight: 700,
+                fontFamily: "'Inter', sans-serif",
                 textDecoration: 'none',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+                gap: '10px',
+                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.35)',
                 textAlign: 'center',
-                flex: isMobile ? 1 : 'auto'
+                flex: isMobile ? 1 : 'auto',
+                transition: 'all 0.3s ease',
+                fontSize: isMobile ? 'clamp(15px, 3.5vw, 17px)' : 'clamp(16px, 1.1vw, 18px)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 8px 30px rgba(139, 92, 246, 0.5)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.35)';
               }}>
                 <span>{isMobile ? 'Start Trading' : 'Start Trading on Telegram'}</span>
-                <ArrowUpRight size={16} />
+                <ArrowUpRight size={isMobile ? 18 : 20} />
               </a>
               <button onClick={() => onScrollTo('demo')} style={{
-                padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 24px)' : '12px 24px',
+                padding: isMobile ? 'clamp(14px, 4vw, 16px) clamp(20px, 5vw, 28px)' : 'clamp(14px, 1.2vw, 16px) clamp(28px, 3vw, 36px)',
                 borderRadius: '12px',
-                background: '#f1f5f9',
-                border: '1px solid #e2e8f0',
-                color: '#334155',
+                background: 'rgba(139, 92, 246, 0.08)',
+                border: '1px solid rgba(139, 92, 246, 0.15)',
+                color: '#c4b5fd',
                 fontWeight: 600,
+                fontFamily: "'Inter', sans-serif",
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '8px',
                 cursor: 'pointer',
-                flex: isMobile ? 1 : 'auto'
+                flex: isMobile ? 1 : 'auto',
+                fontSize: isMobile ? 'clamp(15px, 3.5vw, 17px)' : 'clamp(16px, 1.1vw, 18px)',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.08)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
               }}>
                 <span>{isMobile ? 'Watch Demo' : 'Watch Demo Run'}</span>
-                <Terminal size={16} style={{ color: '#06b6d4' }} />
+                <Terminal size={isMobile ? 18 : 20} style={{ color: '#a78bfa' }} />
               </button>
             </motion.div>
 
@@ -444,14 +719,14 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '12px',
-                background: 'white',
-                borderRadius: '16px',
-                padding: isMobile ? '12px 16px' : '16px',
+                background: 'rgba(255, 255, 255, 0.02)',
+                borderRadius: '14px',
+                padding: isMobile ? '10px 14px' : '14px 18px',
                 width: '100%',
-                maxWidth: isMobile ? '100%' : '400px',
-                boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-                border: '1px solid #e2e8f0',
-                flexWrap: isMobile ? 'wrap' : 'nowrap'
+                maxWidth: isMobile ? '100%' : '420px',
+                border: '1px solid rgba(139, 92, 246, 0.08)',
+                flexWrap: isMobile ? 'wrap' : 'nowrap',
+                backdropFilter: 'blur(8px)',
               }}
             >
               <div style={{
@@ -461,49 +736,62 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 flex: 1
               }}>
                 <div style={{
-                  width: '28px',
-                  height: '28px',
-                  background: '#f1f5f9',
+                  width: '32px',
+                  height: '32px',
+                  background: 'rgba(139, 92, 246, 0.08)',
                   borderRadius: '8px',
-                  border: '1px solid #e2e8f0',
+                  border: '1px solid rgba(139, 92, 246, 0.1)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontFamily: 'monospace',
-                  fontSize: '10px',
-                  color: '#64748b'
-                }}>$</div>
+                  fontSize: '14px',
+                  color: '#a78bfa'
+                }}>💬</div>
                 <div style={{ flex: 1 }}>
                   <p style={{
-                    fontSize: '10px',
+                    fontSize: isMobile ? 'clamp(9px, 2vw, 10px)' : 'clamp(10px, 0.7vw, 11px)',
                     textTransform: 'uppercase',
                     fontFamily: 'monospace',
-                    color: '#64748b'
-                  }}>Quick Summon</p>
+                    color: '#9ca3af',
+                    letterSpacing: '0.05em',
+                    fontWeight: 600,
+                  }}>Quick Support</p>
                   <p style={{
-                    fontSize: isMobile ? '11px' : '12px',
+                    fontSize: isMobile ? 'clamp(13px, 3vw, 15px)' : 'clamp(14px, 1vw, 16px)',
                     fontFamily: 'monospace',
-                    color: '#8b5cf6',
-                    wordBreak: 'break-all'
+                    color: '#a78bfa',
+                    wordBreak: 'break-all',
+                    fontWeight: 600,
                   }}>t.me/ghowr_bot</p>
                 </div>
               </div>
               <button onClick={handleCopyCode} style={{
-                padding: '8px 12px',
-                background: 'rgba(139, 92, 246, 0.1)',
-                border: '1px solid rgba(139, 92, 246, 0.2)',
-                borderRadius: '12px',
+                padding: isMobile ? '8px 16px' : '10px 20px',
+                background: 'rgba(139, 92, 246, 0.12)',
+                border: '1px solid rgba(139, 92, 246, 0.15)',
+                borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
-                fontSize: '12px',
-                fontFamily: 'monospace',
-                color: '#8b5cf6',
-                whiteSpace: 'nowrap'
+                gap: '8px',
+                fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 0.9vw, 15px)',
+                fontFamily: "'Inter', sans-serif",
+                fontWeight: 600,
+                color: '#a78bfa',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(139, 92, 246, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
               }}>
-                {copiedText ? <Check size={14} style={{ color: '#10b981' }} /> : <Copy size={14} />}
-                {copiedText ? 'Copied' : 'Copy'}
+                {copiedText ? <Check size={isMobile ? 16 : 18} style={{ color: '#34d399' }} /> : <Copy size={isMobile ? 16 : 18} />}
+                {copiedText ? 'Copied!' : 'Copy'}
               </button>
             </motion.div>
           </motion.div>
@@ -527,10 +815,10 @@ export default function Hero({ onScrollTo }: HeroProps) {
               transition={{ duration: 0.6, delay: 0.5 }}
               style={{
                 position: 'absolute',
-                inset: '-16px',
-                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(6, 182, 212, 0.2))',
+                inset: '-20px',
+                background: 'radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%)',
                 borderRadius: '24px',
-                filter: 'blur(32px)',
+                filter: 'blur(40px)',
                 zIndex: -1,
                 display: !isMobile ? 'block' : 'none'
               }}
@@ -539,28 +827,28 @@ export default function Hero({ onScrollTo }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Stats Banner */}
+        {/* Stats Banner - NOW MUCH LARGER */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           style={{
-            border: '1px solid #e2e8f0',
-            background: 'white',
-            backdropFilter: 'blur(4px)',
-            borderRadius: '24px',
-            padding: isMobile ? 'clamp(20px, 5vw, 32px)' : '32px',
+            border: '1px solid rgba(139, 92, 246, 0.1)',
+            background: 'rgba(255, 255, 255, 0.02)',
+            backdropFilter: 'blur(8px)',
+            borderRadius: '20px',
+            padding: isMobile ? 'clamp(24px, 5vw, 32px)' : 'clamp(32px, 3vw, 40px)',
             maxWidth: '1152px',
             margin: isMobile ? 'clamp(32px, 8vw, 64px) auto 0' : '64px auto 0',
-            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.2)',
             overflowX: 'auto'
           }}
         >
           <div style={{
             display: 'grid',
-            gridTemplateColumns: isMobile ? 'repeat(4, minmax(180px, 1fr))' : 'repeat(4, 1fr)',
-            gap: isMobile ? 'clamp(12px, 3vw, 24px)' : '24px',
-            minWidth: isMobile ? '560px' : 'auto'
+            gridTemplateColumns: isMobile ? 'repeat(4, minmax(150px, 1fr))' : 'repeat(4, 1fr)',
+            gap: isMobile ? 'clamp(16px, 3vw, 24px)' : '32px',
+            minWidth: isMobile ? '480px' : 'auto'
           }}>
             {stats.map((stat, idx) => {
               const Icon = stat.icon;
@@ -573,31 +861,33 @@ export default function Hero({ onScrollTo }: HeroProps) {
                   style={{ position: 'relative' }}
                 >
                   {idx > 0 && !isMobile && (
-                    <div style={{ position: 'absolute', left: '-12px', top: '50%', transform: 'translateY(-50%)', width: '1px', height: '40px', background: '#e2e8f0' }} />
+                    <div style={{ position: 'absolute', left: '-16px', top: '50%', transform: 'translateY(-50%)', width: '1px', height: '50px', background: 'rgba(139, 92, 246, 0.1)' }} />
                   )}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <Icon size={isMobile ? 14 : 16} style={{ color: stat.color }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '4px' }}>
+                    <Icon size={isMobile ? 18 : 22} style={{ color: stat.color }} />
                     <span style={{ 
-                      fontSize: isMobile ? '10px' : '12px', 
+                      fontSize: isMobile ? 'clamp(11px, 2.5vw, 13px)' : 'clamp(13px, 0.9vw, 15px)', 
                       fontFamily: 'monospace', 
-                      fontWeight: 500, 
-                      color: '#64748b', 
+                      fontWeight: 700, 
+                      color: '#9ca3af', 
                       textTransform: 'uppercase', 
-                      letterSpacing: '0.05em' 
+                      letterSpacing: '0.08em' 
                     }}>{stat.label}</span>
                   </div>
                   <span style={{ 
-                    fontSize: isMobile ? 'clamp(18px, 5vw, 20px)' : '24px', 
-                    fontFamily: "'Plus Jakarta Sans', sans-serif", 
-                    fontWeight: 'bold', 
-                    color: '#0f172a', 
+                    fontSize: isMobile ? 'clamp(24px, 6vw, 32px)' : 'clamp(30px, 3vw, 38px)', 
+                    fontFamily: "'Inter', sans-serif", 
+                    fontWeight: 900, 
+                    color: '#ffffff', 
                     display: 'block', 
-                    marginTop: '4px' 
+                    letterSpacing: '-0.02em',
+                    lineHeight: 1.1,
                   }}>{stat.value}</span>
                   <span style={{ 
-                    fontSize: isMobile ? 'clamp(8px, 3vw, 9px)' : '10px', 
-                    fontFamily: 'monospace', 
-                    color: '#94a3b8' 
+                    fontSize: isMobile ? 'clamp(10px, 2.5vw, 12px)' : 'clamp(12px, 0.8vw, 14px)', 
+                    fontFamily: "'Inter', sans-serif", 
+                    color: '#6b7280',
+                    fontWeight: 500,
                   }}>{stat.desc}</span>
                 </motion.div>
               );
@@ -606,12 +896,18 @@ export default function Hero({ onScrollTo }: HeroProps) {
         </motion.div>
       </div>
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0; }
-        }
-      `}</style>
+      <style>
+        {`
+          @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+          }
+          @keyframes floatGlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -20px) scale(1.1); }
+          }
+        `}
+      </style>
     </section>
   );
 }

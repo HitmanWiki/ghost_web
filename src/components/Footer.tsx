@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, Copy, Check, MessageSquare, Terminal } from 'lucide-react';
+import { ArrowUpRight, Copy, Check, MessageSquare, Terminal, Sparkles, Github, Twitter, Send, Shield, BookOpen } from 'lucide-react';
 
 export default function Footer() {
   const [copiedCode, setCopiedCode] = useState(false);
@@ -23,7 +23,7 @@ export default function Footer() {
     'Copy your custom derived on-chain SOL address',
     'Deposit SOL to your balance (minimum 0.05 recommended)',
     'Type `/add @channelName` or copy invite pins',
-    'Bot is ready! Sitting back to watch snipes'
+    'Bot is ready! Sit back and watch the snipes roll in'
   ];
 
   const handleCopyCode = () => {
@@ -34,10 +34,10 @@ export default function Footer() {
   };
 
   const footerStyle: React.CSSProperties = {
-    background: 'rgba(255, 255, 255, 0.95)',
+    background: 'radial-gradient(ellipse at 20% 30%, #1a0a2e 0%, #0A041B 40%, #060012 100%)',
     paddingTop: isMobile ? 'clamp(48px, 10vw, 80px)' : 'clamp(60px, 8vw, 80px)',
     paddingBottom: isMobile ? 'clamp(24px, 5vw, 32px)' : 'clamp(28px, 4vw, 32px)',
-    borderTop: '1px solid #e2e8f0',
+    borderTop: '1px solid rgba(139, 92, 246, 0.08)',
     position: 'relative',
     overflow: 'hidden',
   };
@@ -55,7 +55,7 @@ export default function Footer() {
     flexDirection: isMobile ? 'column' : 'row',
     gap: isMobile ? 'clamp(32px, 8vw, 48px)' : '48px',
     alignItems: 'flex-start',
-    borderBottom: '1px solid #e2e8f0',
+    borderBottom: '1px solid rgba(139, 92, 246, 0.06)',
     paddingBottom: isMobile ? 'clamp(40px, 8vw, 64px)' : '64px',
   };
 
@@ -66,41 +66,47 @@ export default function Footer() {
   };
 
   const joinTitleStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(24px, 6vw, 30px)' : 'clamp(30px, 4vw, 36px)',
+    fontSize: isMobile ? 'clamp(28px, 6vw, 34px)' : 'clamp(32px, 4vw, 40px)',
     fontWeight: 900,
-    color: '#0f172a',
+    fontFamily: "'Inter', sans-serif",
+    color: '#ffffff',
     lineHeight: 1.2,
     marginBottom: isMobile ? '16px' : '24px',
+    letterSpacing: '-0.02em',
   };
 
   const gradientTextStyle: React.CSSProperties = {
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    background: 'linear-gradient(135deg, #c084fc, #8b5cf6, #7c3aed)',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
   };
 
   const joinDescStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(13px, 4vw, 14px)' : '14px',
-    color: '#475569',
-    lineHeight: 1.625,
+    fontSize: isMobile ? 'clamp(15px, 4vw, 17px)' : 'clamp(16px, 1.2vw, 18px)',
+    color: '#c4b5fd',
+    lineHeight: 1.7,
     marginBottom: isMobile ? '20px' : '24px',
+    fontWeight: 400,
+    fontFamily: "'Inter', sans-serif",
   };
 
   const joinButtonStyle: React.CSSProperties = {
-    padding: isMobile ? 'clamp(12px, 4vw, 14px) clamp(16px, 5vw, 20px)' : '16px 24px',
-    borderRadius: '12px',
-    background: '#8b5cf6',
+    padding: isMobile ? 'clamp(14px, 4vw, 16px) clamp(20px, 5vw, 28px)' : 'clamp(16px, 1.5vw, 18px) clamp(28px, 3vw, 36px)',
+    borderRadius: '14px',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     color: 'white',
-    fontSize: isMobile ? 'clamp(12px, 3.5vw, 13px)' : '14px',
-    fontWeight: 600,
+    fontSize: isMobile ? 'clamp(14px, 3.5vw, 16px)' : 'clamp(16px, 1.2vw, 18px)',
+    fontWeight: 700,
+    fontFamily: "'Inter', sans-serif",
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '8px',
+    gap: '10px',
     textDecoration: 'none',
-    transition: 'all 0.2s',
+    transition: 'all 0.3s ease',
     width: isMobile ? '100%' : 'auto',
     justifyContent: 'center',
+    boxShadow: '0 4px 20px rgba(139, 92, 246, 0.3)',
   };
 
   const terminalColStyle: React.CSSProperties = {
@@ -109,23 +115,24 @@ export default function Footer() {
   };
 
   const terminalStyle: React.CSSProperties = {
-    background: '#f1f5f9',
-    border: '1px solid #cbd5e1',
+    background: 'rgba(255, 255, 255, 0.02)',
+    border: '1px solid rgba(139, 92, 246, 0.08)',
     borderRadius: '16px',
     padding: isMobile ? 'clamp(16px, 5vw, 20px)' : '24px',
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 10px 30px -10px rgba(0, 0, 0, 0.3)',
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'left',
     fontFamily: 'monospace',
+    backdropFilter: 'blur(8px)',
   };
 
   const terminalHeaderStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    borderBottom: '1px solid #cbd5e1',
-    paddingBottom: isMobile ? '10px' : '14px',
+    borderBottom: '1px solid rgba(139, 92, 246, 0.06)',
+    paddingBottom: isMobile ? '12px' : '14px',
     marginBottom: isMobile ? '12px' : '16px',
     flexWrap: isMobile ? 'wrap' : 'nowrap',
     gap: isMobile ? '12px' : '0',
@@ -134,52 +141,60 @@ export default function Footer() {
   const terminalHeaderLeftStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '8px',
+    gap: '10px',
   };
 
   const terminalTitleStyle: React.CSSProperties = {
-    fontSize: isMobile ? '10px' : '12px',
+    fontSize: isMobile ? 'clamp(11px, 2.5vw, 13px)' : 'clamp(13px, 1vw, 14px)',
     fontWeight: 600,
-    color: '#334155',
+    fontFamily: "'Inter', sans-serif",
+    color: '#e5e7eb',
   };
 
   const copyButtonStyle: React.CSSProperties = {
-    padding: isMobile ? '6px 12px' : '6px 8px',
-    background: '#e2e8f0',
-    border: '1px solid #cbd5e1',
-    borderRadius: '8px',
-    fontSize: isMobile ? '11px' : '10px',
+    padding: isMobile ? '8px 14px' : '8px 16px',
+    background: 'rgba(139, 92, 246, 0.08)',
+    border: '1px solid rgba(139, 92, 246, 0.1)',
+    borderRadius: '10px',
+    fontSize: isMobile ? 'clamp(11px, 2vw, 12px)' : 'clamp(12px, 0.8vw, 13px)',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: 600,
     display: 'flex',
     alignItems: 'center',
-    gap: '6px',
+    gap: '8px',
     cursor: 'pointer',
-    transition: 'all 0.2s',
+    transition: 'all 0.3s ease',
+    color: '#a78bfa',
   };
 
   const terminalContentStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(10px, 3vw, 11px)' : '11px',
+    fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 1vw, 14px)',
     display: 'flex',
     flexDirection: 'column',
     gap: isMobile ? '8px' : '10px',
-    color: '#334155',
+    color: '#c4b5fd',
+    fontFamily: "'Inter', sans-serif",
   };
 
   const terminalLineStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'flex-start',
-    gap: '8px',
+    gap: '10px',
     flexWrap: 'wrap',
   };
 
   const stepNumberStyle: React.CSSProperties = {
-    color: '#8b5cf6',
+    color: '#a78bfa',
     flexShrink: 0,
+    fontWeight: 700,
+    fontFamily: 'monospace',
   };
 
   const stepTextStyle: React.CSSProperties = {
-    color: '#475569',
-    lineHeight: 1.4,
+    color: '#c4b5fd',
+    lineHeight: 1.6,
     flex: 1,
+    fontWeight: 400,
   };
 
   const footerNavGridStyle: React.CSSProperties = {
@@ -198,21 +213,22 @@ export default function Footer() {
   const logoContainerStyle: React.CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '14px',
     textDecoration: 'none',
     marginBottom: '16px',
   };
 
   const logoSymbolStyle: React.CSSProperties = {
-    width: isMobile ? '36px' : '40px',
-    height: isMobile ? '36px' : '40px',
-    borderRadius: '50%',
-    background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)',
+    width: isMobile ? '44px' : '48px',
+    height: isMobile ? '44px' : '48px',
+    borderRadius: '12px',
+    background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 0 30px rgba(139, 92, 246, 0.2)',
     overflow: 'hidden',
+    flexShrink: 0,
   };
 
   const logoImageStyle: React.CSSProperties = {
@@ -222,18 +238,24 @@ export default function Footer() {
   };
 
   const logoTextStyle: React.CSSProperties = {
-    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontFamily: "'Inter', sans-serif",
     fontWeight: 900,
-    fontSize: isMobile ? '1.125rem' : '1.25rem',
-    letterSpacing: '0.05em',
-    color: '#0f172a',
+    fontSize: isMobile ? 'clamp(20px, 4vw, 24px)' : 'clamp(24px, 2vw, 28px)',
+    letterSpacing: '-0.02em',
+    color: '#ffffff',
+  };
+
+  const logoAccentStyle: React.CSSProperties = {
+    color: '#8b5cf6',
   };
 
   const brandDescStyle: React.CSSProperties = {
-    fontSize: isMobile ? '11px' : '12px',
-    color: '#64748b',
-    maxWidth: isMobile ? '100%' : '320px',
-    lineHeight: 1.5,
+    fontSize: isMobile ? 'clamp(13px, 3vw, 14px)' : 'clamp(14px, 1vw, 15px)',
+    color: '#c4b5fd',
+    maxWidth: isMobile ? '100%' : '340px',
+    lineHeight: 1.7,
+    fontWeight: 400,
+    fontFamily: "'Inter', sans-serif",
   };
 
   const linksColStyle: React.CSSProperties = {
@@ -242,30 +264,32 @@ export default function Footer() {
   };
 
   const linksTitleStyle: React.CSSProperties = {
-    fontSize: isMobile ? '11px' : '12px',
+    fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 0.9vw, 14px)',
     fontFamily: 'monospace',
-    fontWeight: 'bold',
-    color: '#64748b',
+    fontWeight: 700,
+    color: '#9ca3af',
     textTransform: 'uppercase',
-    letterSpacing: '0.05em',
-    marginBottom: '12px',
+    letterSpacing: '0.08em',
+    marginBottom: '16px',
   };
 
   const linksContainerStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: 'column',
-    gap: isMobile ? '12px' : '10px',
+    gap: isMobile ? '14px' : '12px',
   };
 
   const linkStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(11px, 3.5vw, 12px)' : '12px',
-    color: '#64748b',
+    fontSize: isMobile ? 'clamp(14px, 3vw, 15px)' : 'clamp(15px, 1vw, 16px)',
+    color: '#c4b5fd',
     textDecoration: 'none',
     display: 'inline-flex',
     alignItems: 'center',
-    gap: '6px',
-    transition: 'color 0.2s',
-    padding: isMobile ? '4px 0' : '0',
+    gap: '8px',
+    transition: 'all 0.3s ease',
+    padding: isMobile ? '6px 0' : '0',
+    fontWeight: 500,
+    fontFamily: "'Inter', sans-serif",
   };
 
   const contactColStyle: React.CSSProperties = {
@@ -274,22 +298,26 @@ export default function Footer() {
   };
 
   const contactDescStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(11px, 3.5vw, 12px)' : '12px',
-    color: '#64748b',
-    lineHeight: 1.5,
-    marginBottom: '8px',
+    fontSize: isMobile ? 'clamp(14px, 3vw, 15px)' : 'clamp(15px, 1vw, 16px)',
+    color: '#c4b5fd',
+    lineHeight: 1.7,
+    marginBottom: '12px',
+    fontWeight: 400,
+    fontFamily: "'Inter', sans-serif",
   };
 
   const emailStyle: React.CSSProperties = {
-    fontSize: isMobile ? 'clamp(11px, 3.5vw, 12px)' : '12px',
+    fontSize: isMobile ? 'clamp(14px, 3vw, 15px)' : 'clamp(15px, 1vw, 16px)',
     fontFamily: 'monospace',
-    color: '#8b5cf6',
+    color: '#a78bfa',
     textDecoration: 'underline',
     wordBreak: 'break-all',
+    fontWeight: 600,
+    transition: 'all 0.3s ease',
   };
 
   const copyrightStyle: React.CSSProperties = {
-    borderTop: '1px solid #e2e8f0',
+    borderTop: '1px solid rgba(139, 92, 246, 0.06)',
     paddingTop: isMobile ? 'clamp(24px, 6vw, 32px)' : '32px',
     display: 'flex',
     flexWrap: 'wrap',
@@ -297,27 +325,68 @@ export default function Footer() {
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: isMobile ? '12px' : '16px',
-    fontSize: isMobile ? 'clamp(10px, 3vw, 11px)' : '12px',
-    color: '#64748b',
+    fontSize: isMobile ? 'clamp(12px, 2.5vw, 13px)' : 'clamp(13px, 0.8vw, 14px)',
+    color: '#6b7280',
     textAlign: isMobile ? 'center' : 'left',
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: 400,
   };
 
   const policyLinksStyle: React.CSSProperties = {
     display: 'flex',
-    gap: isMobile ? '16px' : '24px',
+    gap: isMobile ? '20px' : '28px',
     flexWrap: 'wrap',
     justifyContent: 'center',
   };
 
+  const policyLinkStyle: React.CSSProperties = {
+    color: '#6b7280',
+    textDecoration: 'none',
+    transition: 'all 0.3s ease',
+    fontWeight: 500,
+    fontSize: isMobile ? 'clamp(12px, 2.5vw, 13px)' : 'clamp(13px, 0.8vw, 14px)',
+    fontFamily: "'Inter', sans-serif",
+  };
+
   return (
     <footer style={footerStyle} id="quickstart">
-      {/* Glow Effects - hidden on mobile */}
+      {/* Glow Effects */}
       {!isMobile && (
         <>
-          <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '384px', height: '384px', background: 'rgba(139, 92, 246, 0.05)', borderRadius: '50%', filter: 'blur(110px)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: '40px', left: '10%', width: '320px', height: '320px', background: 'rgba(6, 182, 212, 0.05)', borderRadius: '50%', filter: 'blur(100px)', pointerEvents: 'none' }} />
+          <div style={{
+            position: 'absolute',
+            bottom: '-10%',
+            right: '10%',
+            width: '384px',
+            height: '384px',
+            background: 'rgba(139, 92, 246, 0.04)',
+            borderRadius: '50%',
+            filter: 'blur(110px)',
+            pointerEvents: 'none',
+          }} />
+          <div style={{
+            position: 'absolute',
+            top: '40px',
+            left: '10%',
+            width: '320px',
+            height: '320px',
+            background: 'rgba(6, 182, 212, 0.03)',
+            borderRadius: '50%',
+            filter: 'blur(100px)',
+            pointerEvents: 'none',
+          }} />
         </>
       )}
+
+      {/* Grid pattern */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        backgroundImage: 'radial-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px)',
+        backgroundSize: '20px 20px',
+        opacity: 0.3,
+        pointerEvents: 'none',
+      }} />
 
       <div style={containerStyle}>
         {/* Main Banner */}
@@ -341,15 +410,21 @@ export default function Footer() {
               rel="noreferrer"
               style={joinButtonStyle}
               onMouseEnter={(e) => {
-                if (!isMobile) e.currentTarget.style.background = '#7c3aed';
+                if (!isMobile) {
+                  e.currentTarget.style.transform = 'translateY(-3px)';
+                  e.currentTarget.style.boxShadow = '0 8px 30px rgba(139, 92, 246, 0.5)';
+                }
               }}
               onMouseLeave={(e) => {
-                if (!isMobile) e.currentTarget.style.background = '#8b5cf6';
+                if (!isMobile) {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(139, 92, 246, 0.3)';
+                }
               }}
             >
-              <MessageSquare size={isMobile ? 14 : 16} />
+              <MessageSquare size={isMobile ? 18 : 20} />
               <span>{isMobile ? 'Join Telegram' : 'Join official Telegram Channel'}</span>
-              <ArrowUpRight size={isMobile ? 14 : 16} />
+              <ArrowUpRight size={isMobile ? 18 : 20} />
             </a>
           </div>
 
@@ -358,7 +433,7 @@ export default function Footer() {
             <div style={terminalStyle}>
               <div style={terminalHeaderStyle}>
                 <div style={terminalHeaderLeftStyle}>
-                  <Terminal size={isMobile ? 14 : 18} style={{ color: '#8b5cf6' }} />
+                  <Terminal size={isMobile ? 18 : 20} style={{ color: '#a78bfa' }} />
                   <span style={terminalTitleStyle}>
                     {isMobile ? 'GHOSTwire Quick Start' : 'GHOSTwire Quick Onboarding Terminal'}
                   </span>
@@ -367,19 +442,25 @@ export default function Footer() {
                   onClick={handleCopyCode}
                   style={copyButtonStyle}
                   onMouseEnter={(e) => {
-                    if (!isMobile) e.currentTarget.style.background = '#cbd5e1';
+                    if (!isMobile) {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.15)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    if (!isMobile) e.currentTarget.style.background = '#e2e8f0';
+                    if (!isMobile) {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.08)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.1)';
+                    }
                   }}
                 >
-                  {copiedCode ? <Check size={12} style={{ color: '#10b981' }} /> : <Copy size={12} />}
-                  {copiedCode ? 'Copied' : (isMobile ? 'Copy' : 'Copy Codes')}
+                  {copiedCode ? <Check size={16} style={{ color: '#34d399' }} /> : <Copy size={16} />}
+                  {copiedCode ? 'Copied!' : (isMobile ? 'Copy' : 'Copy Codes')}
                 </button>
               </div>
 
               <div style={terminalContentStyle}>
-                <p style={{ color: '#8b5cf6' }}>
+                <p style={{ color: '#a78bfa', fontWeight: 600, fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 1vw, 14px)' }}>
                   {isMobile ? '// Quick start (Under 5 min)' : '// Quick start Solana sniping (Under 5 minutes)'}
                 </p>
                 {quickStartSteps.map((step, sIdx) => (
@@ -406,13 +487,13 @@ export default function Footer() {
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                     if (e.currentTarget.parentElement) {
-                      e.currentTarget.parentElement.innerHTML = '<span style="font-size: 20px;">👻</span>';
+                      e.currentTarget.parentElement.innerHTML = '<span style="font-size: 24px; color: white;">👻</span>';
                     }
                   }}
                 />
               </div>
               <span style={logoTextStyle}>
-                GHOST<span style={{ color: '#8b5cf6' }}>wire</span>
+                GHOST<span style={logoAccentStyle}>wire</span>
               </span>
             </a>
             <p style={brandDescStyle}>
@@ -422,7 +503,7 @@ export default function Footer() {
 
           {/* Links */}
           <div style={linksColStyle}>
-            <h4 style={linksTitleStyle}>Protocol links</h4>
+            <h4 style={linksTitleStyle}>Protocol Links</h4>
             <div style={linksContainerStyle}>
               <a 
                 href="https://t.me/ghowr_bot" 
@@ -430,13 +511,13 @@ export default function Footer() {
                 rel="noreferrer" 
                 style={linkStyle}
                 onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                  if (!isMobile) e.currentTarget.style.color = '#a78bfa';
                 }}
                 onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#64748b';
+                  if (!isMobile) e.currentTarget.style.color = '#c4b5fd';
                 }}
               >
-                Launch Telegram Bot <ArrowUpRight size={isMobile ? 10 : 12} />
+                Launch Telegram Bot <ArrowUpRight size={isMobile ? 16 : 18} />
               </a>
               <a 
                 href="https://docs.ghostwirebot.tech/" 
@@ -444,13 +525,13 @@ export default function Footer() {
                 rel="noreferrer" 
                 style={linkStyle}
                 onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                  if (!isMobile) e.currentTarget.style.color = '#a78bfa';
                 }}
                 onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#64748b';
+                  if (!isMobile) e.currentTarget.style.color = '#c4b5fd';
                 }}
               >
-                Technical Documentation <ArrowUpRight size={isMobile ? 10 : 12} />
+                Technical Documentation <ArrowUpRight size={isMobile ? 16 : 18} />
               </a>
               <a 
                 href="https://t.me/ghowr_bot" 
@@ -458,13 +539,13 @@ export default function Footer() {
                 rel="noreferrer" 
                 style={linkStyle}
                 onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                  if (!isMobile) e.currentTarget.style.color = '#a78bfa';
                 }}
                 onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#64748b';
+                  if (!isMobile) e.currentTarget.style.color = '#c4b5fd';
                 }}
               >
-                Helpdesk & Troubleshooting <ArrowUpRight size={isMobile ? 10 : 12} />
+                Helpdesk & Troubleshooting <ArrowUpRight size={isMobile ? 16 : 18} />
               </a>
             </div>
           </div>
@@ -480,10 +561,10 @@ export default function Footer() {
                 href="mailto:support@ghostwire.tech" 
                 style={emailStyle}
                 onMouseEnter={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#7c3aed';
+                  if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
                 }}
                 onMouseLeave={(e) => {
-                  if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                  if (!isMobile) e.currentTarget.style.color = '#a78bfa';
                 }}
               >
                 support@ghostwire.tech
@@ -498,24 +579,24 @@ export default function Footer() {
           <div style={policyLinksStyle}>
             <a 
               href="#" 
-              style={{ color: '#64748b', textDecoration: 'none' }}
+              style={policyLinkStyle}
               onMouseEnter={(e) => {
-                if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                if (!isMobile) e.currentTarget.style.color = '#a78bfa';
               }}
               onMouseLeave={(e) => {
-                if (!isMobile) e.currentTarget.style.color = '#64748b';
+                if (!isMobile) e.currentTarget.style.color = '#6b7280';
               }}
             >
               Privacy Policy
             </a>
             <a 
               href="#" 
-              style={{ color: '#64748b', textDecoration: 'none' }}
+              style={policyLinkStyle}
               onMouseEnter={(e) => {
-                if (!isMobile) e.currentTarget.style.color = '#8b5cf6';
+                if (!isMobile) e.currentTarget.style.color = '#a78bfa';
               }}
               onMouseLeave={(e) => {
-                if (!isMobile) e.currentTarget.style.color = '#64748b';
+                if (!isMobile) e.currentTarget.style.color = '#6b7280';
               }}
             >
               Terms of Operations
