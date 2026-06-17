@@ -274,7 +274,7 @@ Good luck!`,
 
 GNL7MQSz...pump
 Amount: 0.01 SOL
-💰 Fee: 0.05%
+💰 Fee: 0.1%
 
 ⏳ Executing buy...`,
     time: '14:35:22'
@@ -289,7 +289,7 @@ Amount: 0.01 SOL
 Token: LUCY
 Amount: 12,096.07
 Spent: 0.010000 SOL
-💰 Fee: 0.000005 SOL (0.05%)
+💰 Fee: 0.000005 SOL (0.1%)
 TX: 4TEoNH4n9ae73gz6DFWB...
 MC: $67,384`,
     time: '14:35:24',
@@ -329,7 +329,7 @@ Token: LUCY
 Profit: +52.3% (target: 50%)
 Amount: 12,096.07
 SOL Received: 0.015995 SOL
-💰 Fee: 0.000008 SOL (0.05%)
+💰 Fee: 0.000008 SOL (0.1%)
 TX: 8xKp7YqVzRcT2NmLw...`,
     time: '14:38:15',
     txHash: '8xKp7YqVzRcT2NmLw...'

@@ -409,7 +409,7 @@ export default function FAQ() {
             <p style={ctaDescStyle}>Contact our support bot or join our Telegram community.</p>
           </div>
           <a
-            href="https://t.me/@ghowr_bot"
+            href="https://t.me/ghost_wirebot"
             target="_blank"
             rel="noreferrer"
             style={ctaButtonStyle}

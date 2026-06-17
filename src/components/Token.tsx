@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef, useState } from 'react';
-import { Coins, TrendingUp, Users, ArrowUpRight, Copy, Check, Sparkles, Zap, Crown, MessageCircle, ExternalLink, Lock, Gift, Star, Rocket, Shield, Award } from 'lucide-react';
+import { Coins, TrendingUp, Users, ArrowUpRight, Copy, Check, Sparkles, Zap, Crown, MessageCircle, Lock, Rocket, Shield } from 'lucide-react';
 
 export default function Token() {
   const [copiedAddress, setCopiedAddress] = useState(false);
@@ -20,14 +20,32 @@ export default function Token() {
   const tokenStats = [
     { label: 'Total Supply', value: '1,000,000,000', icon: Coins, color: '#a78bfa' },
     { label: 'Tax', value: '0/0', icon: TrendingUp, sub: 'Buy/Sell', color: '#34d399' },
-    { label: 'Liquidity', value: '100%', icon: Lock, sub: 'Locked', color: '#67e8f9' },
+    { label: 'Liquidity', value: '100%', icon: Lock, sub: 'Burnt', color: '#67e8f9' },
     { label: 'Mint', value: 'Renounced', icon: Crown, sub: 'Authority', color: '#fcd34d' },
   ];
 
   const links = [
-    { name: 'pump.fun', url: pumpFunLink, icon: Rocket, gradient: 'linear-gradient(135deg, #a855f7, #ec4899)' },
-    { name: 'DexScreener', url: dexscreenerLink, icon: TrendingUp, gradient: 'linear-gradient(135deg, #f59e0b, #f97316)' },
-    { name: 'DEXTools', url: dexToolsLink, icon: Shield, gradient: 'linear-gradient(135deg, #3b82f6, #06b6d4)' },
+    { 
+      name: 'pump.fun', 
+      url: pumpFunLink, 
+      icon: Rocket,
+      gradient: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+      description: 'View on pump.fun'
+    },
+    { 
+      name: 'DexScreener', 
+      url: dexscreenerLink, 
+      icon: TrendingUp,
+      gradient: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+      description: 'Live charts & data'
+    },
+    { 
+      name: 'DEXTools', 
+      url: dexToolsLink, 
+      icon: Shield,
+      gradient: 'linear-gradient(135deg, #7c3aed, #6d28d9)',
+      description: 'Analytics & security'
+    },
   ];
 
   const copyToClipboard = () => {
@@ -70,7 +88,7 @@ export default function Token() {
           right: '-160px',
           width: '320px',
           height: '320px',
-          background: 'rgba(6, 182, 212, 0.04)',
+          background: 'rgba(139, 92, 246, 0.04)',
           borderRadius: '50%',
           filter: 'blur(100px)',
           y: bgY
@@ -166,7 +184,7 @@ export default function Token() {
           </motion.p>
         </div>
 
-        {/* Token Stats Cards - Total Supply in Single Row */}
+        {/* Token Stats Cards */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +199,6 @@ export default function Token() {
         >
           {tokenStats.map((stat, idx) => {
             const Icon = stat.icon;
-            // For Total Supply, ensure it stays in one line
             const isTotalSupply = stat.label === 'Total Supply';
             return (
               <motion.div 
@@ -359,54 +376,83 @@ export default function Token() {
           </div>
         </motion.div>
 
-        {/* Dex Links */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '16px',
-            marginBottom: '48px'
-          }}
-        >
-          {links.map((link, idx) => (
-            <motion.a 
-              key={idx}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ y: -3, scale: 1.02 }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '16px 20px',
-                borderRadius: '14px',
-                background: link.gradient,
-                color: 'white',
-                textDecoration: 'none',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <link.icon size={18} />
-                <span style={{ 
-                  fontWeight: 700, 
-                  fontSize: 'clamp(14px, 1.2vw, 16px)',
-                  fontFamily: "'Inter', sans-serif",
-                  letterSpacing: '-0.01em',
+        {/* Dex Links - Clean Purple Gradients */}
+        <div style={{ marginBottom: '48px' }}>
+          <p style={{ 
+            textAlign: 'center', 
+            color: '#9ca3af', 
+            fontSize: 'clamp(12px, 1vw, 14px)',
+            fontFamily: 'monospace',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: '16px',
+            fontWeight: 600,
+          }}>
+            📊 View on DEX Platforms
+          </p>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '16px',
+            }}
+          >
+            {links.map((link, idx) => (
+              <motion.a 
+                key={idx}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ y: -4, scale: 1.02 }}
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '20px 24px',
+                  borderRadius: '14px',
+                  background: link.gradient,
+                  color: 'white',
+                  textDecoration: 'none',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 20px rgba(103, 25, 255, 0.3)',
+                  textAlign: 'center',
+                  minHeight: '90px',
+                }}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '12px',
+                  marginBottom: '4px',
                 }}>
-                  {link.name}
-                </span>
-              </div>
-              <ArrowUpRight size={18} style={{ opacity: 0.7 }} />
-            </motion.a>
-          ))}
-        </motion.div>
+                  <link.icon size={22} />
+                  <span style={{ 
+                    fontWeight: 700, 
+                    fontSize: 'clamp(16px, 1.2vw, 18px)',
+                    fontFamily: "'Inter', sans-serif",
+                    letterSpacing: '-0.01em',
+                  }}>
+                    {link.name}
+                  </span>
+                </div>
+                {link.description && (
+                  <span style={{ 
+                    fontSize: 'clamp(11px, 0.8vw, 12px)', 
+                    opacity: 0.8,
+                    fontWeight: 400,
+                  }}>
+                    {link.description}
+                  </span>
+                )}
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
 
         {/* Token Info & Community */}
         <div style={{
@@ -508,7 +554,7 @@ export default function Token() {
                   fontSize: '18px',
                   fontWeight: 700,
                 }}>◆</span>
-                <span>Liquidity locked — safe and secure</span>
+                <span>Liquidity Burnt — safe and secure</span>
               </li>
               <li style={{ 
                 display: 'flex', 
@@ -634,32 +680,7 @@ export default function Token() {
         </div>
 
         {/* Disclaimer */}
-        {/* <motion.p 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.8 }}
-          style={{
-            textAlign: 'center',
-            fontSize: 'clamp(14px, 1.5vw, 17px)',
-            color: '#6b7280',
-            marginTop: '24px',
-            fontFamily: "'Inter', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.02em',
-            maxWidth: '672px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            lineHeight: 1.6,
-            padding: '16px 24px',
-            background: 'rgba(139, 92, 246, 0.03)',
-            borderRadius: '12px',
-            border: '1px solid rgba(139, 92, 246, 0.04)',
-          }}
-        >
-          ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research.
-        </motion.p> */}
-
+        
       </div>
 
       <style>

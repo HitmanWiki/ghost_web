@@ -22,8 +22,8 @@ export default function Header({ onScrollTo }: HeaderProps) {
   const navLinks = [
     { num: '01', label: 'Home', action: 'hero' },
     { num: '02', label: 'Features', action: 'features' },
-    { num: '03', label: '$GHOST', action: 'token' },
-    { num: '04', label: 'How It Works', action: 'demo' },
+    { num: '03', label: 'How It Works', action: 'demo' },
+    { num: '04', label: '$GHOST', action: 'token' },
     { num: '05', label: 'FAQ', action: 'faq' }
   ];
 
@@ -498,7 +498,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
             <div style={mobileBottomStyle}>
               <div style={mobileGridStyle}>
                 <a
-                  href="https://t.me/@ghowr_bot"
+                  href="https://t.me/ghost_wirebot"
                   target="_blank"
                   rel="noreferrer"
                   style={mobileSupportBtnStyle}
@@ -515,7 +515,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
                 </a>
               </div>
               <a
-                href="https://t.me/@ghowr_bot"
+                href="https://t.me/ghost_wirebot"
                 target="_blank"
                 rel="noreferrer"
                 style={mobileLaunchBtnStyle}

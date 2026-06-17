@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
-import { ArrowUpRight, Copy, Check, MessageSquare, Terminal, Sparkles, Github, Twitter, Send, Shield, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { ArrowUpRight, Copy, Check, MessageSquare, Terminal, Sparkles, Github, Twitter, Send, Shield, BookOpen, X } from 'lucide-react';
 
 export default function Footer() {
   const [copiedCode, setCopiedCode] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
+  const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
+  const [showTerms, setShowTerms] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -346,10 +348,260 @@ export default function Footer() {
     fontWeight: 500,
     fontSize: isMobile ? 'clamp(12px, 2.5vw, 13px)' : 'clamp(13px, 0.8vw, 14px)',
     fontFamily: "'Inter', sans-serif",
+    cursor: 'pointer',
+    background: 'none',
+    border: 'none',
+    padding: 0,
+  };
+
+  // Modal Styles
+  const modalOverlayStyle: React.CSSProperties = {
+    position: 'fixed',
+    inset: 0,
+    background: 'rgba(0, 0, 0, 0.8)',
+    backdropFilter: 'blur(8px)',
+    zIndex: 9999,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '20px',
+  };
+
+  const modalContentStyle: React.CSSProperties = {
+    background: 'linear-gradient(135deg, #1a0a2e, #0A041B)',
+    border: '1px solid rgba(139, 92, 246, 0.2)',
+    borderRadius: '20px',
+    maxWidth: '720px',
+    width: '100%',
+    maxHeight: '80vh',
+    overflowY: 'auto',
+    padding: 'clamp(24px, 4vw, 40px)',
+    position: 'relative',
+    boxShadow: '0 25px 60px rgba(0, 0, 0, 0.6)',
+  };
+
+  const modalCloseStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: '16px',
+    right: '16px',
+    background: 'rgba(139, 92, 246, 0.1)',
+    border: '1px solid rgba(139, 92, 246, 0.15)',
+    borderRadius: '10px',
+    color: '#a78bfa',
+    width: '40px',
+    height: '40px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor: 'pointer',
+    transition: 'all 0.3s ease',
+  };
+
+  const modalTitleStyle: React.CSSProperties = {
+    fontSize: 'clamp(24px, 3vw, 32px)',
+    fontWeight: 800,
+    fontFamily: "'Inter', sans-serif",
+    color: '#ffffff',
+    marginBottom: '20px',
+    letterSpacing: '-0.02em',
+  };
+
+  const modalTextStyle: React.CSSProperties = {
+    fontSize: 'clamp(14px, 1.2vw, 16px)',
+    color: '#c4b5fd',
+    lineHeight: 1.8,
+    fontFamily: "'Inter', sans-serif",
+    fontWeight: 400,
+  };
+
+  const modalSubTitleStyle: React.CSSProperties = {
+    fontSize: 'clamp(16px, 1.5vw, 18px)',
+    fontWeight: 700,
+    color: '#ffffff',
+    marginTop: '24px',
+    marginBottom: '12px',
+    fontFamily: "'Inter', sans-serif",
+  };
+
+  // Privacy Policy Content
+  const PrivacyPolicyContent = () => (
+    <>
+      <h2 style={modalTitleStyle}>Privacy Policy</h2>
+      <p style={modalTextStyle}>
+        <strong>Last Updated:</strong> June 2026
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>1. Introduction</h3>
+      <p style={modalTextStyle}>
+        GHOSTwire ("we", "our", "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our Telegram bot and related services.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>2. Information We Collect</h3>
+      <p style={modalTextStyle}>
+        <strong>Telegram User Data:</strong> We collect your Telegram ID, username, and messages sent to the bot for the purpose of providing trading services.
+      </p>
+      <p style={modalTextStyle}>
+        <strong>Wallet Data:</strong> We generate and manage derived Solana wallets. Private keys are never stored on our servers — they are derived from your Telegram ID using cryptographic algorithms.
+      </p>
+      <p style={modalTextStyle}>
+        <strong>Transaction Data:</strong> We record transaction history, token swaps, and trading activity for portfolio tracking and analytics.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>3. How We Use Your Information</h3>
+      <p style={modalTextStyle}>
+        • To provide and maintain our trading bot services<br />
+        • To execute trades and manage wallets<br />
+        • To track portfolio performance and P&L<br />
+        • To process referral rewards and commissions<br />
+        • To improve and optimize our services
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>4. Data Security</h3>
+      <p style={modalTextStyle}>
+        We implement industry-standard security measures to protect your data. Your private keys are never stored on our servers — they are derived on-the-fly from your Telegram ID using secure cryptographic methods. All sensitive data is encrypted in transit and at rest.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>5. Data Sharing</h3>
+      <p style={modalTextStyle}>
+        We do not sell, trade, or rent your personal information to third parties. We may share data with:
+      </p>
+      <p style={modalTextStyle}>
+        • <strong>Jupiter API:</strong> For executing trades (no personal data shared)<br />
+        • <strong>Solana blockchain:</strong> All transactions are public on-chain
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>6. Your Rights</h3>
+      <p style={modalTextStyle}>
+        You have the right to:<br />
+        • Access your personal data<br />
+        • Request deletion of your data<br />
+        • Opt-out of marketing communications<br />
+        • Export your transaction history
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>7. Contact Us</h3>
+      <p style={modalTextStyle}>
+        For privacy-related questions, contact us at: <a href="mailto:support@ghostwire.tech" style={{ color: '#a78bfa' }}>support@ghostwire.tech</a>
+      </p>
+    </>
+  );
+
+  // Terms of Operations Content
+  const TermsContent = () => (
+    <>
+      <h2 style={modalTitleStyle}>Terms of Operations</h2>
+      <p style={modalTextStyle}>
+        <strong>Last Updated:</strong> June 2026
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>1. Acceptance of Terms</h3>
+      <p style={modalTextStyle}>
+        By using GHOSTwire, you agree to these Terms of Operations. If you do not agree, please do not use our services.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>2. Description of Service</h3>
+      <p style={modalTextStyle}>
+        GHOSTwire is a Telegram-based bot that provides automated Solana token trading, channel monitoring, portfolio tracking, and referral services.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>3. User Responsibilities</h3>
+      <p style={modalTextStyle}>
+        • You are responsible for your wallet security and private keys<br />
+        • You must comply with all applicable laws and regulations<br />
+        • You are responsible for any trades made using your account<br />
+        • You must not use the bot for illegal activities
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>4. Risk Disclosure</h3>
+      <p style={modalTextStyle}>
+        Trading cryptocurrencies carries significant risk. You may lose some or all of your investment. GHOSTwire is a tool, not a financial advisor. All trades are executed at your own risk.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>5. Fees</h3>
+      <p style={modalTextStyle}>
+        GHOSTwire charges a 0.1% trading fee on all executed swaps. Referral rewards earn 20% of trading fees from referred users. All fees are transparent and disclosed.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>6. Limitation of Liability</h3>
+      <p style={modalTextStyle}>
+        GHOSTwire is provided "as is" without warranties. We are not liable for any losses, damages, or issues arising from the use of our services. We do not guarantee trading profits.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>7. Termination</h3>
+      <p style={modalTextStyle}>
+        We reserve the right to terminate or suspend access to our services at any time, with or without notice, for any reason.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>8. Changes to Terms</h3>
+      <p style={modalTextStyle}>
+        We may update these Terms at any time. Continued use of GHOSTwire constitutes acceptance of the updated Terms.
+      </p>
+      
+      <h3 style={modalSubTitleStyle}>9. Contact</h3>
+      <p style={modalTextStyle}>
+        For questions about these Terms, contact: <a href="mailto:support@ghostwire.tech" style={{ color: '#a78bfa' }}>support@ghostwire.tech</a>
+      </p>
+    </>
+  );
+
+  // Modal Component
+  const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean; onClose: () => void; title: string; children: React.ReactNode }) => {
+    if (!isOpen) return null;
+
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        style={modalOverlayStyle}
+        onClick={onClose}
+      >
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.9, opacity: 0 }}
+          transition={{ type: "spring", damping: 20 }}
+          style={modalContentStyle}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={onClose}
+            style={modalCloseStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)';
+            }}
+          >
+            <X size={20} />
+          </button>
+          {children}
+        </motion.div>
+      </motion.div>
+    );
   };
 
   return (
     <footer style={footerStyle} id="quickstart">
+      {/* Privacy Policy Modal */}
+      <AnimatePresence>
+        {showPrivacyPolicy && (
+          <Modal isOpen={showPrivacyPolicy} onClose={() => setShowPrivacyPolicy(false)} title="Privacy Policy">
+            <PrivacyPolicyContent />
+          </Modal>
+        )}
+      </AnimatePresence>
+
+      {/* Terms of Operations Modal */}
+      <AnimatePresence>
+        {showTerms && (
+          <Modal isOpen={showTerms} onClose={() => setShowTerms(false)} title="Terms of Operations">
+            <TermsContent />
+          </Modal>
+        )}
+      </AnimatePresence>
+
       {/* Glow Effects */}
       {!isMobile && (
         <>
@@ -389,9 +641,8 @@ export default function Footer() {
       }} />
 
       <div style={containerStyle}>
-        {/* Main Banner */}
+        {/* Main Banner - keep existing content */}
         <div style={mainGridStyle}>
-          {/* Join Call */}
           <div style={joinColStyle}>
             <h2 style={joinTitleStyle}>
               {isMobile ? 'Join the trading community on Telegram' : (
@@ -405,7 +656,7 @@ export default function Footer() {
               Connect with fellow Solana snipers. Stay updated with token updates, claim priority referral pins, and ask our developer squad questions relative to on-chain automation.
             </p>
             <a
-              href="https://t.me/ghowr_bot"
+              href="https://t.me/ghost_wirebot"
               target="_blank"
               rel="noreferrer"
               style={joinButtonStyle}
@@ -476,7 +727,6 @@ export default function Footer() {
 
         {/* Footer Navigation */}
         <div style={footerNavGridStyle}>
-          {/* Brand */}
           <div style={brandColStyle}>
             <a href="#" style={logoContainerStyle}>
               <div style={logoSymbolStyle}>
@@ -501,7 +751,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Links */}
           <div style={linksColStyle}>
             <h4 style={linksTitleStyle}>Protocol Links</h4>
             <div style={linksContainerStyle}>
@@ -534,7 +783,7 @@ export default function Footer() {
                 Technical Documentation <ArrowUpRight size={isMobile ? 16 : 18} />
               </a>
               <a 
-                href="https://t.me/ghowr_bot" 
+                href="https://t.me/ghost_wirebot" 
                 target="_blank" 
                 rel="noreferrer" 
                 style={linkStyle}
@@ -550,7 +799,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Contact */}
           <div style={contactColStyle}>
             <h4 style={linksTitleStyle}>Contacts & Mail</h4>
             <p style={contactDescStyle}>
@@ -573,12 +821,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
+        {/* Copyright with Clickable Policy Links */}
         <div style={copyrightStyle}>
           <span>© 2026 GHOSTwire Solana Sniper Bot. All rights reserved.</span>
           <div style={policyLinksStyle}>
-            <a 
-              href="#" 
+            <button 
+              onClick={() => setShowPrivacyPolicy(true)}
               style={policyLinkStyle}
               onMouseEnter={(e) => {
                 if (!isMobile) e.currentTarget.style.color = '#a78bfa';
@@ -588,9 +836,9 @@ export default function Footer() {
               }}
             >
               Privacy Policy
-            </a>
-            <a 
-              href="#" 
+            </button>
+            <button 
+              onClick={() => setShowTerms(true)}
               style={policyLinkStyle}
               onMouseEnter={(e) => {
                 if (!isMobile) e.currentTarget.style.color = '#a78bfa';
@@ -600,7 +848,7 @@ export default function Footer() {
               }}
             >
               Terms of Operations
-            </a>
+            </button>
           </div>
         </div>
       </div>

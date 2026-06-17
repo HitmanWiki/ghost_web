@@ -17,7 +17,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
     { label: 'Uptime', value: '24/7', desc: 'Continuous monitoring', icon: Zap, color: '#a78bfa' },
     { label: 'Wallets', value: 'Up to 5', desc: 'Derived per account', icon: WalletIcon, color: '#818cf8' },
     { label: 'Ref Revenue', value: '20%', desc: 'Trading fee commission', icon: TrendingUp, color: '#c084fc' },
-    { label: 'Trading Fee', value: '0.05%', desc: 'Ultra-competitive', icon: Lock, color: '#34d399' },
+    { label: 'Trading Fee', value: '0.1%', desc: 'Ultra-competitive', icon: Lock, color: '#34d399' },
   ];
 
   const fullText = "Tokens instantly.";
