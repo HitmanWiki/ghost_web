@@ -166,7 +166,7 @@ export default function Token() {
           </motion.p>
         </div>
 
-        {/* Token Stats Cards */}
+        {/* Token Stats Cards - Total Supply in Single Row */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,18 +181,27 @@ export default function Token() {
         >
           {tokenStats.map((stat, idx) => {
             const Icon = stat.icon;
+            // For Total Supply, ensure it stays in one line
+            const isTotalSupply = stat.label === 'Total Supply';
             return (
               <motion.div 
                 key={idx} 
                 whileHover={{ y: -4, scale: 1.02 }}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.02)',
+                  background: 'rgba(255, 255, 255, 0.03)',
                   borderRadius: '16px',
                   padding: '24px 20px',
                   textAlign: 'center',
-                  border: '1px solid rgba(139, 92, 246, 0.08)',
+                  border: '1px solid rgba(139, 92, 246, 0.1)',
                   backdropFilter: 'blur(8px)',
                   transition: 'all 0.3s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  minHeight: '160px',
+                  width: '100%',
+                  boxSizing: 'border-box',
                 }}
               >
                 <div style={{
@@ -215,12 +224,14 @@ export default function Token() {
                   </div>
                 </div>
                 <div style={{ 
-                  fontSize: 'clamp(28px, 4vw, 36px)', 
+                  fontSize: isTotalSupply ? 'clamp(22px, 2.5vw, 28px)' : 'clamp(28px, 4vw, 36px)', 
                   fontWeight: 800, 
                   fontFamily: "'Inter', sans-serif",
                   color: '#ffffff',
                   letterSpacing: '-0.02em',
                   lineHeight: 1.2,
+                  whiteSpace: isTotalSupply ? 'nowrap' : 'normal',
+                  wordBreak: isTotalSupply ? 'keep-all' : 'break-word',
                 }}>
                   {stat.value}
                 </div>
@@ -616,13 +627,13 @@ export default function Token() {
                 }}
               >
                 <span style={{ fontSize: '18px' }}>𝕏</span>
-                Twitter
+                Twitter 
               </motion.a>
             </div>
           </motion.div>
         </div>
 
-        {/* Disclaimer - NOW MUCH LARGER */}
+        {/* Disclaimer */}
         {/* <motion.p 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -644,10 +655,10 @@ export default function Token() {
             background: 'rgba(139, 92, 246, 0.03)',
             borderRadius: '12px',
             border: '1px solid rgba(139, 92, 246, 0.04)',
-          }} */}
-        {/* > */}
-          {/* ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research. */}
-        {/* </motion.p> */}
+          }}
+        >
+          ⚠️ $GHOST is a community-driven token with no promises of returns. Always do your own research.
+        </motion.p> */}
 
       </div>
 
