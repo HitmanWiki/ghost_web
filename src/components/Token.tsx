@@ -12,10 +12,10 @@ export default function Token() {
   });
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
-  const tokenAddress = "GHOSTpumpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-  const pumpFunLink = "https://pump.fun/coin/GHOSTpumpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-  const dexscreenerLink = "https://dexscreener.com/solana/GHOSTpumpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-  const dexToolsLink = "https://www.dextools.io/app/en/solana/pair/GHOSTpumpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+  const tokenAddress = "8ESs6WnDYgV9eodF8JpyNrrdQuuvNZrBK9tctnfypump";
+  const pumpFunLink = "https://pump.fun/coin/8ESs6WnDYgV9eodF8JpyNrrdQuuvNZrBK9tctnfypump";
+  const dexscreenerLink = "https://dexscreener.com/solana/fw7ekbbdjgv68w43e7eisnreesff1sqfwmwgk31dbkji";
+  const dexToolsLink = "https://www.dextools.io/app/solana/pair-explorer/8ESs6WnDYgV9eodF8JpyNrrdQuuvNZrBK9tctnfypump";
 
   const tokenStats = [
     { label: 'Total Supply', value: '1,000,000,000', icon: Coins, color: '#a78bfa' },
