@@ -380,7 +380,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
           {/* Desktop CTA */}
           <div style={desktopCtaStyle}>
             <a 
-              href="https://t.me/@ghowr_bot" 
+              href="https://t.me/ghost_wirebot" 
               target="_blank" 
               rel="noreferrer" 
               style={supportBtnStyle}
@@ -397,7 +397,7 @@ export default function Header({ onScrollTo }: HeaderProps) {
               Support
             </a>
             <a
-              href="https://t.me/@ghowr_bot"
+              href="https://t.me/ghost_wirebot"
               target="_blank"
               rel="noreferrer"
               style={startBtnStyle}
