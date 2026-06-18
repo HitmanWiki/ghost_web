@@ -649,7 +649,7 @@ export default function Token() {
                 Telegram
               </motion.a>
               <motion.a 
-                href="https://x.com/GhostWire_bot" 
+                href="https://x.com/ghostwirebot_?s=21" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.02 }}
