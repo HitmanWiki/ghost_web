@@ -796,6 +796,22 @@ export default function Footer() {
               >
                 Helpdesk & Troubleshooting <ArrowUpRight size={isMobile ? 16 : 18} />
               </a>
+              {/* NEW: GitHub Link */}
+              <a 
+                href="https://github.com/GHOSTwire-tech" 
+                target="_blank" 
+                rel="noreferrer" 
+                style={linkStyle}
+                onMouseEnter={(e) => {
+                  if (!isMobile) e.currentTarget.style.color = '#a78bfa';
+                }}
+                onMouseLeave={(e) => {
+                  if (!isMobile) e.currentTarget.style.color = '#c4b5fd';
+                }}
+              >
+                <Github size={isMobile ? 16 : 18} />
+                GitHub <ArrowUpRight size={isMobile ? 16 : 18} />
+              </a>
             </div>
           </div>
 
