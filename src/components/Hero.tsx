@@ -8,6 +8,7 @@ interface HeroProps {
 
 export default function Hero({ onScrollTo }: HeroProps) {
   const [copiedText, setCopiedText] = useState(false);
+  const [copiedCA, setCopiedCA] = useState(false);
   const [displayText, setDisplayText] = useState('');
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -21,6 +22,9 @@ export default function Hero({ onScrollTo }: HeroProps) {
   ];
 
   const fullText = "Tokens instantly.";
+
+  // CA Address for $GHOST token
+  const caAddress = "8ESs6WnDYgV9eodF8JpyNrrdQuuvNZrBK9tctnfypump";
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -46,10 +50,10 @@ export default function Hero({ onScrollTo }: HeroProps) {
     return () => clearInterval(typingInterval);
   }, []);
 
-  const handleCopyCode = () => {
-    navigator.clipboard.writeText('t.me/ghowr_bot');
-    setCopiedText(true);
-    setTimeout(() => setCopiedText(false), 2000);
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(caAddress);
+    setCopiedCA(true);
+    setTimeout(() => setCopiedCA(false), 2000);
   };
 
   // Desktop widget style
@@ -639,7 +643,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               </motion.p>
             </div>
 
-            {/* Start Trading & Watch Demo - NOW IN 1 ROW */}
+            {/* Start Trading & Watch Demo */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
@@ -714,7 +718,7 @@ export default function Hero({ onScrollTo }: HeroProps) {
               </button>
             </motion.div>
 
-            {/* Quick Support - NOW IN 1 ROW */}
+            {/* CA Row - Stretched Full Width - WHITE TEXT */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -726,12 +730,12 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 gap: '12px',
                 background: 'rgba(255, 255, 255, 0.02)',
                 borderRadius: '14px',
-                padding: isMobile ? '10px 14px' : '12px 20px',
-                width: '100%',
-                maxWidth: isMobile ? '100%' : '420px',
+                padding: isMobile ? '12px 16px' : '14px 24px',
                 border: '1px solid rgba(139, 92, 246, 0.08)',
                 backdropFilter: 'blur(8px)',
                 flexWrap: 'nowrap',
+                width: '100%',
+                maxWidth: isMobile ? '100%' : '100%',
               }}
             >
               <div style={{
@@ -742,8 +746,8 @@ export default function Hero({ onScrollTo }: HeroProps) {
                 minWidth: 0,
               }}>
                 <div style={{
-                  width: isMobile ? '28px' : '32px',
-                  height: isMobile ? '28px' : '32px',
+                  width: isMobile ? '32px' : '36px',
+                  height: isMobile ? '32px' : '36px',
                   background: 'rgba(139, 92, 246, 0.08)',
                   borderRadius: '8px',
                   border: '1px solid rgba(139, 92, 246, 0.1)',
@@ -751,48 +755,49 @@ export default function Hero({ onScrollTo }: HeroProps) {
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontFamily: 'monospace',
-                  fontSize: isMobile ? '12px' : '14px',
+                  fontSize: isMobile ? '14px' : '16px',
                   color: '#a78bfa',
                   flexShrink: 0,
-                }}>💬</div>
+                }}>🪙</div>
                 <div style={{ 
                   flex: 1, 
                   minWidth: 0,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: isMobile ? '6px' : '10px',
+                  gap: isMobile ? '6px' : '12px',
                   flexWrap: 'wrap',
                 }}>
                   <span style={{
-                    fontSize: isMobile ? 'clamp(9px, 2vw, 10px)' : 'clamp(10px, 0.7vw, 11px)',
+                    fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(14px, 1vw, 16px)',
                     textTransform: 'uppercase',
                     fontFamily: 'monospace',
-                    color: '#9ca3af',
-                    letterSpacing: '0.05em',
-                    fontWeight: 600,
+                    color: '#c4b5fd',
+                    letterSpacing: '0.08em',
+                    fontWeight: 700,
                     whiteSpace: 'nowrap',
-                  }}>Quick Support</span>
+                  }}>CA:</span>
                   <span style={{
-                    fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(13px, 0.9vw, 15px)',
+                    fontSize: isMobile ? 'clamp(14px, 3vw, 17px)' : 'clamp(16px, 1.2vw, 19px)',
                     fontFamily: 'monospace',
-                    color: '#a78bfa',
-                    fontWeight: 600,
+                    color: '#ffffff',
+                    fontWeight: 700,
                     wordBreak: 'break-all',
-                  }}>t.me/ghowr_bot</span>
+                    letterSpacing: '0.02em',
+                  }}>{caAddress}</span>
                 </div>
               </div>
-              <button onClick={handleCopyCode} style={{
-                padding: isMobile ? '6px 14px' : '8px 18px',
+              <button onClick={handleCopyCA} style={{
+                padding: isMobile ? '8px 16px' : '10px 20px',
                 background: 'rgba(139, 92, 246, 0.12)',
-                border: '1px solid rgba(139, 92, 246, 0.15)',
+                border: '1px solid rgba(139, 92, 246, 0.2)',
                 borderRadius: '10px',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '6px',
-                fontSize: isMobile ? 'clamp(11px, 2vw, 13px)' : 'clamp(12px, 0.8vw, 14px)',
+                gap: '8px',
+                fontSize: isMobile ? 'clamp(12px, 2.5vw, 14px)' : 'clamp(14px, 1vw, 16px)',
                 fontFamily: "'Inter', sans-serif",
-                fontWeight: 600,
+                fontWeight: 700,
                 color: '#a78bfa',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.3s ease',
@@ -804,10 +809,10 @@ export default function Hero({ onScrollTo }: HeroProps) {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'rgba(139, 92, 246, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.15)';
+                e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.2)';
               }}>
-                {copiedText ? <Check size={isMobile ? 14 : 16} style={{ color: '#34d399' }} /> : <Copy size={isMobile ? 14 : 16} />}
-                {copiedText ? 'Copied!' : 'Copy'}
+                {copiedCA ? <Check size={isMobile ? 16 : 18} style={{ color: '#34d399' }} /> : <Copy size={isMobile ? 16 : 18} />}
+                {copiedCA ? 'Copied!' : 'Copy'}
               </button>
             </motion.div>
           </motion.div>
