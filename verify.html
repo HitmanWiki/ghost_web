@@ -1,43 +1,130 @@
-<!-- verify.html - Host this on ghostwirebot.tech -->
 <!DOCTYPE html>
 <html>
 <head>
     <title>GHOSTWIRE Verify</title>
-    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        button {
+            background: #6c5ce7;
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:disabled {
+            background: #555;
+        }
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .wallet-info {
+            background: #16213e;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
-    <h1>👻 GHOSTWIRE Verification</h1>
-    <button onclick="connectPhantom()">Connect Phantom</button>
-    <p id="status"></p>
-    <p id="wallet"></p>
+    <h1>👻 GHOSTWIRE</h1>
+    <h3>Wallet Verification</h3>
+    
+    <button id="connectBtn" onclick="connectWallet()">Connect Wallet</button>
+    
+    <div id="status"></div>
+    <div id="walletInfo" style="display:none;"></div>
     
     <script>
-        async function connectPhantom() {
-            try {
-                // Connect to Phantom
-                const provider = window.phantom?.solana;
-                if (!provider) {
-                    document.getElementById('status').innerText = 'Phantom not found! Open in Telegram or install Phantom.';
-                    return;
-                }
-                
-                const resp = await provider.connect();
-                const wallet = resp.publicKey.toString();
-                
-                document.getElementById('wallet').innerText = 'Wallet: ' + wallet;
-                document.getElementById('status').innerText = '✅ Connected!';
-                
-                // Send wallet back to bot via Telegram WebApp
-                if (window.Telegram?.WebApp) {
-                    window.Telegram.WebApp.sendData(JSON.stringify({
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        
+        async function connectWallet() {
+            const statusEl = document.getElementById('status');
+            const btn = document.getElementById('connectBtn');
+            
+            statusEl.innerHTML = '⏳ Detecting wallet...';
+            btn.disabled = true;
+            
+            // Check for Phantom
+            const provider = window.phantom?.solana;
+            
+            if (provider?.isPhantom) {
+                try {
+                    statusEl.innerHTML = '⏳ Connecting to Phantom...';
+                    const resp = await provider.connect();
+                    const wallet = resp.publicKey.toString();
+                    
+                    document.getElementById('walletInfo').style.display = 'block';
+                    document.getElementById('walletInfo').innerHTML = `
+                        <div class="wallet-info">
+                            ✅ Connected!<br>
+                            <small>${wallet}</small>
+                        </div>
+                    `;
+                    statusEl.innerHTML = '✅ Verified! Closing...';
+                    
+                    // Send to bot
+                    tg.sendData(JSON.stringify({
                         action: 'verify_wallet',
                         wallet: wallet
                     }));
-                    window.Telegram.WebApp.close();
+                    
+                    setTimeout(() => tg.close(), 1000);
+                    
+                } catch (err) {
+                    statusEl.innerHTML = '❌ Connection failed: ' + err.message;
+                    btn.disabled = false;
                 }
-            } catch (err) {
-                document.getElementById('status').innerText = 'Error: ' + err.message;
+            } else {
+                // Phantom not found - show alternatives
+                statusEl.innerHTML = `
+                    ⚠️ Phantom not detected!<br><br>
+                    <small>Open this page inside Telegram.<br>
+                    Or install Phantom wallet first.</small>
+                `;
+                btn.disabled = false;
+                
+                // Show manual input as fallback
+                document.getElementById('walletInfo').style.display = 'block';
+                document.getElementById('walletInfo').innerHTML = `
+                    <div class="wallet-info">
+                        <p>Or paste your wallet address:</p>
+                        <input type="text" id="manualWallet" placeholder="Your Solana address..." 
+                               style="width:100%;padding:10px;border-radius:8px;border:none;margin:10px 0;">
+                        <button onclick="submitManual()">Submit Address</button>
+                    </div>
+                `;
             }
+        }
+        
+        function submitManual() {
+            const wallet = document.getElementById('manualWallet').value.trim();
+            if (wallet.length < 32) {
+                alert('Invalid wallet address!');
+                return;
+            }
+            
+            tg.sendData(JSON.stringify({
+                action: 'verify_wallet',
+                wallet: wallet
+            }));
+            
+            document.getElementById('status').innerHTML = '✅ Submitted! Closing...';
+            setTimeout(() => tg.close(), 1000);
         }
     </script>
 </body>
