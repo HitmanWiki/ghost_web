@@ -3,9 +3,19 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "rewrites": [
+    { "source": "/verify.html", "destination": "/verify.html" },
     { "source": "/(.*)", "destination": "/" }
   ],
   "headers": [
+    {
+      "source": "/verify.html",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "ALLOW-FROM https://web.telegram.org" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors https://web.telegram.org https://telegram.org" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    },
     {
       "source": "/(.*)",
       "headers": [
