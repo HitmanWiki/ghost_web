@@ -1,0 +1,44 @@
+<!-- verify.html - Host this on ghostwirebot.tech -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GHOSTWIRE Verify</title>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+</head>
+<body>
+    <h1>👻 GHOSTWIRE Verification</h1>
+    <button onclick="connectPhantom()">Connect Phantom</button>
+    <p id="status"></p>
+    <p id="wallet"></p>
+    
+    <script>
+        async function connectPhantom() {
+            try {
+                // Connect to Phantom
+                const provider = window.phantom?.solana;
+                if (!provider) {
+                    document.getElementById('status').innerText = 'Phantom not found! Open in Telegram or install Phantom.';
+                    return;
+                }
+                
+                const resp = await provider.connect();
+                const wallet = resp.publicKey.toString();
+                
+                document.getElementById('wallet').innerText = 'Wallet: ' + wallet;
+                document.getElementById('status').innerText = '✅ Connected!';
+                
+                // Send wallet back to bot via Telegram WebApp
+                if (window.Telegram?.WebApp) {
+                    window.Telegram.WebApp.sendData(JSON.stringify({
+                        action: 'verify_wallet',
+                        wallet: wallet
+                    }));
+                    window.Telegram.WebApp.close();
+                }
+            } catch (err) {
+                document.getElementById('status').innerText = 'Error: ' + err.message;
+            }
+        }
+    </script>
+</body>
+</html>
